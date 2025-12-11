@@ -1,78 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
-
-<!-- Last Change: 2025-09-30 -->
+<!-- Last Change: 2025-12-12 -->
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
   <title>Excursion Studio BETA</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .current-time {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* Products Section */
+    .products {
+      background: white;
+      padding: 4rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #333;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e0e0e0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #667eea;
+    }
+
+    .product-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .product-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Studio Info Section */
+    .studio-info {
+      padding: 4rem 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #667eea;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .info-card .status {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    /* About Section */
+    .about {
+      background: white;
+      padding: 4rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 2rem;
+    }
+
+    .contact a {
+      color: white;
+      text-decoration: underline;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact a:hover {
+      opacity: 0.8;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero, .product-card, .info-card, .about-content {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .product-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .info-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .info-card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .info-card:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .info-card:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+  </style>
 </head>
 
 <body>
-    <p>Current Time: <span id="current-time"></span></p>
-    
-    <img src="new_logo_horizon_transparent.png" width="640" height="192">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="new_logo_horizon_transparent.png" alt="Excursion Studio Logo">
     <h1>Excursion Studio BETA</h1>
+    <div class="current-time">Current Time: <span id="current-time"></span></div>
+  </section>
 
-    <p>Click following to enter our flagship products:</p>
-    <a href="https://excursion-studio.github.io/Personal-Homepage-Template/" target="_blank">Excursion Studio Personal Homepage (ESPH)</a>
-    <br>
-    <a href="https://excursion-studio.github.io/Research-Project-Page-Template/" target="_blank">Excursion Studio Research Project Page (ESRPP)</a>
+  <!-- Products Section -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title">Our Flagship Products</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <h3>Excursion Studio Personal Homepage (ESPH)</h3>
+          <p>A modern, responsive personal homepage template designed for professionals and creatives.</p>
+          <a href="https://excursion-studio.github.io/Personal-Homepage-Template/" target="_blank">Visit ESPH</a>
+        </div>
+        <div class="product-card">
+          <h3>Excursion Studio Research Project Page (ESRPP)</h3>
+          <p>A comprehensive template for showcasing research projects with elegant design and functionality.</p>
+          <a href="https://excursion-studio.github.io/Research-Project-Page-Template/" target="_blank">Visit ESRPP</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p><strong>Note:</strong> This studio homepage is under construction, with studio owner Yuanxing (me) thinking of what style is suitable for this page.
-    <br>
-    If you have any suggestions, please contact me at <a href="mailto:conshein_yuanxing@outlook.com">conshein_yuanxing@outlook.com</a>.</p>
+  <!-- Studio Information Section -->
+  <section class="studio-info">
+    <div class="container">
+      <h2 class="section-title">Studio Overview</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Introduction</h3>
+          <p>The target of studio work has been <span class="status">unclarified</span> yet.</p>
+        </div>
+        <div class="info-card">
+          <h3>Research</h3>
+          <p>There is <span class="status">none</span> of research project <span class="status">in progress or done</span> already.</p>
+        </div>
+        <div class="info-card">
+          <h3>Equipment</h3>
+          <p>My budget is <span class="status">too tight to afford</span> any equipment.</p>
+        </div>
+        <div class="info-card">
+          <h3>Products</h3>
+          <p>Above two factors are <span class="status">disabled</span>, how can I innovate and produce anything?</p>
+        </div>
+        <div class="info-card">
+          <h3>Contact</h3>
+          <p>Email is <span class="status">what I only have</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>Outline for this page</h2>
-    <style>
-        .aligned-list {
-            list-style-type: decimal;
-            padding-left: 40px;
-        }
-        .aligned-list li {
-            margin-bottom: 8px;
-            padding-left: 0;
-        }
-        .arrow {
-            display: inline-block;
-            width: 100px;
-            text-align: left;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-    </style>
-    <ol class="aligned-list">
-        <li><span class="arrow">Introduction</span> -> The target of studio work has been <strong>unclarified</strong> yet.</li>
-        <li><span class="arrow">Research</span> -> There is <strong>none</strong> of research project <strong>in progress or done</strong> already.</li>
-        <li><span class="arrow">Equipment</span> -> My budget is <strong>too tight to afford</strong> any equipment.</li>
-        <li><span class="arrow">Products</span> -> Above two factors are <strong>disabled</strong>, how can I innovate and produce anything?</li>
-        <li><span class="arrow">Contact</span> -> Email is <strong>what I only have</strong>: ↑.</li>
-    </ol>
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">Our Vision</h2>
+      <div class="about-content">
+        <p>Apart from ESPH and ESRPP, I intend to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>, in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.</p>
+        <p>Certainly, it may take me several years to finish this project. As above points mention, I have no enough budget and professional level to build such well-equipped studio, so please let me find an employer and keep my academic route going first, because I have <strong>even not obtain MSc. Degree</strong> yet.</p>
+        <p>But <strong>building a studio is my dream, I would try my best to make it!</strong> In short, please <strong>stay tuned</strong>! During this route, I could <strong>gradually fill with content</strong> in this page!</p>
+      </div>
+    </div>
+  </section>
 
-    <p>Apart from ESPH and ESRPP, I intend to create a <u>more interactive and fashionable page</u>, i.e. <u>studio platform</u>, 
-    <br>
-    in order to <u>make pretty comfortable environment</u> for visitors being interested in our studio's <u>work, facilities, and products</u>.</p>
-    <p>Certainly, it may take me several years to finish this project. 
-    <br>
-    As above points mention, I have no enough budget and professional level to build such well-equipped studio,
-    <br>  
-    so please let me find an employer and keep my academic route going first, because I have <u>even not obtain MSc. Degree</u> yet.</p>
-    <p>But <u>building a studio is my dream, I would try my best to make it!</u>
-    <br>
-    In short, please <u>stay tuned</u>! During this route, I could <u>gradually fill with content</u> in this page!</p>
+  <!-- Contact Section -->
+  <section class="contact">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p>If you have any suggestions or inquiries, please contact me at: <a href="mailto:conshein_yuanxing@outlook.com">conshein_yuanxing@outlook.com</a></p>
+      <p>If you have interest in owner of this studio, please visit his <a href="https://chen-kaixiang-huian.github.io" target="_blank">homepage</a>.</p>
+    </div>
+  </section>
 
-    The homepage of studio owner is <a href="https://chen-kaixiang-huian.github.io" target="_blank">here</a>. 
-    (Of course, Yuanxing is just my alias, my real name is Kaixiang Chen.)
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Excursion Studio. All rights reserved.</p>
+  </footer>
 
-    <script src="current_time.js"></script>
+  <script src="current_time.js"></script>
 </body>
 
 </html>
