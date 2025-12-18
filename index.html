@@ -21,6 +21,72 @@
       box-sizing: border-box;
     }
 
+    /* Navigation Bar */
+    .navbar {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      object-position: center;
+      overflow: hidden;
+      padding: 5px 0;
+      clip-path: inset(30% 0 30% 0);
+      transform: scale(2.5);
+      margin: 0 -20px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links li a:hover {
+      color: #667eea;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -32,16 +98,8 @@
     .hero {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 4rem 2rem 2rem 2rem;
       text-align: center;
-    }
-
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     .hero h1 {
@@ -221,10 +279,21 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      /* Navbar Responsive */
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      /* Hero Section */
       .hero h1 {
         font-size: 2rem;
       }
 
+      /* Section Title */
       .section-title {
         font-size: 2rem;
       }
@@ -270,9 +339,24 @@
 
 <body>
 
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <img src="new_logo_horizon_transparent.png" alt="Excursion Studio Logo" class="logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="javascript:void(0);">Introduction</a></li>
+        <li><a href="javascript:void(0);">Research</a></li>
+        <li><a href="javascript:void(0);">Equipment</a></li>
+        <li><a href="javascript:void(0);">Products</a></li>
+        <li><a href="javascript:void(0);">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Hero Section -->
   <section class="hero">
-    <img src="new_logo_horizon_transparent.png" alt="Excursion Studio Logo">
     <h1>Excursion Studio BETA</h1>
     <div class="current-time">Current Time: <span id="current-time"></span></div>
   </section>
@@ -301,19 +385,19 @@
     <div class="container">
       <h2 class="section-title">Studio Overview</h2>
       <div class="info-grid">
-        <div class="info-card">
+        <div class="info-card" id="introduction">
           <h3>Introduction</h3>
           <p>The target of studio work has been <span class="status">unclarified</span> yet.</p>
         </div>
-        <div class="info-card">
+        <div class="info-card" id="research">
           <h3>Research</h3>
           <p>There is <span class="status">none</span> of research project <span class="status">in progress or done</span> already.</p>
         </div>
-        <div class="info-card">
+        <div class="info-card" id="equipment">
           <h3>Equipment</h3>
           <p>My budget is <span class="status">too tight to afford</span> any equipment.</p>
         </div>
-        <div class="info-card">
+        <div class="info-card" id="products">
           <h3>Products</h3>
           <p>Above two factors are <span class="status">disabled</span>. How can I innovate and produce anything?</p>
         </div>
@@ -335,15 +419,19 @@
         <p><span class="highlight">Over</span> ground by hone.</p>
       </div>
       <div class="about-content">
-        <p>Apart from ESPH and ESRPP, I intend to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>, in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.</p>
-        <p>Certainly, it may take me several years to finish this project. As above points mention, I have no enough budget and professional level to build such well-equipped studio, so please let me find an employer and keep my academic route going first, because I have <strong>even not obtained MSc. Degree</strong> yet.</p>
-        <p>But <strong>building a studio is always my dream, I would try my best to make it!</strong> In short, please <strong>stay tuned!</strong> During this route, I could <strong>gradually fill with content</strong> in this page!</p>
+        <p>I intend to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>, </p>
+        <p>in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>. </p>
+        <p>Certainly, it may take me several years to finish this project. </p>
+        <p>As above points mention, I have no enough budget and professional level to build such well-equipped studio. </p>
+        <p>Please let me find an employer and keep my academic route going first, because I have <strong>even not obtained Master Degree</strong> yet.</p>
+        <p>But <strong>building a studio is always my dream, I would try my best to make it!</strong> </p>
+        <p>In short, please <strong>stay tuned!</strong> During this route, I could <strong>gradually fill with content</strong> in this page!</p>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section class="contact" id="contact">
     <div class="container">
       <h2>Get in Touch</h2>
       <p>If you have any suggestions or inquiries, please contact me at: <a href="mailto:conshein_yuanxing@outlook.com">conshein_yuanxing@outlook.com</a></p>
