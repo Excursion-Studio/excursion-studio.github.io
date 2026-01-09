@@ -14,7 +14,7 @@ function updateTime() {
     const seconds = now.getSeconds().toString().padStart(2, '0');
     
     // Check if current page is Chinese version
-    const isChinesePage = window.location.pathname.includes('index_zh.html');
+    const isChinesePage = window.location.pathname.includes('/zh/');
     
     let timeString;
     if (isChinesePage) {

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
+<!-- Last Change: 2025-12-12 -->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>Excursion Studio BETA</title>
+  <link rel="icon" href="../decorations/favicon.ico" type="image/x-icon">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      object-position: center;
+      overflow: hidden;
+      padding: 5px 0;
+      clip-path: inset(30% 0 30% 0);
+      transform: scale(2.0);
+      margin: 0 -20px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links li a:hover {
+      color: #667eea;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #4a4a6a;
+      background-color: #f5f7fa;
+      background-image: url('../decorations/background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Main Content Section */
+    .main-content {
+      /* Structural container for all content layers */
+      /* Added display: block to avoid empty ruleset warning */
+      display: block;
+    }
+
+    /* Layer Base Style */
+    .layer {
+      padding: 4rem 2rem;
+    }
+
+    /* Animate only text and card elements, not background */
+    .hero-layer h1,
+    .hero-layer .current-time,
+    .products-layer .section-title,
+    .product-card,
+    .studio-info-layer .section-title,
+    .info-card,
+    .about-layer .section-title,
+    .about-layer .motto,
+    .about-content p,
+    .contact-layer h2,
+    .contact-layer p {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      /* All elements animate simultaneously */
+    }
+
+    /* Hero Layer */
+    .hero-layer {
+      background: rgba(255, 255, 255, 0.7);
+      text-align: center;
+    }
+
+    .hero-layer h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .current-time {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* Products Layer */
+    .products-layer {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #333;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e0e0e0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #667eea;
+    }
+
+    .product-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .product-card a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Studio Info Layer */
+    .studio-info-layer {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #667eea;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .info-card .status {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    /* About Layer */
+    .about-layer {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .motto {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .motto .highlight {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #667eea;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-layer p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Contact Layer */
+    .contact-layer {
+      background: rgba(102, 126, 234, 0.7);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-layer h2 {
+      margin-bottom: 2rem;
+    }
+
+    .contact-layer a {
+      color: white;
+      text-decoration: underline;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-layer a:hover {
+      opacity: 0.8;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      /* Navbar Responsive */
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      /* Hero Section */
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      /* Section Title */
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Only animate the main content container as a whole */
+    /* Removed individual animations for product-card and info-card to avoid duplicate entry */
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <a href="index.html">
+          <img src="../decorations/new_logo_horizon_transparent.png" alt="Excursion Studio Logo" class="logo">
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="javascript:void(0);">Introduction</a></li>
+        <li><a href="javascript:void(0);">Research</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="javascript:void(0);">Equipment</a></li>
+        <li><a href="javascript:void(0);">Products</a></li>
+        <li><a href="javascript:void(0);">Contact</a></li>
+        <li><a href="../zh/index.html">中文</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Section -->
+  <section class="main-content">
+    <!-- Hero Layer -->
+    <div class="layer hero-layer">
+      <div class="container">
+        <h1>Excursion Studio BETA</h1>
+        <div class="current-time">Current Time: <span id="current-time"></span></div>
+      </div>
+    </div>
+
+    <!-- Products Layer -->
+    <div class="layer products-layer">
+      <div class="container">
+        <h2 class="section-title">Our Flagship Products</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <h3>Excursion Studio Personal Homepage (ESPH)</h3>
+            <p>A modern, responsive personal homepage template designed for professionals and creatives.</p>
+            <br>
+            <p>(<strong>Note:</strong> Personal information shown in this template are <strong>all fictional</strong>, only for display purpose)</p>
+            <a href="https://excursion-studio.github.io/Personal-Homepage-Template/" target="_blank">Visit ESPH</a>
+          </div>
+          <div class="product-card">
+            <h3>Excursion Studio Research Project Page (ESRPP)</h3>
+            <p>A comprehensive template for showcasing research projects with elegant design and functionality.</p>
+            <br>
+            <p>(<strong>Note:</strong> Using a research project named <strong>PIPE-Planner</strong>, created by <strong>CMU AIRLAB</strong>, as an example)</p>
+            <a href="https://excursion-studio.github.io/Research-Project-Page-Template/" target="_blank">Visit ESRPP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Studio Information Layer -->
+    <div class="layer studio-info-layer">
+      <div class="container">
+        <h2 class="section-title">Studio Overview</h2>
+        <div class="info-grid">
+          <div class="info-card" id="introduction">
+            <h3>Introduction</h3>
+            <p>The target of studio work has been <span class="status">unclarified</span> yet.</p>
+          </div>
+          <div class="info-card" id="research">
+            <h3>Research</h3>
+            <p>There is <span class="status">none</span> of research project <span class="status">in progress or done</span> already.</p>
+          </div>
+          <div class="info-card" id="courses">
+            <h3>Courses</h3>
+            <p>This one is what I can do. Currently, <span class="status">Convex Optimization Tutorial</span> made by studio has been already officially launched!</p>
+          </div>
+          <div class="info-card" id="equipment">
+            <h3>Equipment</h3>
+            <p>My budget is <span class="status">too tight to afford</span> any equipment.</p>
+          </div>
+          <div class="info-card" id="products">
+            <h3>Products</h3>
+            <p>Above two factors are <span class="status">disabled</span>. How can I innovate and produce anything?</p>
+          </div>
+          <div class="info-card">
+            <h3>Contact</h3>
+            <p>All official contacts are in the <span class="status">Get in Touch</span> section!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Layer -->
+    <div class="layer about-layer">
+      <div class="container">
+        <h2 class="section-title">Our Vision</h2>
+        <div class="motto">
+          <p><span class="highlight">Ride</span> the wind to the distant,</p>
+          <p><span class="highlight">Across</span> the vastness of the air,</p>
+          <p><span class="highlight">Gaze</span> down upon mountains and rivers.</p>
+        </div>
+        <div class="about-content">
+          <p>I intend to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>, </p>
+          <p>in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>. </p>
+          <p>Certainly, it may take me several years to finish this project. </p>
+          <p>As above points mention, I have no enough budget and professional level to build such well-equipped studio. </p>
+          <p>Please let me find an employer and keep my academic route going first, because I have <strong>even not obtained Master Degree</strong> yet.</p>
+          <p>But <strong>building a studio is always my dream, I would try my best to make it!</strong> </p>
+          <p>In short, please <strong>stay tuned!</strong> During this route, I could <strong>gradually fill with content</strong> in this page!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Layer -->
+    <div class="layer contact-layer">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <p>If you have any suggestions or inquiries, please contact us at: <a href="mailto:excursion-studio@outlook.com">excursion-studio@outlook.com</a></p>
+        <p>If you are interested in our studio, please visit our GitHub repository: <a href="https://github.com/Excursion-Studio" target="_blank">Excursion-Studio</a></p>
+        <p>or Follow us on WeChat Official Account: <strong>远行 Excursion Studio</strong></p>
+        <p><img src="../decorations/QRCode.jpg" alt="WeChat QR Code" style="width: 200px; height: auto; margin-top: 1rem;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Excursion Studio. All rights reserved.</p>
+  </footer>
+
+  <script src="../current_time.js"></script>
+</body>
+
+</html>
