@@ -14,318 +14,41 @@
 
   <title>Courses - Excursion Studio</title>
   <link rel="icon" href="../decorations/favicon.ico" type="image/x-icon">
-  <style>
-    /* Global Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Navigation Bar */
-    .navbar {
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 1rem 0;
-      position: relative;
-      z-index: 1000;
-    }
-
-    .navbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      height: 50px;
-      width: auto;
-      object-fit: contain;
-      object-position: center;
-      overflow: hidden;
-      padding: 5px 0;
-      clip-path: inset(30% 0 30% 0);
-      transform: scale(2.0);
-      margin: 0 -20px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links li a:hover {
-      color: #667eea;
-    }
-
-    .nav-links li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links li a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero Section */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #4a4a6a;
-      background-color: #f5f7fa;
-      background-image: url('../decorations/background.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    /* Main Content Section */
-    .main-content {
-      display: block;
-    }
-
-    /* Layer Base Style */
-    .layer {
-      padding: 4rem 2rem;
-    }
-
-    /* Animate elements */
-    .hero-layer h1,
-    .hero-layer .current-time,
-    .courses-layer .section-title,
-    .course-card,
-    .contact-layer h2,
-    .contact-layer p {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    /* Hero Layer */
-    .hero-layer {
-      background: rgba(255, 255, 255, 0.7);
-      text-align: center;
-    }
-
-    .hero-layer h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .current-time {
-      font-size: 1.1rem;
-      color: #666;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    /* Courses Layer */
-    .courses-layer {
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: #333;
-    }
-
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .course-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-left: 4px solid #667eea;
-    }
-
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .course-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-
-
-    .course-card a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.8rem 1.5rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .course-card a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    /* Contact Layer */
-    .contact-layer {
-      background: rgba(102, 126, 234, 0.7);
-      color: white;
-      text-align: center;
-    }
-
-    .contact-layer h2 {
-      margin-bottom: 2rem;
-    }
-
-    .contact-layer a {
-      color: white;
-      text-decoration: underline;
-      transition: opacity 0.3s ease;
-    }
-
-    .contact-layer a:hover {
-      opacity: 0.8;
-    }
-
-    /* Footer */
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 0;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      /* Navbar Responsive */
-      .nav-links {
-        gap: 1rem;
-      }
-      
-      .logo {
-        height: 40px;
-      }
-      
-      /* Hero Section */
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      /* Section Title */
-      .section-title {
-        font-size: 2rem;
-      }
-
-      /* Courses Grid */
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-brand">
-        <a href="index.html">
-          <img src="../decorations/new_logo_horizon_transparent.png" alt="Excursion Studio Logo" class="logo">
-        </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="javascript:void(0)">Introduction</a></li>
-        <li><a href="javascript:void(0);">Research</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="javascript:void(0);">Equipment</a></li>
-        <li><a href="javascript:void(0);">Products</a></li>
-        <li><a href="javascript:void(0);">Contact</a></li>
-        <li><a href="../zh/courses.html">中文</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div id="navbar-container"></div>
 
   <!-- Main Content Section -->
   <section class="main-content">
 
 
     <!-- Courses Layer -->
-    <div class="layer courses-layer">
+    <div class="layer content-layer">
       <div class="container">
         <h2 class="section-title">Mathematical Foundation Courses</h2>
-        <div class="courses-grid">
-          <div class="course-card">
+        <div class="module-grid">
+          <div class="module-card">
             <h3>Convex Optimization Tutorial</h3>
             <a href="https://excursion-studio.github.io/convex-optimization-tutorial/" target="_blank">Access</a>
           </div>
-          <div class="course-card">
+          <div class="module-card">
+            <h3>Variational Methods</h3>
+            <a href="javascript:void(0);">Access</a>
+          </div>
+          <div class="module-card">
             <h3>Differential Geometry</h3>
             <a href="javascript:void(0);">Access</a>
           </div>
-          <div class="course-card">
+          <div class="module-card">
             <h3>Differential Manifolds</h3>
             <a href="javascript:void(0);">Access</a>
           </div>
-          <div class="course-card">
+          <div class="module-card">
             <h3>Stochastic Processes</h3>
-            <a href="javascript:void(0);">Access</a>
-          </div>
-          <div class="course-card">
-            <h3>Machine Learning</h3>
             <a href="javascript:void(0);">Access</a>
           </div>
         </div>
@@ -333,23 +56,41 @@
     </div>
 
     <!-- Contact Layer -->
-    <div class="layer contact-layer">
-      <div class="container">
-        <h2>Get in Touch</h2>
-        <p>If you have any suggestions or inquiries, please contact us at: <a href="mailto:excursion-studio@outlook.com">excursion-studio@outlook.com</a></p>
-        <p>If you are interested in our studio, please visit our GitHub repository: <a href="https://github.com/Excursion-Studio" target="_blank">Excursion-Studio</a></p>
-        <p>or Follow us on WeChat Official Account: <strong>远行 Excursion Studio</strong></p>
-        <p><img src="../decorations/QRCode.jpg" alt="WeChat QR Code" style="width: 200px; height: auto; margin-top: 1rem;"></p>
-      </div>
-    </div>
+    <div id="contact-container"></div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Excursion Studio. All rights reserved.</p>
-  </footer>
+  <div id="footer-container"></div>
 
-
+  <script>
+    // Load navbar
+    fetch('src/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+        // Get current page filename
+        const currentFilename = window.location.pathname.split('/').pop();
+        // Get Chinese link element
+        const zhLink = document.querySelector('a[href="../zh/"]');
+        if (zhLink) {
+          zhLink.href = '../zh/' + currentFilename;
+        }
+      });
+    
+    // Load contact section
+    fetch('src/contact.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('contact-container').innerHTML = data;
+      });
+    
+    // Load footer
+    fetch('src/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 </body>
 
 </html>

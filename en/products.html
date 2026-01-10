@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 
 <!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
 <!-- Last Change: 2026-01-10 -->
@@ -12,7 +12,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <title>课程 - 远行工作室</title>
+  <title>Products - Excursion Studio</title>
   <link rel="icon" href="../decorations/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="src/style.css">
 </head>
@@ -24,32 +24,18 @@
 
   <!-- Main Content Section -->
   <section class="main-content">
-
-
-    <!-- Courses Layer -->
+    <!-- Products Layer -->
     <div class="layer content-layer">
       <div class="container">
-        <h2 class="section-title">数理基础课程</h2>
+        <h2 class="section-title">Our Flagship Products</h2>
         <div class="module-grid">
           <div class="module-card">
-            <h3>凸优化导论教程</h3>
-            <a href="https://excursion-studio.github.io/convex-optimization-tutorial/" target="_blank">进入</a>
+            <h3>Excursion Studio Personal Homepage (ESPH)</h3>
+            <a href="https://excursion-studio.github.io/Personal-Homepage-Template/" target="_blank">Access</a>
           </div>
           <div class="module-card">
-            <h3>变分法</h3>
-            <a href="javascript:void(0);">进入</a>
-          </div>
-          <div class="module-card">
-            <h3>微分几何</h3>
-            <a href="javascript:void(0);">进入</a>
-          </div>
-          <div class="module-card">
-            <h3>微分流形</h3>
-            <a href="javascript:void(0);">进入</a>
-          </div>
-          <div class="module-card">
-            <h3>随机过程</h3>
-            <a href="javascript:void(0);">进入</a>
+            <h3>Excursion Studio Research Project Page (ESRPP)</h3>
+            <a href="https://excursion-studio.github.io/Research-Project-Page-Template/" target="_blank">Access</a>
           </div>
         </div>
       </div>
@@ -70,10 +56,10 @@
         document.getElementById('navbar-container').innerHTML = data;
         // Get current page filename
         const currentFilename = window.location.pathname.split('/').pop();
-        // Get English link element
-        const enLink = document.querySelector('a[href="../en/"]');
-        if (enLink) {
-          enLink.href = '../en/' + currentFilename;
+        // Get Chinese link element
+        const zhLink = document.querySelector('a[href="../zh/"]');
+        if (zhLink) {
+          zhLink.href = '../zh/' + currentFilename;
         }
       });
     
