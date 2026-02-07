@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
-<!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
-<!-- Last Change: 2026-02-07 -->
+<!-- Page Shell Template - 通用页面骨架 -->
+<!-- 通过 URL 参数 ?page=xxx 加载不同内容 -->
 
 <head>
   <meta charset="utf-8">
@@ -12,22 +12,31 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <title>Products - Excursion Studio BETA</title>
+  <title id="page-title">远行工作室</title>
   <link rel="icon" href="../decorations/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
+  <!-- Navigation Bar -->
   <div id="navbar-container"></div>
 
-  <section class="main-content" id="main-content"></section>
+  <!-- Main Content Section -->
+  <section class="main-content" id="main-content">
+    <!-- Dynamic Content will be rendered here -->
+  </section>
 
-  <div id="contact-container"></div>
+  <!-- Footer -->
   <div id="footer-container"></div>
 
   <script src="src/content-renderer.js"></script>
   <script>
-    renderPage('products');
+    // 从 URL 参数获取页面类型
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageType = urlParams.get('page') || 'index';
+    
+    // 渲染页面
+    renderPage(pageType);
   </script>
 </body>
 

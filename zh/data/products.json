@@ -1,0 +1,24 @@
+{
+  "pageTitle": "产品 - 远行工作室 测试版",
+  "sectionTitle": "我们的旗舰产品",
+  "items": [
+    {
+      "id": "personal-homepage-template-v2",
+      "title": "远行工作室-个人主页模板 Ver.2 (ESPH-V2)",
+      "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+      "available": true
+    },
+    {
+      "id": "personal-homepage-template",
+      "title": "远行工作室-个人主页模板 (ESPH)",
+      "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+      "available": true
+    },
+    {
+      "id": "research-project-page-template",
+      "title": "远行工作室-研究项目页面模板 (ESRPP)",
+      "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+      "available": true
+    }
+  ]
+}

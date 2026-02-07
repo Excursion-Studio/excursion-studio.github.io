@@ -1,0 +1,24 @@
+{
+  "pageTitle": "课程 - 远行工作室 测试版",
+  "sectionTitle": "概率机器人基础",
+  "items": [
+    {
+      "id": "convex-optimization",
+      "title": "凸优化",
+      "link": "https://excursion-studio.github.io/convex-optimization-tutorial/",
+      "available": true
+    },
+    {
+      "id": "differential-geometry-for-robotics",
+      "title": "微分几何与机器人学",
+      "link": "https://excursion-studio.github.io/differential-geometry-for-robotics-tutorial/",
+      "available": true
+    },
+    {
+      "id": "stochastic-processes",
+      "title": "随机过程",
+      "link": null,
+      "available": false
+    }
+  ]
+}

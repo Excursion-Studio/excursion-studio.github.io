@@ -2,7 +2,7 @@
 <html lang="zh">
 
 <!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
-<!-- Last Change: 2025-12-12 -->
+<!-- Last Change: 2026-02-07 -->
 
 <head>
   <meta charset="utf-8">
@@ -18,108 +18,16 @@
 </head>
 
 <body>
-
-  <!-- Navigation Bar -->
   <div id="navbar-container"></div>
 
-  <!-- Main Content Section -->
-  <section class="main-content">
-    <!-- Hero Layer -->
-    <div class="layer hero-layer">
-      <div class="container">
-        <h1>远行工作室 测试版</h1>
-        <div class="current-time">当前时间: <span id="current-time"></span></div>
-      </div>
-    </div>
+  <section class="main-content" id="main-content"></section>
 
-    <!-- Studio Information Layer -->
-    <div class="layer content-layer">
-      <div class="container">
-        <h2 class="section-title">工作室概览</h2>
-        <div class="module-grid">
-          <div class="module-card" id="introduction">
-            <h3>简介</h3>
-            <p>工作室工作的目标<span class="status">尚未明确</span>。</p>
-          </div>
-          <div class="module-card" id="research">
-            <h3>研究</h3>
-            <p>目前<span class="status">没有正在进行或已完成</span>的研究项目。</p>
-          </div>
-          <div class="module-card" id="courses">
-            <h3>课程</h3>
-            <p>这个我还是可以做的。目前由工作室制作的<span class="status"><em>《凸优化》</em></span>已经正式上线了！</p>
-          </div>
-          <div class="module-card" id="equipment">
-            <h3>设备</h3>
-            <p>我的预算<span class="status">相当紧张，买不起</span>任何设备。</p>
-          </div>
-          <div class="module-card" id="products">
-            <h3>产品</h3>
-            <p>我们的产品<span class="status">只是虚拟的（页面模板）</span>。受限于上述两者，我们无法创新和产出任何实物成果。</p>
-          </div>
-          <div class="module-card">
-            <h3>联系</h3>
-            <p>所有官方联系都在<span class="status">联系我们</span>部分！</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- About Layer -->
-    <div class="layer content-layer">
-      <div class="container">
-        <h2 class="section-title">我们的愿景</h2>
-        <div class="motto">
-          <p><span class="highlight">乘风翔</span>长空千仞，<span class="highlight">直下看</span>山河万里。</p>
-        </div>
-        <div class="about-content">
-          <p>我计划创建一个<strong>更具互动性和时尚感的页面</strong>，即<strong>工作室平台</strong>，</p>
-          <p>为对我们工作室的<strong>工作、设施和产品</strong>感兴趣的访客提供一个<strong>舒适的环境</strong>。</p>
-          <p>当然，完成这个项目可能需要几年时间。</p>
-          <p>如前所述，我没有足够的预算和专业水平来建立这样一个设备齐全的工作室。</p>
-          <p>请让我先找到一份工作并继续我的学术道路，因为我<strong>甚至还没有获得硕士学位</strong>。</p>
-          <p>但<strong>建立工作室始终是我的梦想，我会尽最大努力实现它！</strong></p>
-          <p>简而言之，请<strong>保持关注！</strong>在这个过程中，我会<strong>逐渐丰富</strong>这个页面的内容！</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Layer -->
-    <div id="contact-container"></div>
-  </section>
-
-  <!-- Footer -->
+  <div id="contact-container"></div>
   <div id="footer-container"></div>
 
-  <script src="src/current_time.js"></script>
+  <script src="src/content-renderer.js"></script>
   <script>
-    // Load navbar
-    fetch('src/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-        // Get current page filename
-        const currentFilename = window.location.pathname.split('/').pop();
-        // Get English link element
-        const enLink = document.querySelector('a[href="../en/"]');
-        if (enLink) {
-          enLink.href = '../en/' + currentFilename;
-        }
-      });
-    
-    // Load contact section
-    fetch('src/contact.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('contact-container').innerHTML = data;
-      });
-    
-    // Load footer
-    fetch('src/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
+    renderPage('index');
   </script>
 </body>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
-<!-- Last Change: 2025-12-12 -->
+<!-- Last Change: 2026-02-07 -->
 
 <head>
   <meta charset="utf-8">
@@ -18,111 +18,16 @@
 </head>
 
 <body>
-
-  <!-- Navigation Bar -->
   <div id="navbar-container"></div>
 
-  <!-- Main Content Section -->
-  <section class="main-content">
-    <!-- Hero Layer -->
-    <div class="layer hero-layer">
-      <div class="container">
-        <h1>Excursion Studio BETA</h1>
-        <div class="current-time">Current Time: <span id="current-time"></span></div>
-      </div>
-    </div>
+  <section class="main-content" id="main-content"></section>
 
-
-
-    <!-- Studio Information Layer -->
-    <div class="layer content-layer">
-      <div class="container">
-        <h2 class="section-title">Studio Overview</h2>
-        <div class="module-grid">
-          <div class="module-card" id="introduction">
-            <h3>Introduction</h3>
-            <p>The target of studio work has been <span class="status">unclarified</span> yet.</p>
-          </div>
-          <div class="module-card" id="research">
-            <h3>Research</h3>
-            <p>There is <span class="status">none</span> of research project <span class="status">in progress or done</span> already.</p>
-          </div>
-          <div class="module-card" id="courses">
-            <h3>Courses</h3>
-            <p>This one is what I can do. Currently, <span class="status"><em>Convex Optimization</em></span> made by studio has been already officially launched!</p>
-          </div>
-          <div class="module-card" id="equipment">
-            <h3>Equipment</h3>
-            <p>My budget is <span class="status">too tight to afford</span> any equipment.</p>
-          </div>
-          <div class="module-card" id="products">
-            <h3>Products</h3>
-            <p>Our products are <span class="status">only virtual (page templates)</span>. Limited by above two factors, we cannot innovate and produce anything solid.</p>
-          </div>
-          <div class="module-card">
-            <h3>Contact</h3>
-            <p>All official contacts are in the <span class="status">Get in Touch</span> section!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- About Layer -->
-    <div class="layer content-layer">
-      <div class="container">
-        <h2 class="section-title">Our Vision</h2>
-        <div class="motto">
-          <p><span class="highlight">Soaring through</span> the high sky by wind,</p>
-          <p><span class="highlight">Looking down</span> the vast rivers and mountains.</p>
-        </div>
-        <div class="about-content">
-          <p>I intend to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>, </p>
-          <p>in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>. </p>
-          <p>Certainly, it may take me several years to finish this project. </p>
-          <p>As above points mention, I have no enough budget and professional level to build such well-equipped studio. </p>
-          <p>Please let me find an employer and keep my academic route going first, because I have <strong>even not obtained Master Degree</strong> yet.</p>
-          <p>But <strong>building a studio is always my dream, I would try my best to make it!</strong> </p>
-          <p>In short, please <strong>stay tuned!</strong> During this route, I could <strong>gradually fill with content</strong> in this page!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Layer -->
-    <div id="contact-container"></div>
-  </section>
-
-  <!-- Footer -->
+  <div id="contact-container"></div>
   <div id="footer-container"></div>
 
-  <script src="src/current_time.js"></script>
+  <script src="src/content-renderer.js"></script>
   <script>
-    // Load navbar
-    fetch('src/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-        // Get current page filename
-        const currentFilename = window.location.pathname.split('/').pop();
-        // Get Chinese link element
-        const zhLink = document.querySelector('a[href="../zh/"]');
-        if (zhLink) {
-          zhLink.href = '../zh/' + currentFilename;
-        }
-      });
-    
-    // Load contact section
-    fetch('src/contact.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('contact-container').innerHTML = data;
-      });
-    
-    // Load footer
-    fetch('src/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
+    renderPage('index');
   </script>
 </body>
 

@@ -1,0 +1,24 @@
+{
+  "pageTitle": "Courses - Excursion Studio BETA",
+  "sectionTitle": "Foundation of Probabilistic Robotics",
+  "items": [
+    {
+      "id": "convex-optimization",
+      "title": "Convex Optimization",
+      "link": "https://excursion-studio.github.io/convex-optimization-tutorial/",
+      "available": true
+    },
+    {
+      "id": "differential-geometry-for-robotics",
+      "title": "Differential Geometry for Robotics",
+      "link": "https://excursion-studio.github.io/differential-geometry-for-robotics-tutorial/",
+      "available": true
+    },
+    {
+      "id": "stochastic-processes",
+      "title": "Stochastic Processes",
+      "link": null,
+      "available": false
+    }
+  ]
+}

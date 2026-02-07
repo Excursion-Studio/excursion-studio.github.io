@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- Written by Constantine Heinrich Chen (ConsHein Chen) -->
-<!-- Last Change: 2026-01-10 -->
+<!-- Last Change: 2026-02-07 -->
 
 <head>
   <meta charset="utf-8">
@@ -12,84 +12,22 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <title>Courses - Excursion Studio</title>
+  <title>Courses - Excursion Studio BETA</title>
   <link rel="icon" href="../decorations/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
-
-  <!-- Navigation Bar -->
   <div id="navbar-container"></div>
 
-  <!-- Main Content Section -->
-  <section class="main-content">
+  <section class="main-content" id="main-content"></section>
 
-
-    <!-- Courses Layer -->
-    <div class="layer content-layer">
-      <div class="container">
-        <h2 class="section-title">Mathematical Foundation Courses</h2>
-        <div class="module-grid">
-          <div class="module-card">
-            <h3>Convex Optimization</h3>
-            <a href="https://excursion-studio.github.io/convex-optimization-tutorial/" target="_blank">Access</a>
-          </div>
-          <div class="module-card">
-            <h3>Variational Methods</h3>
-            <a href="javascript:void(0);">Access</a>
-          </div>
-          <div class="module-card">
-            <h3>Differential Geometry</h3>
-            <a href="javascript:void(0);">Access</a>
-          </div>
-          <div class="module-card">
-            <h3>Differential Manifolds</h3>
-            <a href="javascript:void(0);">Access</a>
-          </div>
-          <div class="module-card">
-            <h3>Stochastic Processes</h3>
-            <a href="javascript:void(0);">Access</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Layer -->
-    <div id="contact-container"></div>
-  </section>
-
-  <!-- Footer -->
+  <div id="contact-container"></div>
   <div id="footer-container"></div>
 
+  <script src="src/content-renderer.js"></script>
   <script>
-    // Load navbar
-    fetch('src/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-        // Get current page filename
-        const currentFilename = window.location.pathname.split('/').pop();
-        // Get Chinese link element
-        const zhLink = document.querySelector('a[href="../zh/"]');
-        if (zhLink) {
-          zhLink.href = '../zh/' + currentFilename;
-        }
-      });
-    
-    // Load contact section
-    fetch('src/contact.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('contact-container').innerHTML = data;
-      });
-    
-    // Load footer
-    fetch('src/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
+    renderPage('courses');
   </script>
 </body>
 
