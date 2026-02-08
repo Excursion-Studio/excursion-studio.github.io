@@ -1,6 +1,6 @@
 {
   "pageTitle": "Products - Excursion Studio BETA",
-  "sectionTitle": "Our Flagship Products",
+  "sectionTitle": "Research-related Page Templates",
   "items": [
     {
       "id": "personal-homepage-template-v2",
@@ -9,15 +9,15 @@
       "available": true
     },
     {
-      "id": "personal-homepage-template",
-      "title": "Excursion Studio Personal Homepage (ESPH)",
-      "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
-      "available": true
-    },
-    {
       "id": "research-project-page-template",
       "title": "Excursion Studio Research Project Page (ESRPP)",
       "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+      "available": true
+    },
+    {
+      "id": "personal-homepage-template",
+      "title": "Excursion Studio Personal Homepage (ESPH) <z>(Outdated)</z>",
+      "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
       "available": true
     }
   ]

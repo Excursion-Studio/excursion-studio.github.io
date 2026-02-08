@@ -77,7 +77,7 @@ function renderListPage(data) {
   return `
     <div class="layer content-layer">
       <div class="container">
-        <h2 class="section-title">${data.sectionTitle}</h2>
+        <h2 class="section-title">${parseHighlightTags(data.sectionTitle)}</h2>
         <div class="module-grid">
           ${data.items.map(item => renderListCard(item)).join('')}
         </div>
@@ -112,7 +112,7 @@ function renderListCard(item) {
 
   return `
     <div class="module-card" id="${item.id}">
-      <h3>${item.title}</h3>
+      <h3>${parseHighlightTags(item.title)}</h3>
       ${buttonHtml}
     </div>
   `;
@@ -131,7 +131,7 @@ function renderHomePage(data) {
     html += `
       <div class="layer hero-layer">
         <div class="container">
-          <h1>${data.hero.title}</h1>
+          <h1>${parseHighlightTags(data.hero.title)}</h1>
           ${data.hero.showTime ? '<div class="current-time">Current Time: <span id="current-time"></span></div>' : ''}
         </div>
       </div>
@@ -234,15 +234,15 @@ function animateCardsSequentially(container) {
  */
 function renderVisionSection(section) {
   const mottoLines = section.motto.lines.map(line => 
-    `<span class="highlight">${line.highlight}</span>${line.text}`
+    `<span class="highlight">${parseHighlightTags(line.highlight)}</span>${parseHighlightTags(line.text)}`
   ).join('</p><p>');
 
-  const content = section.content.map(p => `<p>${p}</p>`).join('');
+  const content = section.content.map(p => `<p>${parseHighlightTags(p)}</p>`).join('');
 
   return `
     <div class="layer content-layer">
       <div class="container">
-        <h2 class="section-title">${section.title}</h2>
+        <h2 class="section-title">${parseHighlightTags(section.title)}</h2>
         <div class="motto">
           <p>${mottoLines}</p>
         </div>

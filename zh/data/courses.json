@@ -5,20 +5,20 @@
     {
       "id": "convex-optimization",
       "title": "凸优化",
-      "link": "https://excursion-studio.github.io/convex-optimization-tutorial/",
+      "link": "https://excursion-studio.github.io/convex-optimization/",
       "available": true
     },
     {
       "id": "differential-geometry-for-robotics",
-      "title": "微分几何与机器人学",
-      "link": "https://excursion-studio.github.io/differential-geometry-for-robotics-tutorial/",
+      "title": "微分几何",
+      "link": "https://excursion-studio.github.io/differential-geometry/",  
       "available": true
     },
     {
-      "id": "stochastic-processes",
+      "id": "stochastic-process",
       "title": "随机过程",
-      "link": null,
-      "available": false
+      "link": "https://excursion-studio.github.io/stochastic-process/",
+      "available": true
     }
   ]
 }
