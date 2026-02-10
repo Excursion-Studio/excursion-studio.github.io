@@ -234,8 +234,8 @@ function animateCardsSequentially(container) {
  */
 function renderVisionSection(section) {
   const mottoLines = section.motto.lines.map(line => 
-    `<span class="highlight">${parseHighlightTags(line.highlight)}</span>${parseHighlightTags(line.text)}`
-  ).join('</p><p>');
+    `<p>${parseHighlightTags(line.text)}</p>`
+  ).join('');
 
   const content = section.content.map(p => `<p>${parseHighlightTags(p)}</p>`).join('');
 
@@ -244,7 +244,7 @@ function renderVisionSection(section) {
       <div class="container">
         <h2 class="section-title">${parseHighlightTags(section.title)}</h2>
         <div class="motto">
-          <p>${mottoLines}</p>
+          ${mottoLines}
         </div>
         <div class="about-content">
           ${content}

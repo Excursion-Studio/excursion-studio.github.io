@@ -47,8 +47,8 @@
       "title": "我们的愿景",
       "motto": {
         "lines": [
-          { "highlight": "乘风翔", "text": "长空千仞，" },
-          { "highlight": "直下看", "text": "山河万里。" }
+          { "text": "<z>乘风翔</z>长空千仞，" },
+          { "text": "<z>直下看</z>山河万里。" }
         ]
       },
       "content": [

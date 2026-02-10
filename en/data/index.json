@@ -47,8 +47,8 @@
       "title": "Our Vision",
       "motto": {
         "lines": [
-          { "highlight": "Soaring through", "text": "the high sky by wind," },
-          { "highlight": "Looking down", "text": "the vast rivers and mountains." }
+          { "text": "<z>Soaring through</z> the high sky by wind," },
+          { "text": "<z>Looking down</z> the vast rivers and mountains." }
         ]
       },
       "content": [
