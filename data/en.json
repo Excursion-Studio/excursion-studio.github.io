@@ -1,0 +1,159 @@
+{
+  "index": {
+    "pageTitle": "Excursion Studio BETA",
+    "pageType": "home",
+    "hero": {
+      "title": "Excursion Studio BETA",
+      "showTime": true
+    },
+    "sections": [
+      {
+        "type": "overview",
+        "title": "Studio Overview",
+        "items": [
+          {
+            "id": "introduction",
+            "title": "Introduction",
+            "text": "The target of studio work has been <z>unclarified</z> yet."
+          },
+          {
+            "id": "research",
+            "title": "Research",
+            "text": "There is <z>none</z> of research project <z>in progress or done</z> already."
+          },
+          {
+            "id": "courses",
+            "title": "Courses",
+            "text": "Currently, <zi>Foundation of Probabilistic Robotics</zi> made by studio has been already officially launched!"
+          },
+          {
+            "id": "equipment",
+            "title": "Equipment",
+            "text": "Currently, studio's budget is <z>too tight to afford</z> any equipment."
+          },
+          {
+            "id": "products",
+            "title": "Products",
+            "text": "Currently, studio's products are <z>only virtual (page templates)</z>. Studio cannot produce and provide anything innovative and solid."
+          },
+          {
+            "id": "contact",
+            "title": "Contact",
+            "text": "All official contacts are in the <z>Get in Touch</z> section!"
+          }
+        ]
+      },
+      {
+        "type": "vision",
+        "title": "Our Vision",
+        "motto": {
+          "lines": [
+            { "text": "<z>Soaring through</z> the high sky by wind," },
+            { "text": "<z>Looking down</z> the vast rivers and mountains." }
+          ]
+        },
+        "content": [
+          "Propriator intends to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>,",
+          "in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.",
+          "Certainly, it may take Propriator several years to finish this project.",
+          "As above points mention, Propriator has no enough budget and professional level to build such well-equipped studio.",
+          "Please let Propriator find an employer and keep his academic route going first, because Propriator has <strong>even not obtained Master Degree</strong> yet.",
+          "But <strong>building a studio is always Propriator's dream, Propriator would try his best to make it!</strong>",
+          "In short, please <strong>stay tuned!</strong> During this route, Propriator could <strong>gradually fill with content</strong> in this page!"
+        ]
+      }
+    ],
+    "showContact": true
+  },
+  "courses": {
+    "pageTitle": "Courses - Excursion Studio BETA",
+    "sectionTitle": "Foundation of Probabilistic Robotics",
+    "items": [
+      {
+        "id": "convex-optimization",
+        "title": "Convex Optimization",
+        "text": "Including convex optimization's basic concepts and methods, which are applied to robot control and navigation problems.",
+        "link": "https://excursion-studio.github.io/convex-optimization/",
+        "available": true
+      },
+      {
+        "id": "differential-geometry",
+        "title": "Differential Geometry",
+        "text": "Including differential geometry's basic concepts and methods, which are applied to robot motion kinematics and dynamics problems.",
+        "link": "https://excursion-studio.github.io/differential-geometry/",
+        "available": true
+      },
+      {
+        "id": "stochastic-process",
+        "title": "Stochastic Process",
+        "text": "Including stochastic process's basic concepts and methods, which are applied to robot state estimation problems.",
+        "link": "https://excursion-studio.github.io/stochastic-process/",
+        "available": true
+      }
+    ]
+  },
+  "products": {
+    "pageTitle": "Products - Excursion Studio BETA",
+    "sectionTitle": "Research-related Page Templates",
+    "items": [
+      {
+        "id": "personal-homepage-template-v2",
+        "title": "Excursion Studio Personal Homepage Ver.2 (ESPH-V2)",
+        "text": "A React-based personal homepage template, which is used to show personal career and experiences.",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+        "available": true
+      },
+      {
+        "id": "research-project-page-template",
+        "title": "Excursion Studio Research Project Page (ESRPP)",
+        "text": "A React-based research project page template, which is used to show research project's detailed information.",
+        "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+        "available": true
+      },
+      {
+        "id": "personal-homepage-template",
+        "title": "Excursion Studio Personal Homepage (ESPH) <z>(Outdated)</z>",
+        "text": "A native JavaScript-based personal homepage template, which is used to show personal career and experiences. Page performance is lower than V2 version, but it is stable and reliable.",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+        "available": true
+      }
+    ]
+  },
+  "navbar": {
+    "logo": "decorations/new_logo_en_horizon_transparent.png",
+    "logoAlt": "Excursion Studio Logo",
+    "links": [
+      { "text": "Research", "href": "javascript:void(0);" },
+      { "text": "Courses", "href": "courses.html" },
+      { "text": "Equipment", "href": "javascript:void(0);" },
+      { "text": "Products", "href": "products.html" }
+    ],
+    "langSwitch": {
+      "text": "中文",
+      "href": "?lang=zh"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "If you are interested in our work, or have any suggestions or inquiries,\n please browse and contact our studio at:",
+    "social": {
+      "email": "excursion-studio@outlook.com",
+      "github": "https://github.com/Excursion-Studio",
+      "bilibili": "https://space.bilibili.com/383180487",
+      "youtube": "https://www.youtube.com/@Excursion_Studio",
+      "zhihu": "https://www.zhihu.com/people/ConsHein"
+    },
+    "wechat": {
+      "text": "or Follow us on WeChat Official Account:",
+      "name": "远行 Excursion"
+    }
+  },
+  "footer": {
+    "copyright": "Excursion Studio. All rights reserved."
+  },
+  "ui": {
+    "currentTime": "Current Time:",
+    "buttonAccess": "Access",
+    "buttonComing": "Coming..."
+  }
+}

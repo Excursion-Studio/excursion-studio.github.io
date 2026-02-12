@@ -1,0 +1,159 @@
+{
+  "index": {
+    "pageTitle": "远行工作室 测试版",
+    "pageType": "home",
+    "hero": {
+      "title": "远行工作室 测试版",
+      "showTime": true
+    },
+    "sections": [
+      {
+        "type": "overview",
+        "title": "工作室概览",
+        "items": [
+          {
+            "id": "introduction",
+            "title": "简介",
+            "text": "工作室工作的目标<z>尚未明确</z>。"
+          },
+          {
+            "id": "research",
+            "title": "研究",
+            "text": "目前<z>没有正在进行或已完成</z>的研究项目。"
+          },
+          {
+            "id": "courses",
+            "title": "课程",
+            "text": "目前由工作室制作的<z>概率机器人基础课程</z>已经正式上线了！"
+          },
+          {
+            "id": "equipment",
+            "title": "设备",
+            "text": "目前工作室的预算<z>相当紧张，买不起</z>任何设备。"
+          },
+          {
+            "id": "products",
+            "title": "产品",
+            "text": "目前工作室的产品<z>只是虚拟的（页面模板）</z>。目前工作室无法产出和提供任何具有创新性的实物成果。"
+          },
+          {
+            "id": "contact",
+            "title": "联系",
+            "text": "所有官方联系都在<z>联系我们</z>部分！"
+          }
+        ]
+      },
+      {
+        "type": "vision",
+        "title": "我们的愿景",
+        "motto": {
+          "lines": [
+            { "text": "<z>乘风翔</z>长空千仞，" },
+            { "text": "<z>直下看</z>山河万里。" }
+          ]
+        },
+        "content": [
+          "主理人计划创建一个<strong>更具互动性和时尚感的页面</strong>，即<strong>工作室平台</strong>，",
+          "为对本工作室的<strong>工作、设施和产品</strong>感兴趣的访客提供一个<strong>舒适的环境</strong>。",
+          "当然，完成这个项目可能需要几年时间。",
+          "如前所述，主理人目前没有足够的预算和专业水平来建立这样一个设备齐全的工作室。",
+          "请先让主理人找到一份工作并继续学术道路，因为主理人<strong>甚至还没有获得硕士学位</strong>。",
+          "但<strong>建立工作室始终是主理人的梦想，主理人会尽最大努力实现它！</strong>",
+          "简而言之，请<strong>保持关注！</strong>在这个过程中，主理人会<strong>逐渐丰富</strong>这个页面的内容！"
+        ]
+      }
+    ],
+    "showContact": true
+  },
+  "courses": {
+    "pageTitle": "课程 - 远行工作室 测试版",
+    "sectionTitle": "概率机器人基础",
+    "items": [
+      {
+        "id": "convex-optimization",
+        "title": "凸优化",
+        "text": "内含凸优化的基本概念和方法，可应用于机器人控制和导航问题。",
+        "link": "https://excursion-studio.github.io/convex-optimization/",
+        "available": true
+      },
+      {
+        "id": "differential-geometry-for-robotics",
+        "title": "微分几何",
+        "text": "内含微分几何的基本概念和方法，可应用于机器人运动学和动力学问题。",
+        "link": "https://excursion-studio.github.io/differential-geometry/",
+        "available": true
+      },
+      {
+        "id": "stochastic-process",
+        "title": "随机过程",
+        "text": "内含随机过程的基本概念和方法，可应用于机器人状态估计问题。",
+        "link": "https://excursion-studio.github.io/stochastic-process/",
+        "available": true
+      }
+    ]
+  },
+  "products": {
+    "pageTitle": "产品 - 远行工作室 测试版",
+    "sectionTitle": "科研相关页面模板",
+    "items": [
+      {
+        "id": "personal-homepage-template-v2",
+        "title": "远行工作室-个人主页模板 Ver.2 (ESPH-V2)",
+        "text": "采用 React 框架实现的个人主页模板，可用于展示个人生涯与经历。",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+        "available": true
+      },
+      {
+        "id": "research-project-page-template",
+        "title": "远行工作室-研究项目页面模板 (ESRPP)",
+        "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。",
+        "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+        "available": true
+      },
+      {
+        "id": "personal-homepage-template",
+        "title": "远行工作室-个人主页模板 (ESPH) <z>（过旧）</z>",
+        "text": "采用原生 JavaScript 实现的个人主页模板，页面性能上限不如 V2 版本，胜在稳定可靠。",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+        "available": true
+      }
+    ]
+  },
+  "navbar": {
+    "logo": "decorations/new_logo_zh_horizon_transparent.png",
+    "logoAlt": "远行工作室 Logo",
+    "links": [
+      { "text": "研究", "href": "javascript:void(0);" },
+      { "text": "课程", "href": "courses.html" },
+      { "text": "设备", "href": "javascript:void(0);" },
+      { "text": "产品", "href": "products.html" }
+    ],
+    "langSwitch": {
+      "text": "English",
+      "href": "?lang=en"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "如果您对我们的工作感兴趣，或者有任何建议或咨询，\n请通过以下方式联系我们：",
+    "social": {
+      "email": "excursion-studio@outlook.com",
+      "github": "https://github.com/Excursion-Studio",
+      "bilibili": "https://space.bilibili.com/383180487",
+      "youtube": "https://www.youtube.com/@Excursion_Studio",
+      "zhihu": "https://www.zhihu.com/people/ConsHein"
+    },
+    "wechat": {
+      "text": "或者关注我们的微信公众号：",
+      "name": "远行 Excursion"
+    }
+  },
+  "footer": {
+    "copyright": "远行工作室. 保留所有权利。"
+  },
+  "ui": {
+    "currentTime": "当前时间:",
+    "buttonAccess": "进入",
+    "buttonComing": "即将上线..."
+  }
+}

@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
+
+<!-- Index Page - 首页 -->
+<!-- 使用 page-shell 模板结构 -->
+
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=en/index.html">
-  <title>Redirecting to Excursion Studio</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title id="page-title">远行工作室</title>
+  <link rel="icon" href="decorations/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="src/style.css">
 </head>
+
 <body>
-  <p>If you are not redirected automatically, follow this <a href="en/index.html">link to Excursion Studio</a>.</p>
+  <div id="navbar-container"></div>
+  <section class="main-content" id="main-content"></section>
+  <div id="footer-container"></div>
+
+  <script src="src/i18n.js"></script>
+  <script src="src/components.js"></script>
+  <script src="src/content-renderer.js"></script>
+  <script>
+    renderPage('index');
+  </script>
 </body>
+
 </html>
