@@ -73,21 +73,21 @@
         "id": "convex-optimization",
         "title": "凸优化",
         "text": "内含凸优化的基本概念和方法，可应用于机器人控制和导航问题。",
-        "link": "https://excursion-studio.github.io/convex-optimization/",
+        "link": "https://excursion-studio.github.io/ES-courses/convex-optimization/",
         "available": true
       },
       {
         "id": "differential-geometry-for-robotics",
         "title": "微分几何",
         "text": "内含微分几何的基本概念和方法，可应用于机器人运动学和动力学问题。",
-        "link": "https://excursion-studio.github.io/differential-geometry/",
+        "link": "https://excursion-studio.github.io/ES-courses/differential-geometry/",
         "available": true
       },
       {
         "id": "stochastic-process",
         "title": "随机过程",
         "text": "内含随机过程的基本概念和方法，可应用于机器人状态估计问题。",
-        "link": "https://excursion-studio.github.io/stochastic-process/",
+        "link": "https://excursion-studio.github.io/ES-courses/stochastic-process/",
         "available": true
       }
     ]

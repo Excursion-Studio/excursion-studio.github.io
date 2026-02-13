@@ -73,21 +73,21 @@
         "id": "convex-optimization",
         "title": "Convex Optimization",
         "text": "Including convex optimization's basic concepts and methods, which are applied to robot control and navigation problems.",
-        "link": "https://excursion-studio.github.io/convex-optimization/",
+        "link": "https://excursion-studio.github.io/ES-courses/convex-optimization/",
         "available": true
       },
       {
         "id": "differential-geometry",
         "title": "Differential Geometry",
         "text": "Including differential geometry's basic concepts and methods, which are applied to robot motion kinematics and dynamics problems.",
-        "link": "https://excursion-studio.github.io/differential-geometry/",
+        "link": "https://excursion-studio.github.io/ES-courses/differential-geometry/",
         "available": true
       },
       {
         "id": "stochastic-process",
         "title": "Stochastic Process",
         "text": "Including stochastic process's basic concepts and methods, which are applied to robot state estimation problems.",
-        "link": "https://excursion-studio.github.io/stochastic-process/",
+        "link": "https://excursion-studio.github.io/ES-courses/stochastic-process/",
         "available": true
       }
     ]
