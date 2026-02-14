@@ -5,7 +5,7 @@
       "title": "远行工作室-教程系列",
       "description": "本系列教程专为机器人专业学生设计，目前涉及的领域为<strong>概率机器人学</strong>，分别包含凸优化、微分几何、随机过程等教程。未来将继续添加其他相关领域的教程。"
     },
-    "sectionTitle": "概率机器人基础",
+    "sectionTitle": "概率机器人基础教程系列",
     "items": [
       {
         "id": "convex-optimization",

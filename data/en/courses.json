@@ -5,7 +5,7 @@
       "title": "Excursion Studio - Courses",
       "description": "This series of tutorials is designed for robotics students. Currently covering the field of <strong>Probabilistic Robotics</strong>, including Convex Optimization, Differential Geometry, and Stochastic Processes. More courses in related fields will be added in the future."
     },
-    "sectionTitle": "Foundation of Probabilistic Robotics",
+    "sectionTitle": "Foundation of Probabilistic Robotics Tutorial Series",
     "items": [
       {
         "id": "convex-optimization",
