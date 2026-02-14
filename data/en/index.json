@@ -1,0 +1,67 @@
+{
+  "index": {
+    "pageTitle": "Excursion Studio BETA",
+    "pageType": "home",
+    "hero": {
+      "title": "Excursion Studio BETA",
+      "showTime": true
+    },
+    "sections": [
+      {
+        "type": "overview",
+        "title": "Studio Overview",
+        "items": [
+          {
+            "id": "introduction",
+            "title": "Introduction",
+            "text": "The target of studio work has been <z>unclarified</z> yet."
+          },
+          {
+            "id": "research",
+            "title": "Research",
+            "text": "There is <z>none</z> of research project <z>in progress or done</z> already."
+          },
+          {
+            "id": "courses",
+            "title": "Courses",
+            "text": "Currently, <zi>Foundation of Probabilistic Robotics</zi> made by studio has been already officially launched!"
+          },
+          {
+            "id": "equipment",
+            "title": "Equipment",
+            "text": "Currently, studio's budget is <z>too tight to afford</z> any equipment."
+          },
+          {
+            "id": "products",
+            "title": "Products",
+            "text": "Currently, studio's products are <z>only virtual (page templates)</z>. Studio cannot produce and provide anything innovative and solid."
+          },
+          {
+            "id": "contact",
+            "title": "Contact",
+            "text": "All official contacts are in the <z>Get in Touch</z> section!"
+          }
+        ]
+      },
+      {
+        "type": "vision",
+        "title": "Our Vision",
+        "motto": {
+          "lines": [
+            { "text": "<zi>Soaring through</zi> the high sky by wind," },
+            { "text": "<zi>Looking down</zi> the vast rivers and mountains." }
+          ]
+        },
+        "content": [
+          "Propriator intends to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>,",
+          "in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.",
+          "Certainly, it may take Propriator several years to finish this project.",
+          "As above points mention, Propriator has no enough budget and professional level to build such well-equipped studio.",
+          "Please let Propriator find an employer and keep his academic route going first, because Propriator has <strong>even not obtained Master Degree</strong> yet.",
+          "But <strong>building a studio is always Propriator's dream, Propriator would try his best to make it!</strong>",
+          "In short, please <strong>stay tuned!</strong> During this route, Propriator could <strong>gradually fill with content</strong> in this page!"
+        ]
+      }
+    ]
+  }
+}

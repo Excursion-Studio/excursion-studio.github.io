@@ -1,0 +1,33 @@
+{
+  "products": {
+    "pageTitle": "Products - Excursion Studio BETA",
+    "hero": {
+      "title": "Excursion Studio - Products",
+      "description": "Research-related page templates produced by Excursion Studio, including personal homepage templates and research project page templates."
+    },
+    "sectionTitle": "Research-related Page Templates",
+    "items": [
+      {
+        "id": "personal-homepage-template-v2",
+        "title": "Excursion Studio Personal Homepage Ver.2 (ESPH-V2)",
+        "text": "A React-based personal homepage template, which is used to show personal career and experiences.",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+        "available": true
+      },
+      {
+        "id": "research-project-page-template",
+        "title": "Excursion Studio Research Project Page (ESRPP)",
+        "text": "A React-based research project page template, which is used to show research project's detailed information.",
+        "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+        "available": true
+      },
+      {
+        "id": "personal-homepage-template",
+        "title": "Excursion Studio Personal Homepage (ESPH) <z>(Outdated)</z>",
+        "text": "A native JavaScript-based personal homepage template, which is used to show personal career and experiences. Page performance is lower than V2 version, but it is stable and reliable.",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+        "available": true
+      }
+    ]
+  }
+}

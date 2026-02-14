@@ -1,0 +1,40 @@
+{
+  "navbar": {
+    "logo": "decorations/new_logo_zh_horizon_transparent.png",
+    "logoAlt": "远行工作室 Logo",
+    "links": [
+      { "text": "研究", "href": "javascript:void(0);" },
+      { "text": "教程", "href": "courses.html" },
+      { "text": "设备", "href": "javascript:void(0);" },
+      { "text": "产品", "href": "products.html" }
+    ],
+    "langSwitch": {
+      "text": "English",
+      "href": "?lang=en"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "如果您对我们的工作感兴趣，或者有任何建议或咨询，请通过以下方式联系我们：",
+    "social": {
+      "email": "excursion-studio@outlook.com",
+      "github": "https://github.com/Excursion-Studio",
+      "bilibili": "https://space.bilibili.com/383180487",
+      "youtube": "https://www.youtube.com/@Excursion_Studio",
+      "zhihu": "https://www.zhihu.com/people/ConsHein"
+    },
+    "wechat": {
+      "text": "或者关注我们的微信公众号：",
+      "name": "远行 Excursion"
+    }
+  },
+  "footer": {
+    "copyright": "由 远行工作室 制作"
+  },
+  "ui": {
+    "currentTime": "当前时间:",
+    "buttonAccess": "进入",
+    "buttonComing": "即将上线...",
+    "continueText": "🚀 更多内容正在规划中，敬请期待"
+  }
+}

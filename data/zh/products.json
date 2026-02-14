@@ -1,0 +1,33 @@
+{
+  "products": {
+    "pageTitle": "产品 - 远行工作室 测试版",
+    "hero": {
+      "title": "远行工作室-产品系列",
+      "description": "远行工作室出品的科研相关页面模板，包括个人主页模板和研究项目页面模板。"
+    },
+    "sectionTitle": "科研相关页面模板",
+    "items": [
+      {
+        "id": "personal-homepage-template-v2",
+        "title": "远行工作室-个人主页模板 Ver.2 (ESPH-V2)",
+        "text": "采用 React 框架实现的个人主页模板，可用于展示个人生涯与经历。",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+        "available": true
+      },
+      {
+        "id": "research-project-page-template",
+        "title": "远行工作室-研究项目页面模板 (ESRPP)",
+        "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。",
+        "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+        "available": true
+      },
+      {
+        "id": "personal-homepage-template",
+        "title": "远行工作室-个人主页模板 (ESPH) <z>（过旧）</z>",
+        "text": "采用原生 JavaScript 实现的个人主页模板，页面性能上限不如 V2 版本，胜在稳定可靠。",
+        "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+        "available": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "navbar": {
+    "logo": "decorations/new_logo_en_horizon_transparent.png",
+    "logoAlt": "Excursion Studio Logo",
+    "links": [
+      { "text": "Research", "href": "javascript:void(0);" },
+      { "text": "Courses", "href": "courses.html" },
+      { "text": "Equipment", "href": "javascript:void(0);" },
+      { "text": "Products", "href": "products.html" }
+    ],
+    "langSwitch": {
+      "text": "中文",
+      "href": "?lang=zh"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "If you are interested in our work, or have any suggestions or inquiries, please browse and contact our studio at:",
+    "social": {
+      "email": "excursion-studio@outlook.com",
+      "github": "https://github.com/Excursion-Studio",
+      "bilibili": "https://space.bilibili.com/383180487",
+      "youtube": "https://www.youtube.com/@Excursion_Studio",
+      "zhihu": "https://www.zhihu.com/people/ConsHein"
+    },
+    "wechat": {
+      "text": "or Follow us on WeChat Official Account:",
+      "name": "远行 Excursion"
+    }
+  },
+  "footer": {
+    "copyright": "Made by Excursion Studio"
+  },
+  "ui": {
+    "currentTime": "Current Time:",
+    "buttonAccess": "Access",
+    "buttonComing": "Coming...",
+    "continueText": "🚀 More content is being planned, stay tuned"
+  }
+}

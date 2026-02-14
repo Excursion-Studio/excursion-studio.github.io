@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh">
-
-<!-- Courses Page - 课程页 -->
-<!-- 使用 page-shell 模板结构 -->
-
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <title id="page-title">课程 - 远行工作室</title>
+  <title>教程 - 远行工作室 测试版</title>
+  <meta name="description" content="远行工作室出品的机器人专业教程系列 - Excursion Studio Courses">
   <link rel="icon" href="decorations/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
 </head>
-
 <body>
-  <div id="navbar-container"></div>
-  <section class="main-content" id="main-content"></section>
-  <div id="footer-container"></div>
+  <div class="page-loading" id="page-loading">
+    <div class="page-loading-spinner"></div>
+  </div>
+  
+  <es-navbar></es-navbar>
 
-  <script src="src/i18n.js"></script>
-  <script src="src/components.js"></script>
-  <script src="src/content-renderer.js"></script>
+  <es-hero></es-hero>
+
+  <section id="courses">
+    <div class="container sections-container"></div>
+  </section>
+
+  <es-contact></es-contact>
+
+  <es-footer></es-footer>
+
+  <script src="scripts/main.js"></script>
   <script>
-    renderPage('courses');
+    window.addEventListener('load', function() {
+      if (window.App) {
+        window.App.init('courses').then(function() {
+          document.body.classList.add('page-ready');
+          var loadingEl = document.getElementById('page-loading');
+          if (loadingEl) {
+            loadingEl.classList.add('loaded');
+            setTimeout(function() {
+              loadingEl.remove();
+            }, 300);
+          }
+        });
+      }
+    });
   </script>
 </body>
-
 </html>
