@@ -251,109 +251,6 @@ class ESHero extends HTMLElement {
 customElements.define('es-hero', ESHero);
 console.log('es-hero defined');
 
-class ESCard extends HTMLElement {
-  constructor() {
-    super();
-    this.data = null;
-  }
-
-  setData(data) {
-    this.data = data;
-    this.render();
-  }
-
-  render() {
-    if (!this.data) return;
-
-    const {
-      id,
-      title,
-      subtitle,
-      text,
-      topics,
-      tags,
-      link,
-      available,
-      icon,
-      continueText,
-      futureTags
-    } = this.data;
-
-    if (continueText) {
-      this.renderContinueCard(continueText, futureTags);
-      return;
-    }
-
-    let html = '';
-
-    if (icon) {
-      html += `<div class="card-icon">${icon}</div>`;
-    }
-
-    if (title) {
-      html += `<h3 class="card-title">${Utils.parseZTags(title)}</h3>`;
-    }
-
-    if (subtitle) {
-      html += `<div class="card-subtitle">${subtitle}</div>`;
-    }
-
-    if (text) {
-      html += `<p class="card-text">${Utils.parseZTags(text)}</p>`;
-    }
-
-    if (topics && topics.length > 0) {
-      html += `
-        <ul class="card-topics">
-          ${topics.map(topic => `<li>${topic}</li>`).join('')}
-        </ul>
-      `;
-    }
-
-    if (tags && tags.length > 0) {
-      html += `
-        <div class="card-tags">
-          ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-      `;
-    }
-
-    if (link) {
-      const isAvailable = available !== false;
-      const linkClass = isAvailable ? 'card-link' : 'card-link disabled';
-      const linkText = isAvailable
-        ? I18n.getCommon('ui.buttonAccess')
-        : I18n.getCommon('ui.buttonComing');
-
-      if (isAvailable) {
-        html += `<a href="${link}" class="${linkClass}" target="_blank">${linkText}</a>`;
-      } else {
-        html += `<span class="${linkClass}">${linkText}</span>`;
-      }
-    }
-
-    this.innerHTML = html;
-  }
-
-  renderContinueCard(continueText, futureTags) {
-    let html = `<p class="continue-text">${continueText}</p>`;
-
-    if (futureTags && futureTags.length > 0) {
-      html += `
-        <div class="future-tags">
-          ${futureTags.map(tag => `<span class="future-tag">${tag}</span>`).join('')}
-        </div>
-      `;
-    }
-
-    this.classList.add('continue-card');
-    this.innerHTML = html;
-  }
-}
-
-customElements.define('es-card', ESCard);
-console.log('es-card defined');
-
 class ESVision extends HTMLElement {
   constructor() {
     super();
@@ -530,7 +427,7 @@ class AppClass {
   setupAnimations() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('es-card, es-vision, es-contact').forEach(el => {
+      document.querySelectorAll('es-overview-card, es-courses-card, es-vision, es-contact').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
@@ -557,7 +454,7 @@ class AppClass {
 
     const observer = new IntersectionObserver(animateOnScroll, observerOptions);
 
-    document.querySelectorAll('es-card').forEach((card, index) => {
+    document.querySelectorAll('es-overview-card, es-courses-card').forEach((card, index) => {
       card.dataset.animateDelay = index * 100;
       observer.observe(card);
     });
@@ -628,7 +525,7 @@ class AppClass {
       if (section.type === 'overview') {
         sectionHtml += '<div class="overview-grid">';
         section.items.forEach(item => {
-          sectionHtml += `<es-card id="card-${item.id}"></es-card>`;
+          sectionHtml += `<es-overview-card id="card-${item.id}"></es-overview-card>`;
         });
         sectionHtml += '</div>';
       } else if (section.type === 'vision') {
@@ -656,10 +553,10 @@ class AppClass {
 
   renderProductsSection(container, items, sectionTitle) {
     let html = `<h2 class="section-title">${sectionTitle}</h2>`;
-    html += '<div class="cards-grid">';
+    html += '<div class="products-grid">';
 
     items.forEach(item => {
-      html += `<es-card id="product-${item.id}"></es-card>`;
+      html += `<es-product-card id="product-${item.id}"></es-product-card>`;
     });
 
     html += '</div>';
@@ -672,6 +569,44 @@ class AppClass {
         card.setData(item);
       }
     });
+
+    this.setupProductCardAnimations();
+  }
+
+  setupProductCardAnimations() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      document.querySelectorAll('es-product-card').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    };
+
+    const animateOnScroll = (entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.animateDelay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+    document.querySelectorAll('es-product-card').forEach((card, index) => {
+      card.dataset.animateDelay = index * 100;
+      observer.observe(card);
+    });
   }
 
   renderCoursesSection(container, items, sectionTitle, continueCard) {
@@ -679,13 +614,13 @@ class AppClass {
     html += '<div class="cards-grid">';
 
     items.forEach(item => {
-      html += `<es-card id="course-${item.id}"></es-card>`;
+      html += `<es-courses-card id="course-${item.id}"></es-courses-card>`;
     });
 
     html += '</div>';
 
     if (continueCard) {
-      html += `<div class="continue-card-wrapper"><es-card id="continue-card"></es-card></div>`;
+      html += `<div class="continue-card-wrapper"><es-courses-card id="continue-card"></es-courses-card></div>`;
     }
 
     container.innerHTML = html;

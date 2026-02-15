@@ -112,10 +112,10 @@ class App {
 
   renderProductsSection(container, items, sectionTitle) {
     let html = `<h2 class="section-title">${sectionTitle}</h2>`;
-    html += '<div class="cards-grid">';
+    html += '<div class="products-grid">';
 
     items.forEach(item => {
-      html += `<es-card id="product-${item.id}"></es-card>`;
+      html += `<es-product-card id="product-${item.id}"></es-product-card>`;
     });
 
     html += '</div>';

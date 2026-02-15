@@ -195,7 +195,8 @@ es-hero .hero-description strong {
   }
 }
 
-es-card {
+es-overview-card,
+es-courses-card {
   display: block;
   background: var(--card-bg);
   border-radius: 12px;
@@ -207,40 +208,33 @@ es-card {
   transform: translateY(30px);
 }
 
-es-card.animate-visible {
+es-overview-card.animate-visible,
+es-courses-card.animate-visible {
   animation: slideUp 0.6s ease-out forwards;
 }
 
-es-card:hover {
+es-overview-card:hover,
+es-courses-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
   border-color: var(--primary-color);
 }
 
-es-card.animate-visible:hover {
+es-overview-card.animate-visible:hover,
+es-courses-card.animate-visible:hover {
   transform: translateY(-4px);
 }
 
-es-card .card-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--primary-gradient);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-}
-
-es-card .card-title {
+es-overview-card .card-title,
+es-courses-card .card-title {
   font-size: 1.3rem;
   color: var(--text-color);
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-es-card .card-title z {
+es-overview-card .card-title z,
+es-courses-card .card-title z {
   background: var(--highlight-bg);
   color: var(--highlight-color);
   padding: 2px 6px;
@@ -248,7 +242,8 @@ es-card .card-title z {
   font-weight: 500;
 }
 
-es-card .card-title zi {
+es-overview-card .card-title zi,
+es-courses-card .card-title zi {
   background: var(--highlight-bg);
   color: var(--highlight-color);
   padding: 2px 6px;
@@ -257,21 +252,16 @@ es-card .card-title zi {
   font-style: italic;
 }
 
-es-card .card-subtitle {
-  font-size: 0.85rem;
-  color: var(--primary-color);
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-es-card .card-text {
+es-overview-card .card-text,
+es-courses-card .card-text {
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.7;
   margin-bottom: 16px;
 }
 
-es-card .card-text z {
+es-overview-card .card-text z,
+es-courses-card .card-text z {
   background: var(--highlight-bg);
   color: var(--highlight-color);
   padding: 2px 6px;
@@ -279,7 +269,8 @@ es-card .card-text z {
   font-weight: 500;
 }
 
-es-card .card-text zi {
+es-overview-card .card-text zi,
+es-courses-card .card-text zi {
   background: var(--highlight-bg);
   color: var(--highlight-color);
   padding: 2px 6px;
@@ -288,12 +279,12 @@ es-card .card-text zi {
   font-style: italic;
 }
 
-es-card .card-topics {
+es-courses-card .card-topics {
   list-style: none;
   margin-bottom: 16px;
 }
 
-es-card .card-topics li {
+es-courses-card .card-topics li {
   padding: 6px 0;
   color: #555;
   font-size: 0.9rem;
@@ -301,7 +292,7 @@ es-card .card-topics li {
   position: relative;
 }
 
-es-card .card-topics li::before {
+es-courses-card .card-topics li::before {
   content: "•";
   color: var(--primary-color);
   font-weight: bold;
@@ -309,14 +300,14 @@ es-card .card-topics li::before {
   left: 0;
 }
 
-es-card .card-tags {
+es-courses-card .card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
 }
 
-es-card .tag {
+es-courses-card .tag {
   background: #f0f0f5;
   color: var(--primary-color);
   padding: 5px 12px;
@@ -325,7 +316,7 @@ es-card .tag {
   font-weight: 500;
 }
 
-es-card .card-link {
+es-courses-card .card-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -339,41 +330,41 @@ es-card .card-link {
   transition: all 0.3s ease;
 }
 
-es-card .card-link:hover {
+es-courses-card .card-link:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-es-card .card-link.disabled {
+es-courses-card .card-link.disabled {
   background: #ccc;
   cursor: not-allowed;
 }
 
-es-card.continue-card {
+es-courses-card.continue-card {
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   border: 1px dashed var(--primary-color);
   text-align: center;
 }
 
-es-card.continue-card:hover {
+es-courses-card.continue-card:hover {
   transform: none;
   box-shadow: none;
 }
 
-es-card.continue-card .continue-text {
+es-courses-card.continue-card .continue-text {
   color: var(--primary-color);
   font-size: 0.95rem;
   margin-bottom: 12px;
 }
 
-es-card.continue-card .future-tags {
+es-courses-card.continue-card .future-tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
 
-es-card.continue-card .future-tag {
+es-courses-card.continue-card .future-tag {
   background: white;
   color: var(--secondary-color);
   padding: 6px 14px;
@@ -383,7 +374,8 @@ es-card.continue-card .future-tag {
 }
 
 @media (max-width: 768px) {
-  es-card {
+  es-overview-card,
+  es-courses-card {
     padding: 24px;
   }
 }
@@ -620,4 +612,311 @@ es-footer .copyright {
   .index-section {
     padding: 40px 0;
   }
+}
+
+es-product-card {
+  display: flex;
+  flex-direction: row;
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+es-product-card.animate-visible {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+es-product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(102, 126, 234, 0.15);
+  border-color: var(--primary-color);
+}
+
+es-product-card.animate-visible:hover {
+  transform: translateY(-6px);
+}
+
+es-product-card .product-preview {
+  flex: 0 0 280px;
+  min-height: 200px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+es-product-card .preview-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+es-product-card .placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.9;
+}
+
+es-product-card .placeholder-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+es-product-card .preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+es-product-card .product-preview:hover .preview-overlay {
+  opacity: 1;
+}
+
+es-product-card .preview-hint {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+es-product-card .product-info {
+  flex: 1;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+es-product-card .product-title {
+  font-size: 1.25rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+es-product-card .product-title z {
+  background: var(--highlight-bg);
+  color: var(--highlight-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+es-product-card .product-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+es-product-card .product-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+es-product-card .tech-tag {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+es-product-card .product-features {
+  list-style: none;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+es-product-card .product-features li {
+  padding: 6px 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding-left: 20px;
+  position: relative;
+}
+
+es-product-card .product-features li::before {
+  content: "✓";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+es-product-card .product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-gradient);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+es-product-card .product-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+es-product-card .product-link.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  es-product-card {
+    flex-direction: column;
+  }
+
+  es-product-card .product-preview {
+    flex: 0 0 160px;
+    min-height: 160px;
+  }
+
+  es-product-card .placeholder-icon {
+    font-size: 2.5rem;
+  }
+
+  es-product-card .product-info {
+    padding: 20px;
+  }
+
+  es-product-card .product-title {
+    font-size: 1.1rem;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-iframe-container {
+  width: 90vw;
+  height: 90vh;
+  position: relative;
+}
+
+.lightbox-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.preview-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(102, 126, 234, 0.2);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.lightbox-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  background: white;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }

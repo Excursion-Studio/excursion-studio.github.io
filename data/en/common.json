@@ -35,6 +35,11 @@
     "currentTime": "Current Time:",
     "buttonAccess": "Access",
     "buttonComing": "Coming...",
-    "continueText": "🚀 More content is being planned, stay tuned"
+    "continueText": "🚀 More content is being planned, stay tuned",
+    "viewLarger": "View Larger",
+    "viewFullPage": "View Full Page",
+    "loading": "Loading...",
+    "loadFailed": "Preview failed to load",
+    "clickToPreview": "Click to Preview"
   }
 }
