@@ -19,7 +19,7 @@
       {
         "id": "research-project-page-template",
         "title": "Excursion Studio Research Project Page (ESRPP)",
-        "text": "A React-based research project page template, which is used to show research project's detailed information.",
+        "text": "A React-based research project page template, which is used to show research project's detailed information.<br> (The content referenced in this project is from the research presentation by Carnegie Mellon University's AirLab at IROS 2025)",
         "features": ["Structured project information display", "Support for papers, presentations and resources", "Responsive layout design", "Clear information hierarchy"],
         "techStack": ["React", "JavaScript", "CSS3"],
         "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",

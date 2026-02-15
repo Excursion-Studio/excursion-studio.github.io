@@ -19,7 +19,7 @@
       {
         "id": "research-project-page-template",
         "title": "远行工作室-研究项目页面模板 (ESRPP)",
-        "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。",
+        "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。<br>（该项目的内容引用自卡内基梅隆大学的 AirLab 在 IROS 2025 上的研究演示）",
         "features": ["项目信息结构化展示", "支持论文、演示文稿等资源链接", "响应式布局设计", "清晰的信息层级"],
         "techStack": ["React", "JavaScript", "CSS3"],
         "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
