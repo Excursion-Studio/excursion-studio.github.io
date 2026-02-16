@@ -5,34 +5,39 @@
       "title": "远行工作室-产品系列",
       "description": "目前远行工作室出品的产品为<strong>科研相关页面模板系列</strong>，包括个人主页模板和研究项目页面模板。"
     },
-    "sectionTitle": "科研相关页面模板系列",
-    "items": [
+    "sections": [
       {
-        "id": "personal-homepage-template-v2",
-        "title": "远行工作室-个人主页模板 Ver.2 (ESPH-V2)",
-        "text": "采用 React 框架实现的个人主页模板，可用于展示个人生涯与经历。",
-        "features": ["响应式设计，适配多种设备", "支持深色/浅色主题切换", "模块化组件架构", "丰富的动画效果"],
-        "techStack": ["React", "JavaScript", "CSS3"],
-        "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
-        "available": true
-      },
-      {
-        "id": "research-project-page-template",
-        "title": "远行工作室-研究项目页面模板 (ESRPP)",
-        "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。<br>（该项目的内容引用自卡内基梅隆大学的 AirLab 在 IROS 2025 上的研究演示）",
-        "features": ["项目信息结构化展示", "支持论文、演示文稿等资源链接", "响应式布局设计", "清晰的信息层级"],
-        "techStack": ["React", "JavaScript", "CSS3"],
-        "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
-        "available": true
-      },
-      {
-        "id": "personal-homepage-template",
-        "title": "远行工作室-个人主页模板 (ESPH) <z>（过旧）</z>",
-        "text": "采用原生 JavaScript 实现的个人主页模板，页面性能上限不如 V2 版本，胜在稳定可靠。",
-        "features": ["原生 JavaScript 实现", "轻量级，加载快速", "稳定可靠", "易于定制修改"],
-        "techStack": ["JavaScript", "HTML5", "CSS3"],
-        "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
-        "available": true
+        "type": "products",
+        "title": "科研相关页面模板系列",
+        "items": [
+          {
+            "id": "personal-homepage-template-v2",
+            "title": "远行工作室-个人主页模板 Ver.2 (ESPH-V2)",
+            "text": "采用 React 框架实现的个人主页模板，可用于展示个人生涯与经历。",
+            "features": ["响应式设计，适配多种设备", "支持深色/浅色主题切换", "模块化组件架构", "丰富的动画效果"],
+            "techStack": ["React", "JavaScript", "CSS3"],
+            "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+            "available": true
+          },
+          {
+            "id": "research-project-page-template",
+            "title": "远行工作室-研究项目页面模板 (ESRPP)",
+            "text": "采用 React 框架实现的研究项目页面模板，可用于展示研究项目的详细信息。<br>（该项目的内容引用自卡内基梅隆大学的 AirLab 在 IROS 2025 上的研究演示）",
+            "features": ["项目信息结构化展示", "支持论文、演示文稿等资源链接", "响应式布局设计", "清晰的信息层级"],
+            "techStack": ["React", "JavaScript", "CSS3"],
+            "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+            "available": true
+          },
+          {
+            "id": "personal-homepage-template",
+            "title": "远行工作室-个人主页模板 (ESPH) <z>（过旧）</z>",
+            "text": "采用原生 JavaScript 实现的个人主页模板，页面性能上限不如 V2 版本，胜在稳定可靠。",
+            "features": ["原生 JavaScript 实现", "轻量级，加载快速", "稳定可靠", "易于定制修改"],
+            "techStack": ["JavaScript", "HTML5", "CSS3"],
+            "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+            "available": true
+          }
+        ]
       }
     ]
   }

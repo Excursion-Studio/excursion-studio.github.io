@@ -3,54 +3,79 @@
     "pageTitle": "Courses - Excursion Studio BETA",
     "hero": {
       "title": "Excursion Studio - Courses",
-      "description": "This series of tutorials is designed for robotics students. Currently covering the field of <strong>Probabilistic Robotics</strong>, including Convex Optimization, Differential Geometry, and Stochastic Processes. More courses in related fields will be added in the future."
+      "description": "This series of tutorials is designed for robotics students. Currently covering the field of <strong>Probabilistic Robotics</strong>, including Convex Optimization, Differential Geometry, and Stochastic Processes. Additionally, there are ROS2 basic and advanced tutorials available for practice. More courses in related fields will be added in the future."
     },
-    "sectionTitle": "Foundation of Probabilistic Robotics Tutorial Series",
-    "items": [
+    "sections": [
       {
-        "id": "convex-optimization",
-        "title": "Convex Optimization",
-        "text": "Starting from the basic concepts of convex sets and convex functions, this course provides in-depth coverage of convex optimization theory, multi-objective optimization, and manifold optimization, with emphasis on their applications in robot path planning, control, and decision-making.",
-        "topics": [
-          "Convex Sets and Convex Functions",
-          "Convex Optimization Problems and Duality Theory",
-          "Multi-objective Optimization and Pareto Optimality",
-          "Manifold Optimization Algorithms",
-          "Robotics Application Examples"
-        ],
-        "tags": ["Convex Optimization", "Multi-objective Optimization", "Manifold Optimization"],
-        "link": "https://excursion-studio.github.io/ES-courses/convex-optimization/",
-        "available": true
+        "type": "courses",
+        "title": "Foundation of Probabilistic Robotics Tutorial Series",
+        "items": [
+          {
+            "id": "convex-optimization",
+            "title": "Convex Optimization",
+            "text": "Starting from the basic concepts of convex sets and convex functions, this course provides in-depth coverage of convex optimization theory, multi-objective optimization, and manifold optimization, with emphasis on their applications in robot path planning, control, and decision-making.",
+            "topics": [
+              "Convex Sets and Convex Functions",
+              "Convex Optimization Problems and Duality Theory",
+              "Multi-objective Optimization and Pareto Optimality",
+              "Manifold Optimization Algorithms",
+              "Robotics Application Examples"
+            ],
+            "tags": ["Convex Optimization", "Multi-objective Optimization", "Manifold Optimization"],
+            "link": "https://excursion-studio.github.io/ES-courses/convex-optimization/",
+            "available": true
+          },
+          {
+            "id": "differential-geometry",
+            "title": "Differential Geometry",
+            "text": "From topological foundations to differentiable manifolds, systematically learn differential geometry theory, and gain deep understanding of Lie groups and Lie algebras and their applications in robot kinematics and dynamics modeling.",
+            "topics": [
+              "Topological Spaces and Topological Manifolds",
+              "Differentiable Manifolds and Calculus",
+              "Lie Groups and Lie Algebras",
+              "Riemannian Geometry and Curvature Theory",
+              "Robot Kinematics Modeling"
+            ],
+            "tags": ["Topology", "Differentiable Manifolds", "Lie Groups and Lie Algebras"],
+            "link": "https://excursion-studio.github.io/ES-courses/differential-geometry/",
+            "available": true
+          },
+          {
+            "id": "stochastic-process",
+            "title": "Stochastic Process",
+            "text": "From probability theory foundations to stochastic process theory, master Markov processes and filtering algorithms, and learn how to perform robot state estimation and decision-making under uncertainty.",
+            "topics": [
+              "Probability Theory Fundamentals",
+              "Markov Processes and Stationary Processes",
+              "Poisson Processes and Brownian Motion",
+              "Kalman Filtering and Particle Filtering",
+              "Markov Decision Processes"
+            ],
+            "tags": ["Probability Theory", "Markov Processes", "Kalman Filtering"],
+            "link": "https://excursion-studio.github.io/ES-courses/stochastic-process/",
+            "available": true
+          }
+        ]
       },
       {
-        "id": "differential-geometry",
-        "title": "Differential Geometry",
-        "text": "From topological foundations to differentiable manifolds, systematically learn differential geometry theory, and gain deep understanding of Lie groups and Lie algebras and their applications in robot kinematics and dynamics modeling.",
-        "topics": [
-          "Topological Spaces and Topological Manifolds",
-          "Differentiable Manifolds and Calculus",
-          "Lie Groups and Lie Algebras",
-          "Riemannian Geometry and Curvature Theory",
-          "Robot Kinematics Modeling"
-        ],
-        "tags": ["Topology", "Differentiable Manifolds", "Lie Groups and Lie Algebras"],
-        "link": "https://excursion-studio.github.io/ES-courses/differential-geometry/",
-        "available": true
-      },
-      {
-        "id": "stochastic-process",
-        "title": "Stochastic Process",
-        "text": "From probability theory foundations to stochastic process theory, master Markov processes and filtering algorithms, and learn how to perform robot state estimation and decision-making under uncertainty.",
-        "topics": [
-          "Probability Theory Fundamentals",
-          "Markov Processes and Stationary Processes",
-          "Poisson Processes and Brownian Motion",
-          "Kalman Filtering and Particle Filtering",
-          "Markov Decision Processes"
-        ],
-        "tags": ["Probability Theory", "Markov Processes", "Kalman Filtering"],
-        "link": "https://excursion-studio.github.io/ES-courses/stochastic-process/",
-        "available": true
+        "type": "courses",
+        "title": "Robot Practical Tools Series",
+        "items": [
+          {
+            "id": "ros2-tutorial",
+            "title": "ROS2 Basic and Advanced Tutorials",
+            "text": "Provide complete ROS2 development skills for robotics students and developers, from basic concepts to advanced applications, covering single robot development, multi-robot collaboration, air-ground collaboration, and aerial manipulators.",
+            "topics": [
+              "ROS2 Core Concepts: Nodes, Topics, Services, Parameters, Actions",
+              "Robot Platform Development: Manipulators, UGVs, UAVs",
+              "Simulation and Visualization: Gazebo, RViz2",
+              "Advanced Applications: Multi-Robot Collaboration, Air-Ground Collaboration, Aerial Manipulators"
+            ],
+            "tags": ["ROS2", "MoveIt2", "Nav2", "PX4"],
+            "link": "https://excursion-studio.github.io/ES-courses/ROS2/",
+            "available": true
+          }
+        ]
       }
     ],
     "continueCard": {

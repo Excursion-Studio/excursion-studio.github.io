@@ -427,41 +427,34 @@ class AppClass {
   setupAnimations() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('es-overview-card, es-courses-card, es-vision, es-contact').forEach(el => {
+      document.querySelectorAll('es-overview-card, es-courses-card, es-product-card, es-vision, es-contact').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
       return;
     }
 
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.1
-    };
-
-    const animateOnScroll = (entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          const delay = entry.target.dataset.animateDelay || 0;
-          setTimeout(() => {
-            entry.target.classList.add('animate-visible');
-          }, delay);
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
-
-    document.querySelectorAll('es-overview-card, es-courses-card').forEach((card, index) => {
-      card.dataset.animateDelay = index * 100;
-      observer.observe(card);
+    document.querySelectorAll('es-overview-card, es-courses-card, es-product-card').forEach((card, index) => {
+      const delay = index * 100;
+      setTimeout(() => {
+        card.classList.add('animate-visible');
+      }, delay);
     });
 
-    document.querySelectorAll('es-vision, es-contact').forEach(el => {
-      observer.observe(el);
-    });
+    const visionEl = document.querySelector('es-vision');
+    const contactEl = document.querySelector('es-contact');
+    
+    if (visionEl) {
+      setTimeout(() => {
+        visionEl.classList.add('animate-visible');
+      }, 100);
+    }
+    
+    if (contactEl) {
+      setTimeout(() => {
+        contactEl.classList.add('animate-visible');
+      }, 200);
+    }
   }
 
   renderNavbar() {
@@ -494,33 +487,26 @@ class AppClass {
     const sectionsContainer = document.querySelector('.sections-container');
     if (!sectionsContainer) return;
 
-    if (this.pageName === 'index') {
-      const sections = I18n.getPage('index.sections');
-      if (sections) {
-        this.renderIndexSections(sectionsContainer, sections);
-      }
-    } else if (this.pageName === 'courses') {
-      const items = I18n.getPage('courses.items');
-      const sectionTitle = I18n.getPage('courses.sectionTitle');
-      const continueCard = I18n.getPage('courses.continueCard');
-      if (items) {
-        this.renderCoursesSection(sectionsContainer, items, sectionTitle, continueCard);
-      }
-    } else if (this.pageName === 'products') {
-      const items = I18n.getPage('products.items');
-      const sectionTitle = I18n.getPage('products.sectionTitle');
-      if (items) {
-        this.renderProductsSection(sectionsContainer, items, sectionTitle);
-      }
+    const sections = I18n.getPage(`${this.pageName}.sections`);
+    if (sections) {
+      this.renderSectionsList(sectionsContainer, sections);
+    }
+
+    const continueCard = I18n.getPage(`${this.pageName}.continueCard`);
+    if (continueCard && typeof continueCard === 'object') {
+      this.renderContinueCard(sectionsContainer, continueCard);
     }
   }
 
-  renderIndexSections(container, sections) {
+  renderSectionsList(container, sections) {
     sections.forEach(section => {
       const sectionEl = document.createElement('section');
       sectionEl.className = 'container index-section';
 
-      let sectionHtml = `<h2 class="section-title">${section.title}</h2>`;
+      let sectionHtml = '';
+      if (section.title) {
+        sectionHtml += `<h2 class="section-title">${section.title}</h2>`;
+      }
 
       if (section.type === 'overview') {
         sectionHtml += '<div class="overview-grid">';
@@ -530,6 +516,18 @@ class AppClass {
         sectionHtml += '</div>';
       } else if (section.type === 'vision') {
         sectionHtml += '<es-vision id="vision-section"></es-vision>';
+      } else if (section.type === 'courses') {
+        sectionHtml += '<div class="cards-grid">';
+        section.items.forEach(item => {
+          sectionHtml += `<es-courses-card id="course-${item.id}"></es-courses-card>`;
+        });
+        sectionHtml += '</div>';
+      } else if (section.type === 'products') {
+        sectionHtml += '<div class="products-grid">';
+        section.items.forEach(item => {
+          sectionHtml += `<es-product-card id="product-${item.id}"></es-product-card>`;
+        });
+        sectionHtml += '</div>';
       }
 
       sectionEl.innerHTML = sectionHtml;
@@ -538,105 +536,36 @@ class AppClass {
       if (section.type === 'overview') {
         section.items.forEach(item => {
           const card = sectionEl.querySelector(`#card-${item.id}`);
-          if (card) {
-            card.setData(item);
-          }
+          if (card) card.setData(item);
         });
       } else if (section.type === 'vision') {
         const vision = sectionEl.querySelector('#vision-section');
-        if (vision) {
-          vision.setData(section);
-        }
+        if (vision) vision.setData(section);
+      } else if (section.type === 'courses') {
+        section.items.forEach(item => {
+          const card = sectionEl.querySelector(`#course-${item.id}`);
+          if (card) card.setData(item);
+        });
+      } else if (section.type === 'products') {
+        section.items.forEach(item => {
+          const card = sectionEl.querySelector(`#product-${item.id}`);
+          if (card) card.setData(item);
+        });
       }
     });
+
+    this.setupAnimations();
   }
 
-  renderProductsSection(container, items, sectionTitle) {
-    let html = `<h2 class="section-title">${sectionTitle}</h2>`;
-    html += '<div class="products-grid">';
+  renderContinueCard(container, continueCardData) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'continue-card-wrapper container';
+    wrapper.innerHTML = `<es-courses-card id="page-continue-card"></es-courses-card>`;
+    container.appendChild(wrapper);
 
-    items.forEach(item => {
-      html += `<es-product-card id="product-${item.id}"></es-product-card>`;
-    });
-
-    html += '</div>';
-
-    container.innerHTML = html;
-
-    items.forEach(item => {
-      const card = container.querySelector(`#product-${item.id}`);
-      if (card) {
-        card.setData(item);
-      }
-    });
-
-    this.setupProductCardAnimations();
-  }
-
-  setupProductCardAnimations() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      document.querySelectorAll('es-product-card').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.1
-    };
-
-    const animateOnScroll = (entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          const delay = entry.target.dataset.animateDelay || 0;
-          setTimeout(() => {
-            entry.target.classList.add('animate-visible');
-          }, delay);
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
-
-    document.querySelectorAll('es-product-card').forEach((card, index) => {
-      card.dataset.animateDelay = index * 100;
-      observer.observe(card);
-    });
-  }
-
-  renderCoursesSection(container, items, sectionTitle, continueCard) {
-    let html = `<h2 class="section-title"><span class="icon">🎯</span>${sectionTitle}</h2>`;
-    html += '<div class="cards-grid">';
-
-    items.forEach(item => {
-      html += `<es-courses-card id="course-${item.id}"></es-courses-card>`;
-    });
-
-    html += '</div>';
-
-    if (continueCard) {
-      html += `<div class="continue-card-wrapper"><es-courses-card id="continue-card"></es-courses-card></div>`;
-    }
-
-    container.innerHTML = html;
-
-    items.forEach(item => {
-      const card = container.querySelector(`#course-${item.id}`);
-      if (card) {
-        card.setData(item);
-      }
-    });
-
-    if (continueCard) {
-      const card = container.querySelector('#continue-card');
-      if (card) {
-        card.setData(continueCard);
-      }
+    const card = wrapper.querySelector('#page-continue-card');
+    if (card) {
+      card.setData(continueCardData);
     }
   }
 
