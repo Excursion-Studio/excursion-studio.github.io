@@ -220,19 +220,16 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
   class ESDigestsSection extends HTMLElement {
     constructor() {
       super();
-      this.data = null;
       this.expanded = false;
       this.initialShowCount = 3;
     }
 
     setData(data) {
-      this.data = data;
+      // 兼容旧的调用方式，实际数据从 I18n 获取
       this.render();
     }
 
     render() {
-      if (!this.data) return;
-
       const ui = I18n.getPage('ui') || {};
       const sections = I18n.getPage('sections') || [];
       const digestsSections = sections.filter(section => section.type === 'digests');
@@ -308,4 +305,15 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
   // 定义 Web Component
   customElements.define('es-digests-section', ESDigestsSection);
   console.log('es-digests-section defined');
+  
+  // 监听 I18n 初始化完成事件
+  if (window.I18n) {
+    // 如果 I18n 已经存在，重新渲染所有 ESDigestsSection 组件
+    setTimeout(() => {
+      const sections = document.querySelectorAll('es-digests-section');
+      sections.forEach(section => {
+        section.render();
+      });
+    }, 100);
+  }
 }
