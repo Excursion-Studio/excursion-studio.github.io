@@ -1,0 +1,45 @@
+name: Sync Digests Content
+
+on:
+  repository_dispatch:
+    types: [digests-updated]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+        
+      - name: Checkout ES-digests repo
+        uses: actions/checkout@v4
+        with:
+          repository: Excursion-Studio/ES-digests
+          token: ${{ secrets.PAT_TOKEN }}
+          path: es-digests
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Generate digests JSON
+        run: |
+          node scripts/digests.js
+          
+      - name: Check for changes
+        id: check-changes
+        run: |
+          git diff --exit-code data/zh/digests.json data/en/digests.json || echo "changed=true" >> $GITHUB_OUTPUT
+          
+      - name: Commit changes
+        if: steps.check-changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/zh/digests.json data/en/digests.json
+          git commit -m "chore: update digests content from ES-digests"
+          git push

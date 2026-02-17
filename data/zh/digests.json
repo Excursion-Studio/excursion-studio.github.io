@@ -1,17 +1,26 @@
 {
-    "pageTitle": "文摘 - 远行工作室 测试版",
-    "hero": {
-        "title": "远行工作室 - 文摘系列",
-        "description": "敬请期待远行工作室即将推出的<strong>《论文导读》</strong>和<strong>《论文速递》</strong>系列栏目！"
+  "pageTitle": "文摘 - 远行工作室 测试版",
+  "hero": {
+    "title": "远行工作室 - 文摘系列",
+    "description": "敬请期待远行工作室即将推出的<strong>《论文导读》</strong>和<strong>《论文速递》</strong>系列栏目！"
+  },
+  "sections": [
+    {
+      "type": "digests",
+      "id": "paper-guide",
+      "title": "论文导读",
+      "items": []
     },
-    "sections": [
-        {
-            "type": "digests",
-            "title": "论文导读"
-        },
-        {
-            "type": "digests",
-            "title": "论文速递"
-        }
-    ]
+    {
+      "type": "digests",
+      "id": "paper-express",
+      "title": "论文速递",
+      "items": []
+    }
+  ],
+  "ui": {
+    "showMore": "展开更多",
+    "showLess": "收起",
+    "readMore": "阅读全文"
+  }
 }

@@ -1,0 +1,26 @@
+name: Trigger Content Sync to .github
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'data/**'
+      - 'decorations/**'
+
+jobs:
+  trigger-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger .github repo sync
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: Excursion-Studio/.github
+          event-type: content-updated
+          client-payload: >-
+            {
+              "source_repo": "excursion-studio.github.io",
+              "commit_sha": "${{ github.sha }}",
+              "ref": "${{ github.ref }}",
+              "actor": "${{ github.actor }}"
+            }

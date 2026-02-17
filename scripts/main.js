@@ -401,6 +401,8 @@ class ESFooter extends HTMLElement {
 customElements.define('es-footer', ESFooter);
 console.log('es-footer defined');
 
+
+
 class AppClass {
   constructor() {
     this.pageName = 'index';
@@ -487,7 +489,24 @@ class AppClass {
 
     const sections = I18n.getPage('sections');
     if (sections) {
-      this.renderSectionsList(sectionsContainer, sections);
+      const digestsSections = sections.filter(section => section.type === 'digests');
+      const nonDigestsSections = sections.filter(section => section.type !== 'digests');
+      
+      // Render non-digests sections
+      this.renderSectionsList(sectionsContainer, nonDigestsSections);
+      
+      // Render digests section with tab functionality
+      if (digestsSections.length > 0) {
+        const digestsSectionEl = document.createElement('section');
+        digestsSectionEl.className = 'container index-section';
+        digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
+        sectionsContainer.appendChild(digestsSectionEl);
+        
+        const digestsSectionComponent = digestsSectionEl.querySelector('#digests-section');
+        if (digestsSectionComponent) {
+          // The component will get data from I18n directly
+        }
+      }
     }
 
     const continueCard = I18n.getPage('continueCard');
@@ -550,6 +569,7 @@ class AppClass {
           if (card) card.setData(item);
         });
       }
+
     });
 
     this.setupAnimations();

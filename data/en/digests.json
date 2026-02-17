@@ -1,17 +1,26 @@
 {
-    "pageTitle": "Digests - Excursion Studio BETA",
-    "hero": {
-        "title": "Excursion Studio - Digests",
-        "description": "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
+  "pageTitle": "Digests - Excursion Studio BETA",
+  "hero": {
+    "title": "Excursion Studio - Digests",
+    "description": "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
+  },
+  "sections": [
+    {
+      "type": "digests",
+      "id": "paper-guide",
+      "title": "Paper Guide",
+      "items": []
     },
-    "sections": [
-        {
-            "type": "digests",
-            "title": "Paper Guide"
-        },
-        {
-            "type": "digests",
-            "title": "Paper Express"
-        }
-    ]
+    {
+      "type": "digests",
+      "id": "paper-express",
+      "title": "Paper Express",
+      "items": []
+    }
+  ],
+  "ui": {
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "readMore": "Read More"
+  }
 }

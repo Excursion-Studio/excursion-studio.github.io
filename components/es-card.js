@@ -280,4 +280,77 @@ class ESProductCard extends HTMLElement {
 
 customElements.define('es-product-card', ESProductCard);
 
-console.log('es-card components loaded: ESOverviewCard, ESCoursesCard, ESProductCard');
+class ESDigestsCard extends HTMLElement {
+  constructor() {
+    super();
+    this.data = null;
+  }
+
+  setData(data) {
+    this.data = data;
+    this.render();
+  }
+
+  render() {
+    if (!this.data) return;
+
+    const {
+      number,
+      title,
+      description,
+      date,
+      digestPubTime,
+      authors,
+      tags,
+      venue,
+      pdfUrl,
+      sourcePath
+    } = this.data;
+
+    let html = `
+      <div class="digest-card">
+        <div class="digest-number">#${number}</div>
+        <div class="digest-content">
+    `;
+
+    if (title) {
+      html += `<h3 class="digest-title">${Utils.parseZTags(title)}</h3>`;
+    }
+
+    if (description) {
+      html += `<p class="digest-description">${description.replace(/\n/g, '<br>')}</p>`;
+    }
+
+    html += `<div class="digest-meta">`;
+    if (date) {
+      html += `<span class="digest-date">${date}</span>`;
+    }
+    if (venue) {
+      html += `<span class="digest-venue">${venue}</span>`;
+    }
+    html += `</div>`;
+
+    if (tags && tags.length > 0) {
+      html += `
+        <div class="digest-tags">
+          ${tags.map(tag => `<span class="digest-tag">${tag}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    if (pdfUrl) {
+      html += `<a href="${pdfUrl}" class="digest-link" target="_blank">${I18n.getPage('ui.readMore') || '阅读全文'}</a>`;
+    }
+
+    html += `
+        </div>
+      </div>
+    `;
+
+    this.innerHTML = html;
+  }
+}
+
+customElements.define('es-digests-card', ESDigestsCard);
+
+console.log('es-card components loaded: ESOverviewCard, ESCoursesCard, ESProductCard, ESDigestsCard');
