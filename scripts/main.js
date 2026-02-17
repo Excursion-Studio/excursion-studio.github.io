@@ -157,8 +157,8 @@ class ESNavbar extends HTMLElement {
     this.innerHTML = `
       <nav class="navbar">
         <div class="navbar-logo">
-          <a href="${Utils.getLangUrl('index.html')}">
-            <img src="${logo}" alt="${logoAlt}">
+          <a href="${Utils.getLangUrl('index.html')}" class="logo-link">
+            <img src="${logo}" alt="${logoAlt || 'Logo'}" class="logo-img">
           </a>
         </div>
         <button class="mobile-menu-btn" aria-label="Menu">
@@ -406,10 +406,17 @@ class AppClass {
     this.pageName = 'index';
   }
 
+  detectPageName() {
+    const path = window.location.pathname;
+    const filename = path.split('/').pop() || 'index.html';
+    const name = filename.replace('.html', '');
+    return name === 'index' || name === '' ? 'index' : name;
+  }
+
   async init(pageName) {
-    console.log('App.init called with:', pageName);
-    this.pageName = pageName;
-    await I18n.init(pageName);
+    this.pageName = pageName || this.detectPageName();
+    console.log('App.init with pageName:', this.pageName);
+    await I18n.init(this.pageName);
     this.renderPage();
   }
 
@@ -468,16 +475,7 @@ class AppClass {
     const hero = document.querySelector('es-hero');
     if (!hero) return;
 
-    let heroData = null;
-
-    if (this.pageName === 'index') {
-      heroData = I18n.getPage('index.hero');
-    } else if (this.pageName === 'courses') {
-      heroData = I18n.getPage('courses.hero');
-    } else if (this.pageName === 'products') {
-      heroData = I18n.getPage('products.hero');
-    }
-
+    const heroData = I18n.getPage('hero');
     if (heroData) {
       hero.setData(heroData);
     }
@@ -487,12 +485,12 @@ class AppClass {
     const sectionsContainer = document.querySelector('.sections-container');
     if (!sectionsContainer) return;
 
-    const sections = I18n.getPage(`${this.pageName}.sections`);
+    const sections = I18n.getPage('sections');
     if (sections) {
       this.renderSectionsList(sectionsContainer, sections);
     }
 
-    const continueCard = I18n.getPage(`${this.pageName}.continueCard`);
+    const continueCard = I18n.getPage('continueCard');
     if (continueCard && typeof continueCard === 'object') {
       this.renderContinueCard(sectionsContainer, continueCard);
     }
@@ -584,16 +582,7 @@ class AppClass {
   }
 
   updatePageTitle() {
-    let pageTitle = null;
-
-    if (this.pageName === 'index') {
-      pageTitle = I18n.getPage('index.pageTitle');
-    } else if (this.pageName === 'courses') {
-      pageTitle = I18n.getPage('courses.pageTitle');
-    } else if (this.pageName === 'products') {
-      pageTitle = I18n.getPage('products.pageTitle');
-    }
-
+    const pageTitle = I18n.getPage('pageTitle');
     if (pageTitle) {
       document.title = pageTitle;
     }

@@ -29,7 +29,7 @@
   <script>
     window.addEventListener('load', function() {
       if (window.App) {
-        window.App.init('index').then(function() {
+        window.App.init().then(function() {
           document.body.classList.add('page-ready');
           var loadingEl = document.getElementById('page-loading');
           if (loadingEl) {

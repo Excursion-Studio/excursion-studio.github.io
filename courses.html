@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>教程 - 远行工作室 测试版</title>
-  <meta name="description" content="远行工作室出品的机器人专业教程系列 - Excursion Studio Courses">
+  <meta name="description" content="远行工作室教程系列 - Excursion Studio Courses">
   <link rel="icon" href="decorations/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/components.css">
@@ -31,7 +31,7 @@
   <script>
     window.addEventListener('load', function() {
       if (window.App) {
-        window.App.init('courses').then(function() {
+        window.App.init().then(function() {
           document.body.classList.add('page-ready');
           var loadingEl = document.getElementById('page-loading');
           if (loadingEl) {

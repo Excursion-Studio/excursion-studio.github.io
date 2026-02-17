@@ -1,62 +1,65 @@
 {
-  "index": {
-    "pageTitle": "Excursion Studio BETA",
-    "pageType": "home",
-    "hero": {
-      "title": "Excursion Studio BETA",
-      "showTime": true
+  "pageTitle": "Excursion Studio BETA",
+  "pageType": "home",
+  "hero": {
+    "title": "Excursion Studio BETA",
+    "showTime": true
+  },
+  "sections": [
+    {
+      "type": "overview",
+      "title": "Studio Sections",
+      "items": [
+        {
+          "id": "research",
+          "title": "Research",
+          "text": "<z>To be completed...</z>"
+        },
+        {
+          "id": "digests",
+          "title": "Digests",
+          "text": "<z>Paper Guide</z> and <z>Paper Express</z> columns are being prepared, stay tuned!"
+        },
+        {
+          "id": "courses",
+          "title": "Courses",
+          "text": "Currently, studio's courses cover the field of <z>Probabilistic Robotics</z>, including convex optimization, differential geometry, random process, etc. Besides, there are also <z>ROS2 basic and advanced tutorials</z> for practice."
+        },
+        {
+          "id": "equipment",
+          "title": "Equipment",
+          "text": "<z>To be completed...</z>"
+        },
+        {
+          "id": "products",
+          "title": "Products",
+          "text": "Currently, studio's products are <z>research related page templates series</z>, including personal homepage template and research project page template."
+        },
+        {
+          "id": "contact",
+          "title": "Contact",
+          "text": "All official contacts are in the <z>Get in Touch</z> section!"
+        }
+      ]
     },
-    "sections": [
-      {
-        "type": "overview",
-        "title": "Studio Sections",
-        "items": [
-          {
-            "id": "research",
-            "title": "Research",
-            "text": "<z>Paper Guide</z> and <z>Paper Express</z> columns are being prepared, stay tuned!"
-          },
-          {
-            "id": "courses",
-            "title": "Courses",
-            "text": "Currently, studio's courses cover the field of <z>Probabilistic Robotics</z>, including convex optimization, differential geometry, random process, etc. Besides, there are also <z>ROS2 basic and advanced tutorials</z> for practice."
-          },
-          {
-            "id": "equipment",
-            "title": "Equipment",
-            "text": "<z>To be completed...</z>"
-          },
-          {
-            "id": "products",
-            "title": "Products",
-            "text": "Currently, studio's products are <z>research related page templates series</z>, including personal homepage template and research project page template."
-          },
-          {
-            "id": "contact",
-            "title": "Contact",
-            "text": "All official contacts are in the <z>Get in Touch</z> section!"
-          }
+    {
+      "type": "vision",
+      "title": "Our Vision",
+      "motto": {
+        "lines": [
+          { "text": "<zi>Soaring through</zi> the high sky by wind," },
+          { "text": "<zi>Looking down</zi> the vast rivers and mountains." }
         ]
       },
-      {
-        "type": "vision",
-        "title": "Our Vision",
-        "motto": {
-          "lines": [
-            { "text": "<zi>Soaring through</zi> the high sky by wind," },
-            { "text": "<zi>Looking down</zi> the vast rivers and mountains." }
-          ]
-        },
-        "content": [
-          "Propriator intends to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>,",
-          "in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.",
-          "Certainly, it may take Propriator several years to finish this project.",
-          "As above points mention, Propriator has no enough budget and professional level to build such well-equipped studio.",
-          "Please let Propriator find an employer and keep his academic route going first, because Propriator has <strong>even not obtained Master Degree</strong> yet.",
-          "But <strong>building a studio is always Propriator's dream, Propriator would try his best to make it!</strong>",
-          "In short, please <strong>stay tuned!</strong> During this route, Propriator could <strong>gradually fill with content</strong> in this page!"
-        ]
-      }
-    ]
-  }
+      "content": [
+        "Propriator intends to create a <strong>more interactive and fashionable page</strong>, i.e. <strong>studio platform</strong>,",
+        "in order to <strong>make pretty comfortable environment</strong> for visitors being interested in our studio's <strong>work, facilities, and products</strong>.",
+        "Certainly, it may take Propriator several years to finish this project.",
+        "As above points mention, Propriator has no enough budget and professional level to build such well-equipped studio.",
+        "Please let Propriator find an employer and keep his academic route going first, because Propriator has <strong>even not obtained Master Degree</strong> yet.",
+        "But <strong>building a studio is always Propriator's dream, Propriator would try his best to make it!</strong>",
+        "In short, please <strong>stay tuned!</strong> During this route, Propriator could <strong>gradually fill with content</strong> in this page!"
+      ]
+    }
+  ]
 }

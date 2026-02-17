@@ -28,9 +28,15 @@ es-navbar .navbar-logo {
   gap: 12px;
 }
 
-es-navbar .navbar-logo img {
+es-navbar .navbar-logo .logo-link {
+  display: flex;
+  align-items: center;
+}
+
+es-navbar .navbar-logo .logo-img {
   height: 40px;
   width: auto;
+  max-width: 200px;
 }
 
 es-navbar .navbar-links {

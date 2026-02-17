@@ -1,0 +1,17 @@
+{
+    "pageTitle": "Digests - Excursion Studio BETA",
+    "hero": {
+        "title": "Excursion Studio - Digests",
+        "description": "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
+    },
+    "sections": [
+        {
+            "type": "digests",
+            "title": "Paper Guide"
+        },
+        {
+            "type": "digests",
+            "title": "Paper Express"
+        }
+    ]
+}

@@ -1,44 +1,42 @@
 {
-  "products": {
-    "pageTitle": "Products - Excursion Studio BETA",
-    "hero": {
-      "title": "Excursion Studio - Products",
-      "description": "Currently, Excursion Studio has produced <strong>Research-related Page Templates Series</strong>, including personal homepage templates and research project page templates."
-    },
-    "sections": [
-      {
-        "type": "products",
-        "title": "Research-related Page Templates Series",
-        "items": [
-          {
-            "id": "personal-homepage-template-v2",
-            "title": "Excursion Studio Personal Homepage Ver.2 (ESPH-V2)",
-            "text": "A React-based personal homepage template, which is used to show personal career and experiences.",
-            "features": ["Responsive design for multiple devices", "Dark/Light theme switching", "Modular component architecture", "Rich animation effects"],
-            "techStack": ["React", "JavaScript", "CSS3"],
-            "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
-            "available": true
-          },
-          {
-            "id": "research-project-page-template",
-            "title": "Excursion Studio Research Project Page (ESRPP)",
-            "text": "A React-based research project page template, which is used to show research project's detailed information.<br> (The content referenced in this project is from the research presentation by Carnegie Mellon University's AirLab at IROS 2025)",
-            "features": ["Structured project information display", "Support for papers, presentations and resources", "Responsive layout design", "Clear information hierarchy"],
-            "techStack": ["React", "JavaScript", "CSS3"],
-            "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
-            "available": true
-          },
-          {
-            "id": "personal-homepage-template",
-            "title": "Excursion Studio Personal Homepage (ESPH) <z>(Outdated)</z>",
-            "text": "A native JavaScript-based personal homepage template, which is used to show personal career and experiences. Page performance is lower than V2 version, but it is stable and reliable.",
-            "features": ["Native JavaScript implementation", "Lightweight and fast loading", "Stable and reliable", "Easy to customize"],
-            "techStack": ["JavaScript", "HTML5", "CSS3"],
-            "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
-            "available": true
-          }
-        ]
-      }
-    ]
-  }
+  "pageTitle": "Products - Excursion Studio BETA",
+  "hero": {
+    "title": "Excursion Studio - Products",
+    "description": "Currently, Excursion Studio has produced <strong>Research-related Page Templates Series</strong>, including personal homepage templates and research project page templates."
+  },
+  "sections": [
+    {
+      "type": "products",
+      "title": "Research-related Page Templates Series",
+      "items": [
+        {
+          "id": "personal-homepage-template-v2",
+          "title": "Excursion Studio Personal Homepage Ver.2 (ESPH-V2)",
+          "text": "A React-based personal homepage template, which is used to show personal career and experiences.",
+          "features": ["Responsive design for multiple devices", "Dark/Light theme switching", "Modular component architecture", "Rich animation effects"],
+          "techStack": ["React", "JavaScript", "CSS3"],
+          "link": "https://excursion-studio.github.io/Personal-Homepage-Template-v2/",
+          "available": true
+        },
+        {
+          "id": "research-project-page-template",
+          "title": "Excursion Studio Research Project Page (ESRPP)",
+          "text": "A React-based research project page template, which is used to show research project's detailed information.<br> (The content referenced in this project is from the research presentation by Carnegie Mellon University's AirLab at IROS 2025)",
+          "features": ["Structured project information display", "Support for papers, presentations and resources", "Responsive layout design", "Clear information hierarchy"],
+          "techStack": ["React", "JavaScript", "CSS3"],
+          "link": "https://excursion-studio.github.io/Research-Project-Page-Template/",
+          "available": true
+        },
+        {
+          "id": "personal-homepage-template",
+          "title": "Excursion Studio Personal Homepage (ESPH) <z>(Outdated)</z>",
+          "text": "A native JavaScript-based personal homepage template, which is used to show personal career and experiences. Page performance is lower than V2 version, but it is stable and reliable.",
+          "features": ["Native JavaScript implementation", "Lightweight and fast loading", "Stable and reliable", "Easy to customize"],
+          "techStack": ["JavaScript", "HTML5", "CSS3"],
+          "link": "https://excursion-studio.github.io/Personal-Homepage-Template/",
+          "available": true
+        }
+      ]
+    }
+  ]
 }
