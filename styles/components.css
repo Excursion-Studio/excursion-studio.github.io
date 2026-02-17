@@ -602,11 +602,12 @@ es-footer .copyright {
 }
 
 .index-section {
-  padding: 60px 0;
+  padding: 30px 0;
 }
 
 .continue-card-wrapper {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 768px) {
@@ -1114,5 +1115,123 @@ es-digests-card .digest-link:hover {
 
   es-digests-section .section-title {
     font-size: 1.4rem;
+  }
+}
+
+/* ESLatestDigestsCard 样式 */
+es-latest-digests-card {
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.latest-digest-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.latest-digest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(102, 126, 234, 0.2);
+  border-color: var(--primary-color);
+}
+
+.latest-digest-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+}
+
+.latest-digest-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.latest-digest-badge {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.latest-digest-number {
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.latest-digest-title {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.latest-digest-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.latest-digest-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-gradient);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.latest-digest-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.latest-digest-icon {
+  transition: transform 0.3s ease;
+}
+
+.latest-digest-link:hover .latest-digest-icon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .latest-digest-card {
+    padding: 24px;
+  }
+
+  .latest-digest-title {
+    font-size: 1.2rem;
+  }
+
+  .latest-digest-description {
+    font-size: 0.9rem;
+  }
+
+  .latest-digest-link {
+    padding: 10px 20px;
   }
 }

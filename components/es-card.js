@@ -304,8 +304,20 @@ class ESDigestsCard extends HTMLElement {
       tags,
       venue,
       pdfUrl,
-      sourcePath
+      sourcePath,
+      category
     } = this.data;
+
+    // 生成正确的地址
+    let categoryPath = '';
+    if (category === 'paper-guide') {
+      categoryPath = 'Paper%20Guide';
+    } else if (category === 'paper-express') {
+      categoryPath = 'Paper%20Express';
+    }
+    
+    const paperName = sourcePath.split('/').slice(-2)[0];
+    const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/#/paper/${paperName}`;
 
     let html = `
       <div class="digest-card">
@@ -338,9 +350,7 @@ class ESDigestsCard extends HTMLElement {
       `;
     }
 
-    if (pdfUrl) {
-      html += `<a href="${pdfUrl}" class="digest-link" target="_blank">${I18n.getPage('ui.readMore') || '阅读全文'}</a>`;
-    }
+    html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getPage('ui.readMore') || '阅读全文'}</a>`;
 
     html += `
         </div>

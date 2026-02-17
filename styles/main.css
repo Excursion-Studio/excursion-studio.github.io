@@ -36,10 +36,6 @@ a {
   padding: 0 20px;
 }
 
-section {
-  padding: 60px 0;
-}
-
 .section-title {
   font-size: 1.8rem;
   font-weight: 600;
@@ -196,10 +192,6 @@ body:not(.page-ready) es-footer {
 }
 
 @media (max-width: 768px) {
-  section {
-    padding: 40px 0;
-  }
-
   .section-title {
     font-size: 1.5rem;
   }

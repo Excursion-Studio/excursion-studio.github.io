@@ -224,6 +224,11 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
       this.initialShowCount = 3;
     }
 
+    connectedCallback() {
+      // 当元素插入到 DOM 中时自动调用 render
+      this.render();
+    }
+
     setData(data) {
       // 兼容旧的调用方式，实际数据从 I18n 获取
       this.render();
@@ -302,9 +307,55 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     }
   }
 
+  // 最新文摘卡片组件
+  class ESLatestDigestsCard extends HTMLElement {
+    constructor() {
+      super();
+      this.data = null;
+    }
+
+    setData(data) {
+      this.data = data;
+      this.render();
+    }
+
+    render() {
+      if (!this.data) return;
+
+      const { title, description, category, number, sourcePath } = this.data;
+      
+      // 生成正确的地址
+      let categoryPath = '';
+      if (category === 'paper-guide') {
+        categoryPath = 'Paper%20Guide';
+      } else if (category === 'paper-express') {
+        categoryPath = 'Paper%20Express';
+      }
+      
+      const paperName = sourcePath.split('/').slice(-2)[0];
+      const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/#/paper/${paperName}`;
+
+      this.innerHTML = `
+        <div class="latest-digest-card">
+          <div class="latest-digest-header">
+            <span class="latest-digest-badge">最新</span>
+            <span class="latest-digest-number">#${number}</span>
+          </div>
+          <h3 class="latest-digest-title">${title}</h3>
+          <p class="latest-digest-description">${description.substring(0, 150)}${description.length > 150 ? '...' : ''}</p>
+          <a href="${url}" class="latest-digest-link" target="_blank">
+            阅读全文
+            <span class="latest-digest-icon">→</span>
+          </a>
+        </div>
+      `;
+    }
+  }
+
   // 定义 Web Component
   customElements.define('es-digests-section', ESDigestsSection);
-  console.log('es-digests-section defined');
+  customElements.define('es-latest-digests-card', ESLatestDigestsCard);
+  console.log('es-digests-section and es-latest-digests-card defined');
   
   // 监听 I18n 初始化完成事件
   if (window.I18n) {

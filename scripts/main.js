@@ -492,11 +492,34 @@ class AppClass {
       const digestsSections = sections.filter(section => section.type === 'digests');
       const nonDigestsSections = sections.filter(section => section.type !== 'digests');
       
+      // 在首页显示最新的文摘卡片
+      if (this.pageName === 'index' && digestsSections.length > 0) {
+        const allItems = digestsSections.flatMap(section => section.items || []);
+        if (allItems.length > 0) {
+          // 按日期排序，获取最新的
+          const latestItem = [...allItems].sort((a, b) => {
+            return new Date(b.digestPubTime) - new Date(a.digestPubTime);
+          })[0];
+          
+          if (latestItem) {
+            const latestDigestSection = document.createElement('section');
+            latestDigestSection.className = 'container index-section';
+            latestDigestSection.innerHTML = '<es-latest-digests-card id="latest-digest-card"></es-latest-digests-card>';
+            sectionsContainer.appendChild(latestDigestSection);
+            
+            const latestDigestCard = latestDigestSection.querySelector('#latest-digest-card');
+            if (latestDigestCard) {
+              latestDigestCard.setData(latestItem);
+            }
+          }
+        }
+      }
+      
       // Render non-digests sections
       this.renderSectionsList(sectionsContainer, nonDigestsSections);
       
       // Render digests section with tab functionality
-      if (digestsSections.length > 0) {
+      if (digestsSections.length > 0 && this.pageName !== 'index') {
         const digestsSectionEl = document.createElement('section');
         digestsSectionEl.className = 'container index-section';
         digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
