@@ -937,66 +937,6 @@ es-digests-section .digests-section {
   margin: 0 auto;
 }
 
-es-digests-section .digests-tab-container {
-  width: 100%;
-}
-
-es-digests-section .digests-tabs {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
-}
-
-es-digests-section .digests-tab-btn {
-  background: none;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px 8px 0 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-es-digests-section .digests-tab-btn:hover {
-  color: var(--primary-color);
-  background: var(--highlight-bg);
-}
-
-es-digests-section .digests-tab-btn.active {
-  color: var(--primary-color);
-  font-weight: 600;
-  background: white;
-  border-bottom: 2px solid var(--primary-color);
-}
-
-es-digests-section .digests-tab-panels {
-  width: 100%;
-}
-
-es-digests-section .digests-tab-panel {
-  display: none;
-  width: 100%;
-}
-
-es-digests-section .digests-tab-panel.active {
-  display: block;
-  animation: fadeIn 0.3s ease-out;
-}
-
-es-digests-section .section-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 24px;
-  text-align: center;
-}
-
 es-digests-section .digests-list {
   display: flex;
   flex-direction: column;
@@ -1038,17 +978,6 @@ es-digests-section .digests-show-more-btn .btn-icon {
 
 es-digests-section .digests-show-more-btn[data-expanded="true"] .btn-icon {
   transform: rotate(180deg);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 es-digests-card {

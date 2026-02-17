@@ -70,9 +70,10 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     const zhData = JSON.parse(JSON.stringify(baseDataZh));
     const enData = JSON.parse(JSON.stringify(baseDataEn));
     
-    zhData.sections = [];
-    enData.sections = [];
+    const allZhItems = [];
+    const allEnItems = [];
     
+    // 收集所有 items 并添加分类信息
     for (const section of sections) {
       const papersPath = path.join(papersDir, section.path);
       
@@ -85,8 +86,6 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
         .filter(dirent => dirent.isDirectory())
         .map(dirent => dirent.name);
       
-      const items = [];
-      
       for (const folderName of paperFolders) {
         const folderPath = path.join(papersPath, folderName);
         const mdFile = `${folderName}.md`;
@@ -95,7 +94,11 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
         if (fs.existsSync(mdPath)) {
           const content = fs.readFileSync(mdPath, 'utf-8');
           const fm = parseFrontmatter(content);
-          items.push({
+          
+          // 添加分类信息
+          const zhItem = {
+            category: section.id,
+            categoryName: section.title.zh,
             title: fm.title || folderName,
             date: fm.date || '1970-01-01',
             digestPubTime: fm.digest_pub_time || '1970-01-01',
@@ -105,45 +108,104 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
             venue: fm.venue || '',
             pdfUrl: fm.pdf_url || '',
             sourcePath: `${section.path}/${folderName}/${mdFile}`
-          });
+          };
+          
+          const enItem = {
+            category: section.id,
+            categoryName: section.title.en,
+            title: fm.title || folderName,
+            date: fm.date || '1970-01-01',
+            digestPubTime: fm.digest_pub_time || '1970-01-01',
+            editor_note: fm.editor_note || [],
+            authors: fm.authors || [],
+            tags: fm.tags || [],
+            venue: fm.venue || '',
+            pdfUrl: fm.pdf_url || '',
+            sourcePath: `${section.path}/${folderName}/${mdFile}`
+          };
+          
+          allZhItems.push(zhItem);
+          allEnItems.push(enItem);
         }
       }
-      
-      items.sort((a, b) => new Date(b.digestPubTime) - new Date(a.digestPubTime));
-      
-      items.forEach((item, index) => {
-        item.number = items.length - index;
-      });
-      
-      const zhItems = items.map(item => ({
-        number: item.number,
-        title: `${section.title.zh} ${item.number} - ${item.title}`,
-        description: item.editor_note.join('\n'),
-        date: item.date,
-        digestPubTime: item.digestPubTime,
-        authors: item.authors,
-        tags: item.tags,
-        venue: item.venue,
-        pdfUrl: item.pdfUrl,
-        sourcePath: item.sourcePath
-      }));
-      
-      const enItems = items.map(item => ({
-        number: item.number,
-        title: `${section.title.en} ${item.number} - ${item.title}`,
-        description: item.editor_note.join('\n'),
-        date: item.date,
-        digestPubTime: item.digestPubTime,
-        authors: item.authors,
-        tags: item.tags,
-        venue: item.venue,
-        pdfUrl: item.pdfUrl,
-        sourcePath: item.sourcePath
-      }));
-      
-      zhData.sections.push({ type: 'digests', id: section.id, title: section.title.zh, items: zhItems });
-      enData.sections.push({ type: 'digests', id: section.id, title: section.title.en, items: enItems });
     }
+    
+    // 按 digestPubTime 降序排序
+    allZhItems.sort((a, b) => new Date(b.digestPubTime) - new Date(a.digestPubTime));
+    allEnItems.sort((a, b) => new Date(b.digestPubTime) - new Date(a.digestPubTime));
+    
+    // 为每个分类独立计算 number
+    const categoryCountsZh = {};
+    const categoryCountsEn = {};
+    
+    sections.forEach(section => {
+      categoryCountsZh[section.id] = 0;
+      categoryCountsEn[section.id] = 0;
+    });
+    
+    // 计算每个分类的 items 数量
+    allZhItems.forEach(item => {
+      categoryCountsZh[item.category]++;
+    });
+    
+    allEnItems.forEach(item => {
+      categoryCountsEn[item.category]++;
+    });
+    
+    // 为每个 item 分配 number（按分类独立编号）
+    const categoryCurrentNumbersZh = {};
+    const categoryCurrentNumbersEn = {};
+    
+    sections.forEach(section => {
+      categoryCurrentNumbersZh[section.id] = categoryCountsZh[section.id];
+      categoryCurrentNumbersEn[section.id] = categoryCountsEn[section.id];
+    });
+    
+    // 按时间顺序分配 number（最新的 number 最大）
+    allZhItems.forEach(item => {
+      item.number = categoryCurrentNumbersZh[item.category];
+      categoryCurrentNumbersZh[item.category]--;
+    });
+    
+    allEnItems.forEach(item => {
+      item.number = categoryCurrentNumbersEn[item.category];
+      categoryCurrentNumbersEn[item.category]--;
+    });
+    
+    // 构建最终的 items 列表
+    const finalZhItems = allZhItems.map(item => ({
+      category: item.category,
+      categoryName: item.categoryName,
+      number: item.number,
+      title: `${item.categoryName} ${item.number} - ${item.title}`,
+      description: item.editor_note.join('\n'),
+      date: item.date,
+      digestPubTime: item.digestPubTime,
+      authors: item.authors,
+      tags: item.tags,
+      venue: item.venue,
+      pdfUrl: item.pdfUrl,
+      sourcePath: item.sourcePath
+    }));
+    
+    const finalEnItems = allEnItems.map(item => ({
+      category: item.category,
+      categoryName: item.categoryName,
+      number: item.number,
+      title: `${item.categoryName} ${item.number} - ${item.title}`,
+      description: item.editor_note.join('\n'),
+      date: item.date,
+      digestPubTime: item.digestPubTime,
+      authors: item.authors,
+      tags: item.tags,
+      venue: item.venue,
+      pdfUrl: item.pdfUrl,
+      sourcePath: item.sourcePath
+    }));
+    
+    // 创建单一的 sections
+    zhData.sections = [{ type: 'digests', id: 'all-digests', items: finalZhItems }];
+    enData.sections = [{ type: 'digests', id: 'all-digests', items: finalEnItems }];
     
     fs.writeFileSync(path.join(__dirname, '..', 'data', 'zh', 'digests.json'), JSON.stringify(zhData, null, 2));
     fs.writeFileSync(path.join(__dirname, '..', 'data', 'en', 'digests.json'), JSON.stringify(enData, null, 2));
@@ -159,9 +221,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     constructor() {
       super();
       this.data = null;
-      this.expanded = {};
+      this.expanded = false;
       this.initialShowCount = 3;
-      this.activeTabId = null;
     }
 
     setData(data) {
@@ -181,111 +242,65 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
         return;
       }
 
-      // 设置默认激活的 tab
-      this.activeTabId = this.activeTabId || digestsSections[0].id;
+      // 获取所有 items
+      const allItems = digestsSections.flatMap(section => section.items || []);
+
+      if (allItems.length === 0) {
+        this.innerHTML = `<p class="digests-empty">暂无内容</p>`;
+        return;
+      }
+
+      const hasMoreItems = allItems.length > this.initialShowCount;
+      const showMoreText = ui.showMore || '展开更多';
+      const showLessText = ui.showLess || '收起';
 
       let html = `
-        <div class="digests-tab-container">
-          <div class="digests-tabs">
+        <div class="digests-section">
+          <div class="digests-list">
       `;
 
-      // 生成 tab 按钮
-      digestsSections.forEach(section => {
-        const isActive = section.id === this.activeTabId;
+      allItems.forEach((item, index) => {
+        const hidden = index >= this.initialShowCount && !this.expanded;
+        html += `<es-digests-card id="digest-${index}" class="${hidden ? 'hidden' : ''}"></es-digests-card>`;
+      });
+
+      html += `
+          </div>
+      `;
+
+      if (hasMoreItems) {
         html += `
-          <button class="digests-tab-btn ${isActive ? 'active' : ''}" data-tab="${section.id}">
-            ${section.title}
+          <button class="digests-show-more-btn" data-expanded="${this.expanded}">
+            <span class="btn-text">${this.expanded ? showLessText : showMoreText}</span>
+            <span class="btn-icon">▼</span>
           </button>
         `;
-      });
+      }
 
       html += `
-          </div>
-          <div class="digests-tab-panels">
-      `;
-
-      // 生成 tab 面板
-      digestsSections.forEach(section => {
-        const isActive = section.id === this.activeTabId;
-        const { id, title, items } = section;
-        const hasMoreItems = items && items.length > this.initialShowCount;
-        const showMoreText = ui.showMore || '展开更多';
-        const showLessText = ui.showLess || '收起';
-        const isExpanded = this.expanded[id] || false;
-
-        html += `
-          <div class="digests-tab-panel ${isActive ? 'active' : ''}" data-panel="${id}">
-            <h2 class="section-title">${title}</h2>
-        `;
-
-        if (items && items.length > 0) {
-          html += `<div class="digests-list">`;
-          items.forEach((item, index) => {
-            const hidden = index >= this.initialShowCount && !isExpanded;
-            html += `<es-digests-card id="digest-${id}-${index}" class="${hidden ? 'hidden' : ''}"></es-digests-card>`;
-          });
-          html += `</div>`;
-
-          if (hasMoreItems) {
-            html += `
-              <button class="digests-show-more-btn" data-expanded="${isExpanded}" data-section="${id}">
-                <span class="btn-text">${isExpanded ? showLessText : showMoreText}</span>
-                <span class="btn-icon">▼</span>
-              </button>
-            `;
-          }
-        } else {
-          html += `<p class="digests-empty">暂无内容</p>`;
-        }
-
-        html += `</div>`;
-      });
-
-      html += `
-          </div>
         </div>
       `;
 
       this.innerHTML = html;
 
       // 设置卡片数据
-      digestsSections.forEach(section => {
-        section.items.forEach((item, index) => {
-          const card = this.querySelector(`#digest-${section.id}-${index}`);
-          if (card) card.setData(item);
-        });
+      allItems.forEach((item, index) => {
+        const card = this.querySelector(`#digest-${index}`);
+        if (card) card.setData(item);
       });
 
       this.bindEvents();
     }
 
     bindEvents() {
-      // Tab 切换事件
-      const tabBtns = this.querySelectorAll('.digests-tab-btn');
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tabId = btn.dataset.tab;
-          this.switchTab(tabId);
-        });
-      });
-
-      // 展开/收起事件
-      const showMoreBtns = this.querySelectorAll('.digests-show-more-btn');
-      showMoreBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const sectionId = btn.dataset.section;
-          this.toggleShowMore(sectionId);
-        });
-      });
+      const showMoreBtn = this.querySelector('.digests-show-more-btn');
+      if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => this.toggleShowMore());
+      }
     }
 
-    switchTab(tabId) {
-      this.activeTabId = tabId;
-      this.render();
-    }
-
-    toggleShowMore(sectionId) {
-      this.expanded[sectionId] = !this.expanded[sectionId];
+    toggleShowMore() {
+      this.expanded = !this.expanded;
       this.render();
     }
   }
