@@ -4,23 +4,73 @@
     "title": "Excursion Studio - Digests",
     "description": "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
   },
+  "ui": {
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "readMore": "Read More"
+  },
   "sections": [
     {
       "type": "digests",
       "id": "paper-guide",
       "title": "Paper Guide",
-      "items": []
+      "items": [
+        {
+          "number": 2,
+          "title": "Paper Guide 2 - 示例论文：如何使用 Paper Guide",
+          "description": "",
+          "date": "2024-01-01",
+          "digestPubTime": "2026-02-17",
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Guide Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "Paper Guide/papers/example-paper/example-paper.md"
+        },
+        {
+          "number": 1,
+          "title": "Paper Guide 1 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "2026-02-16",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "Paper Guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        }
+      ]
     },
     {
       "type": "digests",
       "id": "paper-express",
       "title": "Paper Express",
-      "items": []
+      "items": [
+        {
+          "number": 2,
+          "title": "Paper Express 2 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "Paper Express/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        },
+        {
+          "number": 1,
+          "title": "Paper Express 1 - 示例论文：如何使用 Paper Express",
+          "description": "",
+          "date": "2024-01-01",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Express Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "Paper Express/papers/example-paper/example-paper.md"
+        }
+      ]
     }
-  ],
-  "ui": {
-    "showMore": "Show More",
-    "showLess": "Show Less",
-    "readMore": "Read More"
-  }
+  ]
 }
