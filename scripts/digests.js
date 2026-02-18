@@ -53,10 +53,35 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
         currentKey = null;
       } else if (isArray && line.match(/^\s*"(.*)"\s*,?\s*$/)) {
         arrayContent.push(RegExp.$1);
+      } else if (line.match(/^(\w+):\s*$/)) {
+        currentKey = RegExp.$1;
+        isArray = true;
+        arrayContent = [];
+      } else if (line.match(/^\s+-\s+"?(.+?)"?\s*$/)) {
+        if (isArray && currentKey) {
+          arrayContent.push(RegExp.$1);
+        }
       } else if (line.match(/^(\w+):\s*"(.*)"$/)) {
+        if (isArray && currentKey && arrayContent.length > 0) {
+          frontmatter[currentKey] = arrayContent;
+        }
+        isArray = false;
+        currentKey = null;
+        frontmatter[RegExp.$1] = RegExp.$2;
+      } else if (line.match(/^(\w+):\s*(.+)$/)) {
+        if (isArray && currentKey && arrayContent.length > 0) {
+          frontmatter[currentKey] = arrayContent;
+        }
+        isArray = false;
+        currentKey = null;
         frontmatter[RegExp.$1] = RegExp.$2;
       }
     }
+    
+    if (isArray && currentKey && arrayContent.length > 0) {
+      frontmatter[currentKey] = arrayContent;
+    }
+    
     return frontmatter;
   }
 
