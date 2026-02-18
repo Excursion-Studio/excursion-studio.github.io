@@ -347,7 +347,22 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
 
     toggleShowMore() {
       this.expanded = !this.expanded;
-      this.render();
+      
+      const cards = this.querySelectorAll('es-digests-card, es-latest-digests-card');
+      cards.forEach((card, index) => {
+        if (index >= this.initialShowCount) {
+          card.classList.toggle('hidden', !this.expanded);
+        }
+      });
+      
+      const btn = this.querySelector('.digests-show-more-btn');
+      if (btn) {
+        const btnText = btn.querySelector('.btn-text');
+        const showMoreText = I18n.getDigests('ui.showMore') || '展开更多';
+        const showLessText = I18n.getDigests('ui.showLess') || '收起';
+        btnText.textContent = this.expanded ? showLessText : showMoreText;
+        btn.dataset.expanded = this.expanded;
+      }
     }
   }
 
