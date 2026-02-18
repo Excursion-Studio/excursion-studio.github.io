@@ -43,7 +43,15 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     let arrayContent = [];
     
     for (const line of lines) {
-      if (line.match(/^(\w+):\s*\[$/)) {
+      // 单行数组格式: key: ["value1", "value2"]
+      if (line.match(/^(\w+):\s*\["(.*)"\s*\]$/)) {
+        const key = RegExp.$1;
+        const valuesStr = RegExp.$2;
+        const values = valuesStr.split('", "').map(v => v.trim()).filter(v => v);
+        frontmatter[key] = values;
+        isArray = false;
+        currentKey = null;
+      } else if (line.match(/^(\w+):\s*\[$/)) {
         currentKey = RegExp.$1;
         isArray = true;
         arrayContent = [];
@@ -198,35 +206,41 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     });
     
     // 构建最终的 items 列表
-    const finalZhItems = allZhItems.map(item => ({
-      category: item.category,
-      categoryName: item.categoryName,
-      number: item.number,
-      title: `${item.categoryName} ${item.number} - ${item.title}`,
-      description: item.editor_note.join('\n'),
-      date: item.date,
-      digestPubTime: item.digestPubTime,
-      authors: item.authors,
-      tags: item.tags,
-      venue: item.venue,
-      pdfUrl: item.pdfUrl,
-      sourcePath: item.sourcePath
-    }));
+    const finalZhItems = allZhItems.map(item => {
+      const editorNote = Array.isArray(item.editor_note) ? item.editor_note : [];
+      return {
+        category: item.category,
+        categoryName: item.categoryName,
+        number: item.number,
+        title: `${item.categoryName} ${item.number} - ${item.title}`,
+        description: editorNote.join('\n'),
+        date: item.date,
+        digestPubTime: item.digestPubTime,
+        authors: Array.isArray(item.authors) ? item.authors : [],
+        tags: Array.isArray(item.tags) ? item.tags : [],
+        venue: item.venue || '',
+        pdfUrl: item.pdfUrl || '',
+        sourcePath: item.sourcePath
+      };
+    });
     
-    const finalEnItems = allEnItems.map(item => ({
-      category: item.category,
-      categoryName: item.categoryName,
-      number: item.number,
-      title: `${item.categoryName} ${item.number} - ${item.title}`,
-      description: item.editor_note.join('\n'),
-      date: item.date,
-      digestPubTime: item.digestPubTime,
-      authors: item.authors,
-      tags: item.tags,
-      venue: item.venue,
-      pdfUrl: item.pdfUrl,
-      sourcePath: item.sourcePath
-    }));
+    const finalEnItems = allEnItems.map(item => {
+      const editorNote = Array.isArray(item.editor_note) ? item.editor_note : [];
+      return {
+        category: item.category,
+        categoryName: item.categoryName,
+        number: item.number,
+        title: `${item.categoryName} ${item.number} - ${item.title}`,
+        description: editorNote.join('\n'),
+        date: item.date,
+        digestPubTime: item.digestPubTime,
+        authors: Array.isArray(item.authors) ? item.authors : [],
+        tags: Array.isArray(item.tags) ? item.tags : [],
+        venue: item.venue || '',
+        pdfUrl: item.pdfUrl || '',
+        sourcePath: item.sourcePath
+      };
+    });
     
     // 创建单一的 sections
     zhData.sections = [{ type: 'digests', id: 'all-digests', items: finalZhItems }];
