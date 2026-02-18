@@ -1118,120 +1118,143 @@ es-digests-card .digest-link:hover {
   }
 }
 
-/* ESLatestDigestsCard 样式 */
+/* ESLatestDigestsCard 样式 - 与 ESDigestsCard 结构一致，仅样式不同 */
 es-latest-digests-card {
   display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.6s ease-out forwards;
 }
 
-.latest-digest-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.2);
+es-latest-digests-card .digest-card {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 16px;
-  padding: 32px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+  border: none;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-.latest-digest-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(102, 126, 234, 0.2);
-  border-color: var(--primary-color);
-}
-
-.latest-digest-card::before {
-  content: '';
+es-latest-digests-card .digest-card::before {
+  content: '🔥';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--primary-gradient);
+  top: 12px;
+  right: 12px;
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
-.latest-digest-header {
+es-latest-digests-card .digest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(102, 126, 234, 0.35);
+}
+
+es-latest-digests-card .digest-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.latest-digest-badge {
-  background: var(--primary-gradient);
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
 }
 
-.latest-digest-number {
-  background: rgba(102, 126, 234, 0.1);
-  color: var(--primary-color);
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 0.85rem;
-  font-weight: 500;
+es-latest-digests-card .digest-content {
+  flex: 1;
+  min-width: 0;
 }
 
-.latest-digest-title {
-  font-size: 1.4rem;
-  color: var(--text-color);
-  margin-bottom: 16px;
+es-latest-digests-card .digest-title {
+  font-size: 1.2rem;
   font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
   line-height: 1.4;
 }
 
-.latest-digest-description {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+es-latest-digests-card .digest-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
-.latest-digest-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--primary-gradient);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
+es-latest-digests-card .digest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+es-latest-digests-card .digest-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+es-latest-digests-card .digest-venue {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
+}
+
+es-latest-digests-card .digest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+es-latest-digests-card .digest-tag {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+es-latest-digests-card .digest-link {
+  display: inline-block;
+  background: white;
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.latest-digest-link:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.latest-digest-icon {
-  transition: transform 0.3s ease;
-}
-
-.latest-digest-link:hover .latest-digest-icon {
-  transform: translateX(4px);
+es-latest-digests-card .digest-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
-  .latest-digest-card {
-    padding: 24px;
+  es-latest-digests-card .digest-card {
+    padding: 20px;
+    gap: 12px;
   }
 
-  .latest-digest-title {
-    font-size: 1.2rem;
+  es-latest-digests-card .digest-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 
-  .latest-digest-description {
-    font-size: 0.9rem;
+  es-latest-digests-card .digest-title {
+    font-size: 1rem;
   }
 
-  .latest-digest-link {
-    padding: 10px 20px;
+  es-latest-digests-card .digest-description {
+    font-size: 0.85rem;
   }
 }

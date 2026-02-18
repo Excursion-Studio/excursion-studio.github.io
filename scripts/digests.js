@@ -235,8 +235,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     }
 
     render() {
-      const ui = I18n.getPage('ui') || {};
-      const sections = I18n.getPage('sections') || [];
+      const ui = I18n.getDigests('ui') || {};
+      const sections = I18n.getDigests('sections') || [];
       const digestsSections = sections.filter(section => section.type === 'digests');
 
       if (digestsSections.length === 0) {
@@ -263,7 +263,12 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
 
       allItems.forEach((item, index) => {
         const hidden = index >= this.initialShowCount && !this.expanded;
-        html += `<es-digests-card id="digest-${index}" class="${hidden ? 'hidden' : ''}"></es-digests-card>`;
+        // 第一个卡片使用 ESLatestDigestsCard，其余使用 ESDigestsCard
+        if (index === 0) {
+          html += `<es-latest-digests-card id="digest-${index}" class="${hidden ? 'hidden' : ''}"></es-latest-digests-card>`;
+        } else {
+          html += `<es-digests-card id="digest-${index}" class="${hidden ? 'hidden' : ''}"></es-digests-card>`;
+        }
       });
 
       html += `
@@ -307,7 +312,7 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     }
   }
 
-  // 最新文摘卡片组件
+  // 最新文摘卡片组件 - 与 ESDigestsCard 内容一致，仅样式不同
   class ESLatestDigestsCard extends HTMLElement {
     constructor() {
       super();
@@ -322,9 +327,20 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     render() {
       if (!this.data) return;
 
-      const { title, description, category, number, sourcePath } = this.data;
-      
-      // 生成正确的地址
+      const {
+        number,
+        title,
+        description,
+        date,
+        digestPubTime,
+        authors,
+        tags,
+        venue,
+        pdfUrl,
+        sourcePath,
+        category
+      } = this.data;
+
       let categoryPath = '';
       if (category === 'paper-guide') {
         categoryPath = 'paper-guide';
@@ -333,22 +349,47 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
       }
       
       const paperName = sourcePath.split('/').slice(-2)[0];
-      const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/#/paper/${paperName}`;
+      const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/index.html?paper=${paperName}`;
 
-      this.innerHTML = `
-        <div class="latest-digest-card">
-          <div class="latest-digest-header">
-            <span class="latest-digest-badge">最新</span>
-            <span class="latest-digest-number">#${number}</span>
+      let html = `
+        <div class="digest-card latest">
+          <div class="digest-number">#${number}</div>
+          <div class="digest-content">
+      `;
+
+      if (title) {
+        html += `<h3 class="digest-title">${Utils.parseZTags(title)}</h3>`;
+      }
+
+      if (description) {
+        html += `<p class="digest-description">${description.replace(/\n/g, '<br>')}</p>`;
+      }
+
+      html += `<div class="digest-meta">`;
+      if (date) {
+        html += `<span class="digest-date">${date}</span>`;
+      }
+      if (venue) {
+        html += `<span class="digest-venue">${venue}</span>`;
+      }
+      html += `</div>`;
+
+      if (tags && tags.length > 0) {
+        html += `
+          <div class="digest-tags">
+            ${tags.map(tag => `<span class="digest-tag">${tag}</span>`).join('')}
           </div>
-          <h3 class="latest-digest-title">${title}</h3>
-          <p class="latest-digest-description">${description.substring(0, 150)}${description.length > 150 ? '...' : ''}</p>
-          <a href="${url}" class="latest-digest-link" target="_blank">
-            阅读全文
-            <span class="latest-digest-icon">→</span>
-          </a>
+        `;
+      }
+
+      html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getDigests('ui.readMore') || '阅读全文'}</a>`;
+
+      html += `
+          </div>
         </div>
       `;
+
+      this.innerHTML = html;
     }
   }
 

@@ -317,7 +317,7 @@ class ESDigestsCard extends HTMLElement {
     }
     
     const paperName = sourcePath.split('/').slice(-2)[0];
-    const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/#/paper/${paperName}`;
+    const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/index.html?paper=${paperName}`;
 
     let html = `
       <div class="digest-card">
@@ -350,7 +350,7 @@ class ESDigestsCard extends HTMLElement {
       `;
     }
 
-    html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getPage('ui.readMore') || '阅读全文'}</a>`;
+    html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getDigests('ui.readMore') || '阅读全文'}</a>`;
 
     html += `
         </div>
