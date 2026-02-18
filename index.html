@@ -11,14 +11,31 @@
 </head>
 <body>
   <div class="page-loading" id="page-loading">
+    <div class="page-loading-text"></div>
     <div class="page-loading-spinner"></div>
+    <div class="page-loading-tip"></div>
   </div>
+  <script>
+    (function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var lang = urlParams.get('lang') || 'zh';
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      fetch('data/' + lang + '/common.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.querySelector('.page-loading-text').textContent = data.ui.loadingText;
+          document.querySelector('.page-loading-tip').innerHTML = data.ui.loadingTip;
+        });
+    })();
+  </script>
   
   <es-navbar></es-navbar>
 
   <es-hero></es-hero>
 
-  <div class="sections-container"></div>
+  <section id="index">
+    <div class="container sections-container"></div>
+  </section>
 
   <es-contact></es-contact>
 

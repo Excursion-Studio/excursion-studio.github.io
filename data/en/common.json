@@ -41,6 +41,8 @@
     "viewFullPage": "View Full Page",
     "loading": "Loading...",
     "loadFailed": "Preview failed to load",
-    "clickToPreview": "Click to Preview"
+    "clickToPreview": "Click to Preview",
+    "loadingText": "Loading...",
+    "loadingTip": "Excursion Studio reminds you that,<br>remember to drink water."
   }
 }

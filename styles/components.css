@@ -1125,6 +1125,12 @@ es-digests-card .digest-pub-time {
     font-size: 1rem;
   }
 
+  es-digests-card .digest-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   es-digests-section .section-title {
     font-size: 1.4rem;
   }
@@ -1233,20 +1239,21 @@ es-latest-digests-card .digest-tag {
 }
 
 es-latest-digests-card .digest-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: white;
   color: var(--primary-color);
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 es-latest-digests-card .digest-link:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -1264,8 +1271,9 @@ es-latest-digests-card .digest-pub-time {
 
 @media (max-width: 768px) {
   es-latest-digests-card .digest-card {
-    padding: 20px;
+    flex-direction: column;
     gap: 12px;
+    padding: 16px;
   }
 
   es-latest-digests-card .digest-number {
@@ -1280,5 +1288,11 @@ es-latest-digests-card .digest-pub-time {
 
   es-latest-digests-card .digest-description {
     font-size: 0.85rem;
+  }
+
+  es-latest-digests-card .digest-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

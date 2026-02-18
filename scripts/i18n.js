@@ -21,16 +21,19 @@ class I18n {
   async loadLanguageData(pageName) {
     const commonPath = `data/${this.currentLang}/common.json`;
     const pagePath = `data/${this.currentLang}/${pageName}.json`;
+    const digestsPath = `data/${this.currentLang}/digests.json`;
 
-    console.log('Loading data from:', commonPath, pagePath);
+    console.log('Loading data from:', commonPath, pagePath, digestsPath);
 
-    const [commonData, pageData] = await Promise.all([
+    const [commonData, pageData, digestsData] = await Promise.all([
       Utils.fetchJSON(commonPath),
-      Utils.fetchJSON(pagePath)
+      Utils.fetchJSON(pagePath),
+      Utils.fetchJSON(digestsPath)
     ]);
 
     this.data.common = commonData || {};
     this.data.page = pageData || {};
+    this.data.digests = digestsData || {};
 
     console.log('Data loaded:', this.data);
   }
@@ -56,6 +59,10 @@ class I18n {
 
   getPage(path) {
     return this.get(`page.${path}`);
+  }
+
+  getDigests(path) {
+    return this.get(`digests.${path}`);
   }
 
   switchLanguage() {
