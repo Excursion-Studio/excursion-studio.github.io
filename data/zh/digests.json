@@ -26,7 +26,7 @@
           "tags": [],
           "venue": "Paper Guide Documentation",
           "pdfUrl": "#",
-          "sourcePath": "Paper Guide/papers/example-paper/example-paper.md"
+          "sourcePath": "paper-guide/papers/example-paper/example-paper.md"
         },
         {
           "category": "paper-guide",
@@ -40,7 +40,7 @@
           "tags": [],
           "venue": "NeurIPS 2017",
           "pdfUrl": "https://arxiv.org/abs/1706.03762",
-          "sourcePath": "Paper Guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+          "sourcePath": "paper-guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
         },
         {
           "category": "paper-express",
@@ -54,7 +54,7 @@
           "tags": [],
           "venue": "NeurIPS 2017",
           "pdfUrl": "https://arxiv.org/abs/1706.03762",
-          "sourcePath": "Paper Express/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+          "sourcePath": "paper-express/papers/attention-is-all-you-need/attention-is-all-you-need.md"
         },
         {
           "category": "paper-express",
@@ -68,7 +68,7 @@
           "tags": [],
           "venue": "Paper Express Documentation",
           "pdfUrl": "#",
-          "sourcePath": "Paper Express/papers/example-paper/example-paper.md"
+          "sourcePath": "paper-express/papers/example-paper/example-paper.md"
         }
       ]
     }
