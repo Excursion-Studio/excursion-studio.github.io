@@ -15,7 +15,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     ui: {
       showMore: "展开更多",
       showLess: "收起",
-      readMore: "阅读全文"
+      readMore: "阅读全文",
+      publishedOn: "发布于"
     }
   };
 
@@ -28,7 +29,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     ui: {
       showMore: "Show More",
       showLess: "Show Less",
-      readMore: "Read More"
+      readMore: "Read More",
+      publishedOn: "Published on"
     }
   };
 
