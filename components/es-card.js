@@ -311,9 +311,9 @@ class ESDigestsCard extends HTMLElement {
     // 生成正确的地址
     let categoryPath = '';
     if (category === 'paper-guide') {
-      categoryPath = 'Paper%20Guide';
+      categoryPath = 'paper-guide';
     } else if (category === 'paper-express') {
-      categoryPath = 'Paper%20Express';
+      categoryPath = 'paper-express';
     }
     
     const paperName = sourcePath.split('/').slice(-2)[0];

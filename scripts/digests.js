@@ -63,8 +63,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
   function generateDigestsData() {
     const papersDir = path.join(__dirname, '..', 'es-digests');
     const sections = [
-      { id: 'paper-guide', path: 'Paper Guide/papers', title: { zh: '论文导读', en: 'Paper Guide' } },
-      { id: 'paper-express', path: 'Paper Express/papers', title: { zh: '论文速递', en: 'Paper Express' } }
+      { id: 'paper-guide', path: 'paper-guide/papers', title: { zh: '论文导读', en: 'Paper Guide' } },
+      { id: 'paper-express', path: 'paper-express/papers', title: { zh: '论文速递', en: 'Paper Express' } }
     ];
     
     const zhData = JSON.parse(JSON.stringify(baseDataZh));
@@ -327,9 +327,9 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
       // 生成正确的地址
       let categoryPath = '';
       if (category === 'paper-guide') {
-        categoryPath = 'Paper%20Guide';
+        categoryPath = 'paper-guide';
       } else if (category === 'paper-express') {
-        categoryPath = 'Paper%20Express';
+        categoryPath = 'paper-express';
       }
       
       const paperName = sourcePath.split('/').slice(-2)[0];
