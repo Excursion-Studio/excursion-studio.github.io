@@ -13,7 +13,64 @@
     {
       "type": "digests",
       "id": "all-digests",
-      "items": []
+      "items": [
+        {
+          "category": "paper-guide",
+          "categoryName": "Paper Guide",
+          "number": 2,
+          "title": "Paper Guide 2 - 示例论文：如何使用 Paper Guide",
+          "description": "",
+          "date": "2024-01-01",
+          "digestPubTime": "2026-02-17",
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Guide Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-guide/papers/example-paper/example-paper.md"
+        },
+        {
+          "category": "paper-guide",
+          "categoryName": "Paper Guide",
+          "number": 1,
+          "title": "Paper Guide 1 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "2026-02-16",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "paper-guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        },
+        {
+          "category": "paper-express",
+          "categoryName": "Paper Express",
+          "number": 2,
+          "title": "Paper Express 2 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "paper-express/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        },
+        {
+          "category": "paper-express",
+          "categoryName": "Paper Express",
+          "number": 1,
+          "title": "Paper Express 1 - 示例论文：如何使用 Paper Express",
+          "description": "",
+          "date": "2024-01-01",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Express Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-express/papers/example-paper/example-paper.md"
+        }
+      ]
     }
   ]
 }
