@@ -73,3 +73,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Trigger content sync after build
+        if: success()
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: Excursion-Studio/.github
+          event-type: content-updated
+          client-payload: >-
+            {
+              "source_repo": "excursion-studio.github.io",
+              "commit_sha": "${{ github.sha }}",
+              "ref": "${{ github.ref }}",
+              "actor": "${{ github.actor }}",
+              "trigger": "build-pages"
+            }
