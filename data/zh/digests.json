@@ -36,11 +36,61 @@
           "description": "本文介绍了一种新的语言表示模型BERT，它代表来自Transformer的双向编码器表示。与最近的语言表示模型不同，BERT旨在通过在所有层中联合调节左右上下文来预训练深度双向表示。",
           "date": "2018-10-11",
           "digestPubTime": "2026-02-17",
+<<<<<<< HEAD
           "authors": ["Jacob Devlin", "Ming-Wei Chang", "Kenton Lee"],
           "tags": ["BERT", "Pre-training", "NLP", "Transformer"],
           "venue": "NAACL 2019",
           "pdfUrl": "https://arxiv.org/abs/1810.04805",
           "sourcePath": "paper-express/papers/bert/bert.md"
+=======
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Guide Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-guide/papers/example-paper/example-paper.md"
+        },
+        {
+          "category": "paper-guide",
+          "categoryName": "论文导读",
+          "number": 1,
+          "title": "论文导读 1 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "2026-02-16",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "paper-guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        },
+        {
+          "category": "paper-express",
+          "categoryName": "论文速递",
+          "number": 2,
+          "title": "论文速递 2 - Attention Is All You Need",
+          "description": "",
+          "date": "2017-06-12",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "NeurIPS 2017",
+          "pdfUrl": "https://arxiv.org/abs/1706.03762",
+          "sourcePath": "paper-express/papers/attention-is-all-you-need/attention-is-all-you-need.md"
+        },
+        {
+          "category": "paper-express",
+          "categoryName": "论文速递",
+          "number": 1,
+          "title": "论文速递 1 - 示例论文：如何使用 Paper Express",
+          "description": "",
+          "date": "2024-01-01",
+          "digestPubTime": "1970-01-01",
+          "authors": [],
+          "tags": [],
+          "venue": "Paper Express Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-express/papers/example-paper/example-paper.md"
+>>>>>>> e3502f317f863203f03e4b0454a4677cb82bdb68
         }
       ]
     }
