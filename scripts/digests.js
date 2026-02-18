@@ -436,7 +436,13 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
         `;
       }
 
+      html += `<div class="digest-footer">`;
       html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getDigests('ui.readMore') || '阅读全文'}</a>`;
+      if (digestPubTime) {
+        const publishedOn = I18n.getDigests('ui.publishedOn') || '发布于';
+        html += `<span class="digest-pub-time">${publishedOn} ${digestPubTime}</span>`;
+      }
+      html += `</div>`;
 
       html += `
           </div>

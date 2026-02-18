@@ -1096,6 +1096,18 @@ es-digests-card .digest-link:hover {
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
+es-digests-card .digest-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+es-digests-card .digest-pub-time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 768px) {
   es-digests-card .digest-card {
     flex-direction: column;
@@ -1236,6 +1248,18 @@ es-latest-digests-card .digest-link {
 es-latest-digests-card .digest-link:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+es-latest-digests-card .digest-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+es-latest-digests-card .digest-pub-time {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 @media (max-width: 768px) {
