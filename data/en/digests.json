@@ -7,8 +7,7 @@
   "ui": {
     "showMore": "Show More",
     "showLess": "Show Less",
-    "readMore": "Read More",
-    "publishedOn": "Published on"
+    "readMore": "Read More"
   },
   "sections": [
     {

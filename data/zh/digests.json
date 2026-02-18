@@ -7,8 +7,7 @@
   "ui": {
     "showMore": "展开更多",
     "showLess": "收起",
-    "readMore": "阅读全文",
-    "publishedOn": "发布于"
+    "readMore": "阅读全文"
   },
   "sections": [
     {
