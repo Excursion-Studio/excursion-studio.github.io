@@ -606,8 +606,7 @@ es-footer .copyright {
 }
 
 .continue-card-wrapper {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding: 30px 0;
 }
 
 @media (max-width: 768px) {
@@ -616,7 +615,8 @@ es-footer .copyright {
     grid-template-columns: 1fr;
   }
 
-  .index-section {
+  .index-section,
+  .continue-card-wrapper {
     padding: 40px 0;
   }
 }
@@ -1139,6 +1139,12 @@ es-digests-card .digest-pub-time {
 /* ESLatestDigestsCard 样式 - 与 ESDigestsCard 结构一致，仅样式不同 */
 es-latest-digests-card {
   display: block;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+es-latest-digests-card.animate-visible {
+  animation: slideUp 0.6s ease-out forwards;
 }
 
 es-latest-digests-card .digest-card {

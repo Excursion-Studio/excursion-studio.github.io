@@ -434,6 +434,7 @@ class AppClass {
     console.log('renderPage called');
     this.renderNavbar();
     this.renderHero();
+    this.renderDigestUpdate();
     this.renderSections();
     this.renderContact();
     this.renderFooter();
@@ -444,11 +445,18 @@ class AppClass {
   setupAnimations() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('es-overview-card, es-courses-card, es-product-card, es-vision, es-contact').forEach(el => {
+      document.querySelectorAll('es-overview-card, es-courses-card, es-product-card, es-vision, es-contact, es-latest-digests-card').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
       return;
+    }
+
+    const latestDigestCard = document.querySelector('es-latest-digests-card');
+    if (latestDigestCard) {
+      setTimeout(() => {
+        latestDigestCard.classList.add('animate-visible');
+      }, 100);
     }
 
     document.querySelectorAll('es-overview-card, es-courses-card, es-product-card').forEach((card, index) => {
@@ -491,6 +499,31 @@ class AppClass {
     }
   }
 
+  renderDigestUpdate() {
+    const digestUpdateSection = document.getElementById('digest-update');
+    if (!digestUpdateSection) return;
+
+    const digestsSections = I18n.getDigests('sections') || [];
+    const allItems = digestsSections.flatMap(section => section.items || []);
+    
+    if (allItems.length === 0) {
+      digestUpdateSection.style.display = 'none';
+      return;
+    }
+
+    const latestItem = allItems[0];
+    const card = document.getElementById('latest-digest-card');
+    if (card) {
+      card.setData(latestItem);
+    }
+
+    const titleEl = document.getElementById('digest-update-title');
+    if (titleEl) {
+      const lang = I18n.currentLang || 'zh';
+      titleEl.textContent = lang === 'zh' ? '文摘更新！' : 'Digest Update!';
+    }
+  }
+
   renderSections() {
     const sectionsContainer = document.querySelector('.sections-container');
     if (!sectionsContainer) return;
@@ -507,7 +540,7 @@ class AppClass {
       
       if (digestsSections.length > 0 && this.pageName !== 'index') {
         const digestsSectionEl = document.createElement('section');
-        digestsSectionEl.className = 'container index-section';
+        digestsSectionEl.className = 'index-section';
         digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
         sectionsContainer.appendChild(digestsSectionEl);
       }
@@ -522,7 +555,7 @@ class AppClass {
   renderSectionsList(container, sections) {
     sections.forEach(section => {
       const sectionEl = document.createElement('section');
-      sectionEl.className = 'container index-section';
+      sectionEl.className = 'index-section';
 
       let sectionHtml = '';
       if (section.title) {
@@ -581,7 +614,7 @@ class AppClass {
 
   renderContinueCard(container, continueCardData) {
     const wrapper = document.createElement('div');
-    wrapper.className = 'continue-card-wrapper container';
+    wrapper.className = 'continue-card-wrapper';
     wrapper.innerHTML = `<es-courses-card id="page-continue-card"></es-courses-card>`;
     container.appendChild(wrapper);
 
