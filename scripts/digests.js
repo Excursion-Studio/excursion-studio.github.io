@@ -338,6 +338,11 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
       });
 
       this.bindEvents();
+
+      // 触发动画
+      if (window.App && typeof window.App.animateLatestDigestCards === 'function') {
+        window.App.animateLatestDigestCards();
+      }
     }
 
     bindEvents() {

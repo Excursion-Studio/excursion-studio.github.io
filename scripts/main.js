@@ -452,12 +452,7 @@ class AppClass {
       return;
     }
 
-    const latestDigestCard = document.querySelector('es-latest-digests-card');
-    if (latestDigestCard) {
-      setTimeout(() => {
-        latestDigestCard.classList.add('animate-visible');
-      }, 100);
-    }
+    this.animateLatestDigestCards();
 
     document.querySelectorAll('es-overview-card, es-courses-card, es-product-card').forEach((card, index) => {
       const delay = index * 100;
@@ -480,6 +475,14 @@ class AppClass {
         contactEl.classList.add('animate-visible');
       }, 200);
     }
+  }
+
+  animateLatestDigestCards() {
+    document.querySelectorAll('es-latest-digests-card').forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('animate-visible');
+      }, 100 + index * 100);
+    });
   }
 
   renderNavbar() {
@@ -537,13 +540,14 @@ class AppClass {
       const nonDigestsSections = sections.filter(section => section.type !== 'digests');
       
       this.renderSectionsList(sectionsContainer, nonDigestsSections);
-      
-      if (digestsSections.length > 0 && this.pageName !== 'index') {
-        const digestsSectionEl = document.createElement('section');
-        digestsSectionEl.className = 'index-section';
-        digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
-        sectionsContainer.appendChild(digestsSectionEl);
-      }
+    }
+    
+    // 在非 index 页面渲染 digests section
+    if (digestsSections.length > 0 && this.pageName !== 'index') {
+      const digestsSectionEl = document.createElement('section');
+      digestsSectionEl.className = 'index-section';
+      digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
+      sectionsContainer.appendChild(digestsSectionEl);
     }
 
     const continueCard = I18n.getPage('continueCard');
