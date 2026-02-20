@@ -18,8 +18,8 @@
         {
           "category": "paper-guide",
           "categoryName": "论文导读",
-          "number": 2,
-          "title": "论文导读 2 - 示例论文：如何使用 Paper Guide",
+          "number": 1,
+          "title": "论文导读 1 - 示例论文：如何使用 Paper Guide",
           "description": "这是一篇示例论文。\n展示了 Paper Guide 支持的 Markdown 格式和功能。",
           "date": "2024-01-01",
           "digestPubTime": "2026-02-17",
@@ -52,34 +52,6 @@
           "venue": "Paper Express Documentation",
           "pdfUrl": "#",
           "sourcePath": "paper-express/papers/example-paper/example-paper.md"
-        },
-        {
-          "category": "paper-guide",
-          "categoryName": "论文导读",
-          "number": 1,
-          "title": "论文导读 1 - Attention Is All You Need",
-          "description": "这篇论文提出了具有里程碑意义的 Transformer 架构，彻底改变了 NLP 领域。\n核心创新是自注意力机制（Self-Attention），使模型能够并行处理序列数据。",
-          "date": "2017-06-12",
-          "digestPubTime": "2026-02-14",
-          "authors": [
-            "Ashish Vaswani",
-            "Noam Shazeer",
-            "Niki Parmar",
-            "Jakob Uszkoreit",
-            "Llion Jones",
-            "Aidan N. Gomez",
-            "Łukasz Kaiser",
-            "Illia Polosukhin"
-          ],
-          "tags": [
-            "Transformer",
-            "NLP",
-            "Deep Learning",
-            "Attention Mechanism"
-          ],
-          "venue": "NeurIPS 2017",
-          "pdfUrl": "https://arxiv.org/abs/1706.03762",
-          "sourcePath": "paper-guide/papers/attention-is-all-you-need/attention-is-all-you-need.md"
         }
       ]
     }
