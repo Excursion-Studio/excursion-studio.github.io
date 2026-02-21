@@ -1,8 +1,8 @@
-name: Sync Digests Content
+name: Sync Courses Content
 
 on:
   repository_dispatch:
-    types: [digests-updated]
+    types: [courses-updated]
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
@@ -19,34 +19,35 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
         
-      - name: Checkout ES-digests repo
+      - name: Checkout ES-courses repo
         uses: actions/checkout@v4
         with:
-          repository: Excursion-Studio/ES-digests
+          repository: Excursion-Studio/ES-courses
           token: ${{ secrets.PAT_TOKEN }}
-          path: es-digests
+          path: es-courses
           
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '20'
+          python-version: '3.11'
           
-      - name: Generate digests JSON
-        run: |
-          node scripts/digests.js
+      - name: Install dependencies
+        run: pip install pyyaml
+          
+      - name: Sync courses JSON
+        run: python es-courses/.github/scripts/sync_courses.py --courses-dir es-courses --output-dir .
           
       - name: Check for changes
         id: check-changes
-        run: |
-          git diff --exit-code data/zh/digests.json data/en/digests.json || echo "changed=true" >> $GITHUB_OUTPUT
+        run: git diff --exit-code data/zh/courses.json data/en/courses.json || echo "changed=true" >> $GITHUB_OUTPUT
           
       - name: Commit and push changes
         if: steps.check-changes.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/zh/digests.json data/en/digests.json
-          git commit -m "chore: update digests content from ES-digests"
+          git add data/zh/courses.json data/en/courses.json
+          git commit -m "chore: update courses content from ES-courses"
           git push
 
       - name: Trigger build
@@ -57,4 +58,4 @@ jobs:
           repository: ${{ github.repository }}
           event-type: trigger-build
           client-payload: |
-            {"source": "digests-sync", "commit_sha": "${{ github.sha }}"}
+            {"source": "courses-sync", "commit_sha": "${{ github.sha }}"}
