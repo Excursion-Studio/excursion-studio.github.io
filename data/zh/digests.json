@@ -14,7 +14,46 @@
     {
       "type": "digests",
       "id": "all-digests",
-      "items": []
+      "items": [
+        {
+          "category": "paper-guide",
+          "categoryName": "论文导读",
+          "number": 1,
+          "title": "论文导读 1 - 示例论文：如何使用 Paper Guide",
+          "description": "这是一篇示例论文。\n展示了 Paper Guide 支持的 Markdown 格式和功能。",
+          "date": "2024-01-01",
+          "digestPubTime": "2026-02-17",
+          "authors": [
+            "Paper Guide Team"
+          ],
+          "tags": [
+            "Tutorial",
+            "Guide"
+          ],
+          "venue": "Paper Guide Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-guide/papers/example-paper/example-paper.md"
+        },
+        {
+          "category": "paper-express",
+          "categoryName": "论文速递",
+          "number": 1,
+          "title": "论文速递 1 - 示例论文：如何使用 Paper Express",
+          "description": "这是一篇示例论文。\n展示了 Paper Express 支持的 Markdown 格式和功能。",
+          "date": "2024-01-01",
+          "digestPubTime": "2026-02-17",
+          "authors": [
+            "Paper Express Team"
+          ],
+          "tags": [
+            "Tutorial",
+            "Express"
+          ],
+          "venue": "Paper Express Documentation",
+          "pdfUrl": "#",
+          "sourcePath": "paper-express/papers/example-paper/example-paper.md"
+        }
+      ]
     }
   ]
 }
