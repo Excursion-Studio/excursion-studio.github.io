@@ -4,8 +4,102 @@
     "title": "远行工作室-教程系列",
     "description": "本系列教程专为机器人专业学生设计，目前涉及的领域为<strong>概率机器人学</strong>，分别包含凸优化、微分几何、随机过程等教程。此外还有 ROS2 的基础与进阶教程可供实践使用。未来将继续添加其他相关领域的教程。"
   },
-  "sections": [],
+  "sections": [
+    {
+      "type": "courses",
+      "title": "概率机器人基础教程系列",
+      "items": [
+        {
+          "id": "convex-optimization",
+          "title": "凸优化",
+          "text": "从凸集凸函数的基本概念出发，深入讲解凸优化理论、多目标优化和流形优化，重点介绍其在机器人路径规划、控制和决策中的应用。",
+          "topics": [
+            "凸集与凸函数",
+            "凸优化问题与对偶理论",
+            "多目标优化与帕累托最优性",
+            "流形优化算法",
+            "机器人应用实例"
+          ],
+          "tags": [
+            "凸优化",
+            "多目标优化",
+            "流形优化"
+          ],
+          "link": "https://excursion-studio.github.io/ES-courses/convex-optimization/",
+          "available": true
+        },
+        {
+          "id": "differential-geometry",
+          "title": "微分几何",
+          "text": "从拓扑基础到微分流形，系统学习微分几何理论，深入理解李群李代数及其在机器人运动学和动力学建模中的应用。",
+          "topics": [
+            "拓扑空间与拓扑流形",
+            "微分流形与微积分",
+            "李群与李代数",
+            "黎曼几何与曲率理论",
+            "机器人运动学建模"
+          ],
+          "tags": [
+            "拓扑学",
+            "微分流形",
+            "李群李代数"
+          ],
+          "link": "https://excursion-studio.github.io/ES-courses/differential-geometry/",
+          "available": true
+        },
+        {
+          "id": "stochastic-process",
+          "title": "随机过程",
+          "text": "从概率论基础到随机过程理论，掌握马尔可夫过程、滤波算法，学习如何在不确定性环境下进行机器人状态估计和决策。",
+          "topics": [
+            "概率论基础",
+            "马尔可夫过程与平稳过程",
+            "泊松过程与布朗运动",
+            "卡尔曼滤波与粒子滤波",
+            "马尔可夫决策过程"
+          ],
+          "tags": [
+            "概率论",
+            "马尔可夫过程",
+            "卡尔曼滤波"
+          ],
+          "link": "https://excursion-studio.github.io/ES-courses/stochastic-process/",
+          "available": true
+        }
+      ]
+    },
+    {
+      "type": "courses",
+      "title": "机器人实践工具系列",
+      "items": [
+        {
+          "id": "ros2-tutorial",
+          "title": "ROS2 基础与进阶教程",
+          "text": "为机器人专业学生和开发者提供完整的 ROS2 开发技能，从基础概念到高级应用，涵盖单机开发、多机器人协作、空地协同和空中机械臂等前沿技术。",
+          "topics": [
+            "ROS2 核心概念：节点、话题、服务、参数、动作",
+            "机器人平台开发：机械臂、无人车、无人机",
+            "仿真与可视化：Gazebo、RViz2",
+            "高级应用：多机器人协作、空地协同、空中机械臂"
+          ],
+          "tags": [
+            "ROS2",
+            "MoveIt2",
+            "Nav2",
+            "PX4"
+          ],
+          "link": "https://excursion-studio.github.io/ES-courses/ROS2/",
+          "available": true
+        }
+      ]
+    }
+  ],
   "continueCard": {
-    "continueText": "🚀 更多教程正在规划中，敬请期待"
+    "continueText": "🚀 更多教程正在规划中，敬请期待",
+    "futureTags": [
+      "强化学习",
+      "机器人控制",
+      "..."
+    ]
   }
 }
