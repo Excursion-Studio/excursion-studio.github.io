@@ -209,13 +209,15 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     
     // 构建最终的 items 列表
     const finalZhItems = allZhItems.map(item => {
-      const editorNote = Array.isArray(item.editor_note) ? item.editor_note : [];
+      const editorNote = Array.isArray(item.editor_note) && item.editor_note.length > 0 
+        ? item.editor_note[0] 
+        : '';
       return {
         category: item.category,
         categoryName: item.categoryName,
         number: item.number,
         title: `${item.categoryName} ${item.number} - ${item.title}`,
-        description: editorNote.join('\n'),
+        description: editorNote,
         date: item.date,
         digestPubTime: item.digestPubTime,
         authors: Array.isArray(item.authors) ? item.authors : [],
@@ -227,13 +229,15 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     });
     
     const finalEnItems = allEnItems.map(item => {
-      const editorNote = Array.isArray(item.editor_note) ? item.editor_note : [];
+      const editorNote = Array.isArray(item.editor_note) && item.editor_note.length > 0 
+        ? item.editor_note[0] 
+        : '';
       return {
         category: item.category,
         categoryName: item.categoryName,
         number: item.number,
         title: `${item.categoryName} ${item.number} - ${item.title}`,
-        description: editorNote.join('\n'),
+        description: editorNote,
         date: item.date,
         digestPubTime: item.digestPubTime,
         authors: Array.isArray(item.authors) ? item.authors : [],
