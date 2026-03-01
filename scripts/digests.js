@@ -12,6 +12,18 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
       title: "远行工作室 - 文摘系列",
       description: "敬请期待远行工作室即将推出的<strong>《论文导读》</strong>和<strong>《论文速递》</strong>系列栏目！"
     },
+    teaser: {
+      title: "精彩预告",
+      description: "我们正在准备更多精彩内容，包括更多论文导读和速递，敬请期待！",
+      expectedLaunch: "2026 年 3 月",
+      features: [
+        "更多高质量论文解读",
+        "前沿研究快速上手",
+        "专家深度点评"
+      ],
+      updatedLabel: "更新于",
+      enabled: true
+    },
     ui: {
       showMore: "展开更多",
       showLess: "收起",
@@ -25,6 +37,18 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     hero: {
       title: "Excursion Studio - Digests",
       description: "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
+    },
+    teaser: {
+      title: "Coming Soon",
+      description: "We are preparing more exciting content, including more paper guides and express, stay tuned!",
+      expectedLaunch: "March 2026",
+      features: [
+        "More high-quality paper interpretations",
+        "Quick access to cutting-edge research",
+        "Expert in-depth commentary"
+      ],
+      updatedLabel: "Updated on",
+      enabled: true
     },
     ui: {
       showMore: "Show More",
@@ -249,8 +273,8 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     });
     
     // 创建单一的 sections
-    zhData.sections = [{ type: 'digests', id: 'all-digests', items: finalZhItems }];
-    enData.sections = [{ type: 'digests', id: 'all-digests', items: finalEnItems }];
+    zhData.sections = [{ type: 'digests', id: 'all-digests', title: '全部文摘', items: finalZhItems }];
+    enData.sections = [{ type: 'digests', id: 'all-digests', title: 'All Digests', items: finalEnItems }];
     
     fs.writeFileSync(path.join(__dirname, '..', 'data', 'zh', 'digests.json'), JSON.stringify(zhData, null, 2));
     fs.writeFileSync(path.join(__dirname, '..', 'data', 'en', 'digests.json'), JSON.stringify(enData, null, 2));
@@ -291,6 +315,7 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
 
       // 获取所有 items
       const allItems = digestsSections.flatMap(section => section.items || []);
+      const sectionTitle = digestsSections[0].title || '';
 
       if (allItems.length === 0) {
         this.innerHTML = `<p class="digests-empty">暂无内容</p>`;
@@ -303,6 +328,7 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
 
       let html = `
         <div class="digests-section">
+          ${sectionTitle ? `<h2 class="section-title">${sectionTitle}</h2>` : ''}
           <div class="digests-list">
       `;
 
@@ -464,19 +490,78 @@ if (typeof process !== 'undefined' && process.versions != null && process.versio
     }
   }
 
+  // 预告版块组件
+  class ESTeaserSection extends HTMLElement {
+    connectedCallback() {
+      this.render();
+    }
+
+    render() {
+      const teaser = I18n.getDigests('teaser');
+      
+      if (!teaser || !teaser.enabled) {
+        this.innerHTML = '';
+        return;
+      }
+
+      const { title, description, expectedLaunch, features, updatedLabel } = teaser;
+
+      let html = `
+        <div class="teaser-section">
+          <div class="teaser-card">
+            <div class="teaser-header">
+              <h2 class="teaser-title">${title || ''}</h2>
+            </div>
+            <p class="teaser-description">${description || ''}</p>
+            ${features && features.length > 0 ? `
+              <ul class="teaser-features-list">
+                ${features.map(feature => `<li>- ${feature}</li>`).join('')}
+              </ul>
+            ` : ''}
+            <div class="teaser-footer">
+              <span class="teaser-launch-time">${expectedLaunch ? `${updatedLabel || '更新于'} ${expectedLaunch}` : ''}</span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      this.innerHTML = html;
+    }
+  }
+
   // 定义 Web Component
+  customElements.define('es-teaser-section', ESTeaserSection);
   customElements.define('es-digests-section', ESDigestsSection);
   customElements.define('es-latest-digests-card', ESLatestDigestsCard);
-  console.log('es-digests-section and es-latest-digests-card defined');
+  console.log('es-teaser-section, es-digests-section and es-latest-digests-card defined');
+  
+  // 导出重新渲染函数供外部调用
+  window.renderDigestsComponents = function() {
+    setTimeout(() => {
+      const teaserSections = document.querySelectorAll('es-teaser-section');
+      teaserSections.forEach(section => {
+        section.render();
+      });
+      
+      const digestSections = document.querySelectorAll('es-digests-section');
+      digestSections.forEach(section => {
+        section.render();
+      });
+    }, 50);
+  };
   
   // 监听 I18n 初始化完成事件
   if (window.I18n) {
-    // 如果 I18n 已经存在，重新渲染所有 ESDigestsSection 组件
-    setTimeout(() => {
-      const sections = document.querySelectorAll('es-digests-section');
-      sections.forEach(section => {
-        section.render();
-      });
-    }, 100);
+    window.renderDigestsComponents();
+  }
+  
+  // 监听 App 初始化完成事件
+  if (window.App && window.App.init) {
+    const originalInit = window.App.init;
+    window.App.init = async function(...args) {
+      const result = await originalInit.apply(this, args);
+      window.renderDigestsComponents();
+      return result;
+    };
   }
 }
