@@ -34,7 +34,7 @@
           "categoryName": "Paper Guide",
           "number": 1,
           "title": "Paper Guide 1 - Prespecified-Performance Kinematic Tracking Control for Aerial Manipulation",
-          "description": "这是我第一次写新手向的论文导读文摘，所以难免会有一些对刚开始看论文的新手不太友好的地方。若有不周或谬误之处，可以向工作室提出意见。\n这次主讲的是来自知名实验室西湖大学Windy Lab的关于空中机械臂跟踪定位控制的文章。在运动学的层面设计控制律，实现了误差极小的跟踪定位精度。可以说，Windy Lab发的那篇Nature文章，也有它的一部分奠基。\n个人选取的理由主要是它更贴近于已经学完控制理论、机器人学的学生的基础。此外，不像 TRO、TASE、TMECH 等长文期刊一般，工作量巨大，相比较而言 RAL 这类型的短文更利于讲解。希望可以借此帮助各位想要或者已经进入课题组的同学叩开研读论文的大门。",
+          "description": "这是我第一次写新手向的论文导读文摘，所以难免会有一些对刚开始看论文的新手不太友好的地方。若有不周或谬误之处，可以向工作室提出意见。",
           "date": "2025-11-11",
           "digestPubTime": "2026-02-24",
           "authors": [
