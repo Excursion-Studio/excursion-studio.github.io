@@ -2,17 +2,16 @@
   "pageTitle": "文摘 - 远行工作室 测试版",
   "hero": {
     "title": "远行工作室 - 文摘系列",
-    "description": "<strong>《论文导读》</strong>和<strong>《论文速递》</strong>系列栏目，旨在为读者提供高质量的论文解读和最新研究动态，以期为各位同仁和科研新手创造带来帮助。"
+    "description": "敬请期待远行工作室即将推出的<strong>《论文导读》</strong>和<strong>《论文速递》</strong>系列栏目！"
   },
   "teaser": {
-    "title": "文摘预告",
-    "description": "未来将会更新一些空中具身相关的论文文摘，有兴趣的读者可以持续关注哦！",
-    "expectedLaunch": "2026-03-01",
+    "title": "精彩预告",
+    "description": "我们正在准备更多精彩内容，包括更多论文导读和速递，敬请期待！",
+    "expectedLaunch": "2026 年 3 月",
     "features": [
-      "南科大周博宇团队 (Star Lab) 的 <strong>ApexNav</strong>",
-      "西湖大学赵世钰团队 (WINDY Lab) 的 <strong>Bearing-box 估计器</strong>",
-      "南科大周博宇团队 (Star Lab) 的 <strong>AirHunt</strong>",
-      "清华大学团队的 <strong>ANWM</strong>"
+      "更多高质量论文解读",
+      "前沿研究快速上手",
+      "专家深度点评"
     ],
     "updatedLabel": "更新于",
     "enabled": true
