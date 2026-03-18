@@ -2,17 +2,16 @@
   "pageTitle": "Digests - Excursion Studio BETA",
   "hero": {
     "title": "Excursion Studio - Digests",
-    "description": "<strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns, aiming to provide high-quality paper interpretations and the latest research dynamics, with the hope of helping both colleagues and beginners."
+    "description": "Stay tuned for Excursion Studio's upcoming <strong>Paper Guide</strong> and <strong>Paper Express</strong> series columns!"
   },
   "teaser": {
-    "title": "Digests Forecast",
-    "description": "In the future, we will update some paper digests related to aerial embodied systems, readers who are interested in this field can stay tuned!",
-    "expectedLaunch": "2026-03-01",
+    "title": "Coming Soon",
+    "description": "We are preparing more exciting content, including more paper guides and express, stay tuned!",
+    "expectedLaunch": "March 2026",
     "features": [
-      "<strong>ApexNav</strong> by Zhou's group (Star Lab) in South University of Science and Technology",
-      "<strong>Bearing-box estimator</strong> by Zhao's group (WINDY Lab) in Westlake University",
-      "<strong>AirHunt</strong> by Zhou's group (Star Lab) in South University of Science and Technology",
-      "<strong>ANWM</strong> by Tsinghua University"
+      "More high-quality paper interpretations",
+      "Quick access to cutting-edge research",
+      "Expert in-depth commentary"
     ],
     "updatedLabel": "Updated on",
     "enabled": true
