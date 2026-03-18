@@ -23,7 +23,7 @@
         {
           "id": "courses",
           "title": "Courses",
-          "text": "Currently, studio's courses cover the field of <z>Probabilistic Robotics</z>, including convex optimization, differential geometry, random process, etc. Besides, there are also <z>ROS2 basic and advanced tutorials</z> for practice."
+          "text": "Currently, studio's courses is in design stage. Stay tuned!"
         },
         {
           "id": "equipment",
