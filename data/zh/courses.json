@@ -4,46 +4,13 @@
     "title": "远行工作室-教程系列",
     "description": "本系列教程专为机器人专业学生设计，目前还在课程设计阶段，敬请期待！"
   },
-  "sections": [
-    {
-      "type": "courses",
-      "title": "概率机器人基础教程系列",
-      "items": [
-        {
-          "id": "convex-optimization",
-          "title": "凸优化",
-          "available": false
-        },
-        {
-          "id": "differential-geometry",
-          "title": "微分几何",
-          "available": false
-        },
-        {
-          "id": "stochastic-process",
-          "title": "随机过程",
-          "available": false
-        }
-      ]
-    },
-    {
-      "type": "courses",
-      "title": "机器人实践工具系列",
-      "items": [
-        {
-          "id": "ros2-tutorial",
-          "title": "ROS2 基础与进阶教程",
-          "available": false
-        }
-      ]
-    }
-  ],
+  "sections": [],
   "continueCard": {
     "continueText": "🚀 更多教程正在规划中，敬请期待",
     "futureTags": [
-      "SLAM",
-      "强化学习",
-      "机器人控制",
+      "机器人数学基础",
+      "机器人核心技术",
+      "机器人实用工具",
       "..."
     ]
   }

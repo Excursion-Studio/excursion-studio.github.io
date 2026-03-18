@@ -4,46 +4,13 @@
     "title": "Excursion Studio - Courses",
     "description": "This series of tutorials is designed for robotics students. Currently it is in design stage. Stay tuned!"
   },
-  "sections": [
-    {
-      "type": "courses",
-      "title": "Foundation of Probabilistic Robotics Tutorial Series",
-      "items": [
-        {
-          "id": "convex-optimization",
-          "title": "Convex Optimization",
-          "available": false
-        },
-        {
-          "id": "differential-geometry",
-          "title": "Differential Geometry",
-          "available": false
-        },
-        {
-          "id": "stochastic-process",
-          "title": "Stochastic Process",
-          "available": false
-        }
-      ]
-    },
-    {
-      "type": "courses",
-      "title": "Robot Practical Tools Series",
-      "items": [
-        {
-          "id": "ros2-tutorial",
-          "title": "ROS2 Basic and Advanced Tutorials",
-          "available": false
-        }
-      ]
-    }
-  ],
+  "sections": [],
   "continueCard": {
     "continueText": "🚀 More courses are being planned, stay tuned",
     "futureTags": [
-      "SLAM",
-      "Reinforcement Learning",
-      "Robot Control",
+      "Mathematics Fundamentals for Robotics",
+      "Core Technologies for Robotics",
+      "Practical Tools for Robotics",
       "..."
     ]
   }
