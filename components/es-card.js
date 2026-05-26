@@ -1,4 +1,4 @@
-class ESOverviewCard extends HTMLElement {
+class ESCard extends HTMLElement {
   constructor() {
     super();
     this.data = null;
@@ -7,137 +7,33 @@ class ESOverviewCard extends HTMLElement {
   setData(data) {
     this.data = data;
     this.render();
+    this.bindEvents();
   }
 
   render() {
     if (!this.data) return;
+    this.innerHTML = this.generateContent();
+  }
 
-    const { id, title, text } = this.data;
+  generateContent() {
+    return '';
+  }
 
-    let html = '';
+  bindEvents() {
+  }
 
-    if (title) {
-      html += `<h3 class="card-title">${Utils.parseZTags(title)}</h3>`;
-    }
+  parseZTags(text) {
+    return Utils.parseZTags(text);
+  }
 
-    if (text) {
-      html += `<p class="card-text">${Utils.parseZTags(text)}</p>`;
-    }
-
-    this.innerHTML = html;
+  getUIText(key) {
+    return I18n.getCommon(`ui.${key}`) || key;
   }
 }
 
-customElements.define('es-overview-card', ESOverviewCard);
-
-class ESCoursesCard extends HTMLElement {
-  constructor() {
-    super();
-    this.data = null;
-  }
-
-  setData(data) {
-    this.data = data;
-    this.render();
-  }
-
-  render() {
-    if (!this.data) return;
-
+class ESProductCard extends ESCard {
+  generateContent() {
     const {
-      id,
-      title,
-      text,
-      topics,
-      tags,
-      link,
-      available,
-      continueText,
-      futureTags
-    } = this.data;
-
-    if (continueText) {
-      this.renderContinueCard(continueText, futureTags);
-      return;
-    }
-
-    let html = '';
-
-    if (title) {
-      html += `<h3 class="card-title">${Utils.parseZTags(title)}</h3>`;
-    }
-
-    if (text) {
-      html += `<p class="card-text">${Utils.parseZTags(text)}</p>`;
-    }
-
-    if (topics && topics.length > 0) {
-      html += `
-        <ul class="card-topics">
-          ${topics.map(topic => `<li>${topic}</li>`).join('')}
-        </ul>
-      `;
-    }
-
-    if (tags && tags.length > 0) {
-      html += `
-        <div class="card-tags">
-          ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-      `;
-    }
-
-    if (link) {
-      const isAvailable = available !== false;
-      const linkClass = isAvailable ? 'card-link' : 'card-link disabled';
-      const linkText = isAvailable
-        ? I18n.getCommon('ui.buttonAccess')
-        : I18n.getCommon('ui.buttonComing');
-
-      if (isAvailable) {
-        html += `<a href="${link}" class="${linkClass}" target="_blank">${linkText}</a>`;
-      } else {
-        html += `<span class="${linkClass}">${linkText}</span>`;
-      }
-    }
-
-    this.innerHTML = html;
-  }
-
-  renderContinueCard(continueText, futureTags) {
-    let html = `<p class="continue-text">${continueText}</p>`;
-
-    if (futureTags && futureTags.length > 0) {
-      html += `
-        <div class="future-tags">
-          ${futureTags.map(tag => `<span class="future-tag">${tag}</span>`).join('')}
-        </div>
-      `;
-    }
-
-    this.classList.add('continue-card');
-    this.innerHTML = html;
-  }
-}
-
-customElements.define('es-courses-card', ESCoursesCard);
-
-class ESProductCard extends HTMLElement {
-  constructor() {
-    super();
-    this.data = null;
-  }
-
-  setData(data) {
-    this.data = data;
-    this.render();
-  }
-
-  render() {
-    if (!this.data) return;
-
-    const {
-      id,
       title,
       text,
       features,
@@ -153,10 +49,10 @@ class ESProductCard extends HTMLElement {
         <div class="product-preview" data-preview="${link}">
           <div class="preview-placeholder">
             <div class="placeholder-icon">🌐</div>
-            <div class="placeholder-text">${I18n.getCommon('ui.clickToPreview') || '点击预览'}</div>
+            <div class="placeholder-text">${this.getUIText('clickToPreview')}</div>
           </div>
           <div class="preview-overlay">
-            <span class="preview-hint">${I18n.getCommon('ui.viewFullPage') || '查看完整页面'}</span>
+            <span class="preview-hint">${this.getUIText('viewFullPage')}</span>
           </div>
         </div>
       `;
@@ -165,11 +61,11 @@ class ESProductCard extends HTMLElement {
     html += `<div class="product-info">`;
 
     if (title) {
-      html += `<h3 class="product-title">${Utils.parseZTags(title)}</h3>`;
+      html += `<h3 class="product-title">${this.parseZTags(title)}</h3>`;
     }
 
     if (text) {
-      html += `<p class="product-text">${Utils.parseZTags(text)}</p>`;
+      html += `<p class="product-text">${this.parseZTags(text)}</p>`;
     }
 
     if (techStack && techStack.length > 0) {
@@ -192,8 +88,8 @@ class ESProductCard extends HTMLElement {
       const isAvailable = available !== false;
       const linkClass = isAvailable ? 'product-link' : 'product-link disabled';
       const linkText = isAvailable
-        ? I18n.getCommon('ui.buttonAccess')
-        : I18n.getCommon('ui.buttonComing');
+        ? this.getUIText('buttonAccess')
+        : this.getUIText('buttonComing');
 
       if (isAvailable) {
         html += `<a href="${link}" class="${linkClass}" target="_blank">${linkText}</a>`;
@@ -204,9 +100,7 @@ class ESProductCard extends HTMLElement {
 
     html += `</div>`;
 
-    this.innerHTML = html;
-
-    this.bindEvents();
+    return html;
   }
 
   bindEvents() {
@@ -231,7 +125,7 @@ class ESProductCard extends HTMLElement {
           <button class="lightbox-close" aria-label="Close">&times;</button>
           <div class="lightbox-loading">
             <div class="preview-spinner"></div>
-            <span>${I18n.getCommon('ui.loading') || '加载中...'}</span>
+            <span>${this.getUIText('loading')}</span>
           </div>
           <iframe class="lightbox-iframe" src="" title="Preview" frameborder="0"></iframe>
         </div>
@@ -280,93 +174,4 @@ class ESProductCard extends HTMLElement {
 
 customElements.define('es-product-card', ESProductCard);
 
-class ESDigestsCard extends HTMLElement {
-  constructor() {
-    super();
-    this.data = null;
-  }
-
-  setData(data) {
-    this.data = data;
-    this.render();
-  }
-
-  render() {
-    if (!this.data) return;
-
-    const {
-      number,
-      title,
-      description,
-      date,
-      digestPubTime,
-      authors,
-      tags,
-      venue,
-      pdfUrl,
-      sourcePath,
-      category
-    } = this.data;
-
-    // 生成正确的地址
-    let categoryPath = '';
-    if (category === 'paper-guide') {
-      categoryPath = 'paper-guide';
-    } else if (category === 'paper-express') {
-      categoryPath = 'paper-express';
-    }
-    
-    const paperName = sourcePath.split('/').slice(-2)[0];
-    const url = `https://excursion-studio.github.io/ES-digests/${categoryPath}/index.html?paper=${paperName}`;
-
-    let html = `
-      <div class="digest-card">
-        <div class="digest-number">#${number}</div>
-        <div class="digest-content">
-    `;
-
-    if (title) {
-      html += `<h3 class="digest-title">${Utils.parseZTags(title)}</h3>`;
-    }
-
-    if (description) {
-      html += `<p class="digest-description">${description.replace(/\n/g, '<br>')}</p>`;
-    }
-
-    html += `<div class="digest-meta">`;
-    if (date) {
-      html += `<span class="digest-date">${date}</span>`;
-    }
-    if (venue) {
-      html += `<span class="digest-venue">${venue}</span>`;
-    }
-    html += `</div>`;
-
-    if (tags && tags.length > 0) {
-      html += `
-        <div class="digest-tags">
-          ${tags.map(tag => `<span class="digest-tag">${tag}</span>`).join('')}
-        </div>
-      `;
-    }
-
-    html += `<div class="digest-footer">`;
-    html += `<a href="${url}" class="digest-link" target="_blank">${I18n.getDigests('ui.readMore') || '阅读全文'}</a>`;
-    if (digestPubTime) {
-      const publishedOn = I18n.getDigests('ui.publishedOn') || '发布于';
-      html += `<span class="digest-pub-time">${publishedOn} ${digestPubTime}</span>`;
-    }
-    html += `</div>`;
-
-    html += `
-        </div>
-      </div>
-    `;
-
-    this.innerHTML = html;
-  }
-}
-
-customElements.define('es-digests-card', ESDigestsCard);
-
-console.log('es-card components loaded: ESOverviewCard, ESCoursesCard, ESProductCard, ESDigestsCard');
+console.log('es-card components loaded: ESCard, ESProductCard');

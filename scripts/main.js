@@ -83,20 +83,16 @@ class I18nClass {
   async loadLanguageData(pageName) {
     const commonPath = `data/${this.currentLang}/common.json`;
     const pagePath = `data/${this.currentLang}/${pageName}.json`;
-    
-    const digestsPath = `data/${this.currentLang}/digests.json`;
 
     console.log('Loading data from:', commonPath, pagePath);
 
-    const [commonData, pageData, digestsData] = await Promise.all([
+    const [commonData, pageData] = await Promise.all([
       Utils.fetchJSON(commonPath),
-      Utils.fetchJSON(pagePath),
-      Utils.fetchJSON(digestsPath)
+      Utils.fetchJSON(pagePath)
     ]);
 
     this.data.common = commonData || {};
     this.data.page = pageData || {};
-    this.data.digests = digestsData || {};
 
     console.log('Data loaded:', this.data);
   }
@@ -122,10 +118,6 @@ class I18nClass {
 
   getPage(path) {
     return this.get(`page.${path}`);
-  }
-
-  getDigests(path) {
-    return this.get(`digests.${path}`);
   }
 
   switchLanguage() {
@@ -321,22 +313,20 @@ class ESContact extends HTMLElement {
   render() {
     if (!this.data) return;
 
-    const { title, description, social, wechat } = this.data;
+    const { title, description, social } = this.data;
 
     const socialIcons = {
       email: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M853.333333 341.333333 512 554.666667 170.666667 341.333333 170.666667 256 512 469.333333 853.333333 256M853.333333 170.666667 170.666667 170.666667C123.306667 170.666667 85.333333 208.64 85.333333 256L85.333333 768C85.333333 814.933333 123.733333 853.333333 170.666667 853.333333L853.333333 853.333333C900.266667 853.333333 938.666667 814.933333 938.666667 768L938.666667 256C938.666667 208.64 900.266667 170.666667 853.333333 170.666667Z" fill="currentColor"></path></svg>',
       github: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M512 85.333333C276.266667 85.333333 85.333333 276.266667 85.333333 512a426.410667 426.410667 0 0 0 291.754667 404.821333c21.333333 3.712 29.312-9.088 29.312-20.309333 0-10.112-0.554667-43.690667-0.554667-79.445333-107.178667 19.754667-134.912-26.112-143.445333-50.133334-4.821333-12.288-25.6-50.133333-43.733333-60.288-14.933333-7.978667-36.266667-27.733333-0.554667-28.245333 33.621333-0.554667 57.6 30.933333 65.621333 43.733333 38.4 64.512 99.754667 46.378667 124.245334 35.2 3.754667-27.733333 14.933333-46.378667 27.221333-57.045333-94.933333-10.666667-194.133333-47.488-194.133333-210.688 0-46.421333 16.512-84.778667 43.733333-114.688-4.266667-10.666667-19.2-54.4 4.266667-113.066667 0 0 35.712-11.178667 117.333333 43.776a395.946667 395.946667 0 0 1 106.666667-14.421333c36.266667 0 72.533333 4.778667 106.666666 14.378667 81.578667-55.466667 117.333333-43.690667 117.333334-43.690667 23.466667 58.666667 8.533333 102.4 4.266666 113.066667 27.178667 29.866667 43.733333 67.712 43.733334 114.645333 0 163.754667-99.712 200.021333-194.645334 210.688 15.445333 13.312 28.8 38.912 28.8 78.933333 0 57.045333-0.554667 102.912-0.554666 117.333334 0 11.178667 8.021333 24.490667 29.354666 20.224A427.349333 427.349333 0 0 0 938.666667 512c0-235.733333-190.933333-426.666667-426.666667-426.666667z" fill="currentColor"></path></svg>',
       bilibili: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M777.514667 131.669333a53.333333 53.333333 0 0 1 0 75.434667L728.746667 255.829333h49.92A160 160 0 0 1 938.666667 415.872v320a160 160 0 0 1-160 160H245.333333A160 160 0 0 1 85.333333 735.872v-320a160 160 0 0 1 160-160h49.749334L246.4 207.146667a53.333333 53.333333 0 0 1 75.392-75.434667l113.152 113.152c3.370667 3.370667 6.186667 7.04 8.448 10.965333h137.088c2.261333-3.925333 5.12-7.68 8.490667-11.008l113.109333-113.152a53.333333 53.333333 0 0 1 75.434667 0z m1.152 231.253334H245.333333a53.333333 53.333333 0 0 0-53.205333 49.365333l-0.128 4.010667v320c0 28.117333 21.76 51.114667 49.365333 53.162666l3.968 0.170667h533.333334a53.333333 53.333333 0 0 0 53.205333-49.365333l0.128-3.968v-320c0-29.44-23.893333-53.333333-53.333333-53.333334z m-426.666667 106.666666c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z m320 0c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z" fill="currentColor"></path></svg>',
-      youtube: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M1003.2 265.6c-11.2-44.8-46.4-78.4-91.2-91.2-80-20.8-400-20.8-400-20.8s-320 0-400 20.8c-44.8 11.2-78.4 46.4-91.2 91.2C0 345.6 0 512 0 512s0 166.4 20.8 246.4c11.2 44.8 46.4 78.4 91.2 91.2 80 20.8 400 20.8 400 20.8s320 0 400-20.8c44.8-11.2 78.4-46.4 91.2-91.2C1024 678.4 1024 512 1024 512s0-166.4-20.8-246.4z m-593.6 400V358.4L675.2 512l-265.6 153.6z" fill="currentColor"></path></svg>',
-      zhihu: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m-90.7 477.8l-0.1 1.5c-1.5 20.4-6.3 43.9-12.9 67.6l24-18.1 71 80.7c9.2 33-3.3 63.1-3.3 63.1l-95.7-111.9v-0.1c-8.9 29-20.1 57.3-33.3 84.7-22.6 45.7-55.2 54.7-89.5 57.7-34.4 3-23.3-5.3-23.3-5.3 68-55.5 78-87.8 96.8-123.1 11.9-22.3 20.4-64.3 25.3-96.8H264.1s4.8-31.2 19.2-41.7h101.6c0.6-15.3-1.3-102.8-2-131.4h-49.4c-9.2 45-41 56.7-48.1 60.1-7 3.4-23.6 7.1-21.1 0 2.6-7.1 27-46.2 43.2-110.7 16.3-64.6 63.9-62 63.9-62-12.8 22.5-22.4 73.6-22.4 73.6h159.7c10.1 0 10.6 39 10.6 39h-90.8c-0.7 22.7-2.8 83.8-5 131.4H519s12.2 15.4 12.2 41.7H421.3z m346.5 167h-87.6l-69.5 46.6-16.4-46.6h-40.1V321.5h213.6v387.3zM408.2 611s0-0.1 0 0z" fill="currentColor"></path><path d="M624.2 705.3l56.8-38.1h45.6-0.1V364.7H596.7v302.5h14.1z" fill="currentColor"></path></svg>'
+      youtube: '<svg viewBox="0 0 1024 1024" width="20" height="20"><path d="M1003.2 265.6c-11.2-44.8-46.4-78.4-91.2-91.2-80-20.8-400-20.8-400-20.8s-320 0-400 20.8c-44.8 11.2-78.4 46.4-91.2 91.2C0 345.6 0 512 0 512s0 166.4 20.8 246.4c11.2 44.8 46.4 78.4 91.2 91.2 80 20.8 400 20.8 400 20.8s320 0 400-20.8c44.8-11.2 78.4-46.4 91.2-91.2C1024 678.4 1024 512 1024 512s0-166.4-20.8-246.4z m-593.6 400V358.4L675.2 512l-265.6 153.6z" fill="currentColor"></path></svg>'
     };
 
     const socialNames = {
       email: 'Email',
       github: 'GitHub',
       bilibili: 'Bilibili',
-      youtube: 'YouTube',
-      zhihu: '知乎'
+      youtube: 'YouTube'
     };
 
     let socialHtml = '';
@@ -356,25 +346,11 @@ class ESContact extends HTMLElement {
       `;
     }
 
-    let wechatHtml = '';
-    if (wechat) {
-      wechatHtml = `
-        <div class="wechat-section">
-          <div class="wechat-info">
-            <p class="wechat-text">${wechat.text}</p>
-            <p class="wechat-name">${wechat.name}</p>
-          </div>
-          <img src="decorations/QRCode.jpg" alt="WeChat QR Code" class="wechat-qrcode">
-        </div>
-      `;
-    }
-
     this.innerHTML = `
       <div class="contact-container">
         <h2 class="contact-title">${title}</h2>
         <p class="contact-desc">${description.replace(/\n/g, '<br>')}</p>
         ${socialHtml}
-        ${wechatHtml}
       </div>
     `;
   }
@@ -445,16 +421,14 @@ class AppClass {
   setupAnimations() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      document.querySelectorAll('es-overview-card, es-courses-card, es-product-card, es-vision, es-contact, es-latest-digests-card').forEach(el => {
+      document.querySelectorAll('es-product-card, es-vision, es-contact').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
       });
       return;
     }
 
-    this.animateLatestDigestCards();
-
-    document.querySelectorAll('es-overview-card, es-courses-card, es-product-card').forEach((card, index) => {
+    document.querySelectorAll('es-product-card').forEach((card, index) => {
       const delay = index * 100;
       setTimeout(() => {
         card.classList.add('animate-visible');
@@ -477,14 +451,6 @@ class AppClass {
     }
   }
 
-  animateLatestDigestCards() {
-    document.querySelectorAll('es-latest-digests-card').forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add('animate-visible');
-      }, 100 + index * 100);
-    });
-  }
-
   renderNavbar() {
     const navbar = document.querySelector('es-navbar');
     if (navbar) {
@@ -503,28 +469,6 @@ class AppClass {
   }
 
   renderDigestUpdate() {
-    const digestUpdateSection = document.getElementById('digest-update');
-    if (!digestUpdateSection) return;
-
-    const digestsSections = I18n.getDigests('sections') || [];
-    const allItems = digestsSections.flatMap(section => section.items || []);
-    
-    if (allItems.length === 0) {
-      digestUpdateSection.style.display = 'none';
-      return;
-    }
-
-    const latestItem = allItems[0];
-    const card = document.getElementById('latest-digest-card');
-    if (card) {
-      card.setData(latestItem);
-    }
-
-    const titleEl = document.getElementById('digest-update-title');
-    if (titleEl) {
-      const lang = I18n.currentLang || 'zh';
-      titleEl.textContent = lang === 'zh' ? '文摘更新！' : 'Digest Update!';
-    }
   }
 
   renderSections() {
@@ -533,26 +477,8 @@ class AppClass {
 
     const sections = I18n.getPage('sections');
     
-    // 获取 digests 数据
-    const digestsSections = I18n.getDigests('sections') || [];
-    
     if (sections) {
-      const nonDigestsSections = sections.filter(section => section.type !== 'digests');
-      
-      this.renderSectionsList(sectionsContainer, nonDigestsSections);
-    }
-    
-    // 在非 index 页面渲染 digests section
-    if (digestsSections.length > 0 && this.pageName !== 'index') {
-      const digestsSectionEl = document.createElement('section');
-      digestsSectionEl.className = 'index-section';
-      digestsSectionEl.innerHTML = '<es-digests-section id="digests-section"></es-digests-section>';
-      sectionsContainer.appendChild(digestsSectionEl);
-    }
-
-    const continueCard = I18n.getPage('continueCard');
-    if (continueCard && typeof continueCard === 'object') {
-      this.renderContinueCard(sectionsContainer, continueCard);
+      this.renderSectionsList(sectionsContainer, sections);
     }
   }
 
@@ -566,20 +492,8 @@ class AppClass {
         sectionHtml += `<h2 class="section-title">${section.title}</h2>`;
       }
 
-      if (section.type === 'overview') {
-        sectionHtml += '<div class="overview-grid">';
-        section.items.forEach(item => {
-          sectionHtml += `<es-overview-card id="card-${item.id}"></es-overview-card>`;
-        });
-        sectionHtml += '</div>';
-      } else if (section.type === 'vision') {
+      if (section.type === 'vision') {
         sectionHtml += '<es-vision id="vision-section"></es-vision>';
-      } else if (section.type === 'courses') {
-        sectionHtml += '<div class="cards-grid">';
-        section.items.forEach(item => {
-          sectionHtml += `<es-courses-card id="course-${item.id}"></es-courses-card>`;
-        });
-        sectionHtml += '</div>';
       } else if (section.type === 'products') {
         sectionHtml += '<div class="products-grid">';
         section.items.forEach(item => {
@@ -591,19 +505,9 @@ class AppClass {
       sectionEl.innerHTML = sectionHtml;
       container.appendChild(sectionEl);
 
-      if (section.type === 'overview') {
-        section.items.forEach(item => {
-          const card = sectionEl.querySelector(`#card-${item.id}`);
-          if (card) card.setData(item);
-        });
-      } else if (section.type === 'vision') {
+      if (section.type === 'vision') {
         const vision = sectionEl.querySelector('#vision-section');
         if (vision) vision.setData(section);
-      } else if (section.type === 'courses') {
-        section.items.forEach(item => {
-          const card = sectionEl.querySelector(`#course-${item.id}`);
-          if (card) card.setData(item);
-        });
       } else if (section.type === 'products') {
         section.items.forEach(item => {
           const card = sectionEl.querySelector(`#product-${item.id}`);
@@ -614,18 +518,6 @@ class AppClass {
     });
 
     this.setupAnimations();
-  }
-
-  renderContinueCard(container, continueCardData) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'continue-card-wrapper';
-    wrapper.innerHTML = `<es-courses-card id="page-continue-card"></es-courses-card>`;
-    container.appendChild(wrapper);
-
-    const card = wrapper.querySelector('#page-continue-card');
-    if (card) {
-      card.setData(continueCardData);
-    }
   }
 
   renderContact() {

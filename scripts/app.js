@@ -38,8 +38,6 @@ class App {
 
     if (this.pageName === 'index') {
       heroData = I18n.getPage('index.hero');
-    } else if (this.pageName === 'courses') {
-      heroData = I18n.getPage('courses.hero');
     } else if (this.pageName === 'products') {
       heroData = I18n.getPage('products.hero');
     }
@@ -57,13 +55,6 @@ class App {
       const sections = I18n.getPage('index.sections');
       if (sections) {
         this.renderIndexSections(sectionsContainer, sections);
-      }
-    } else if (this.pageName === 'courses') {
-      const items = I18n.getPage('courses.items');
-      const sectionTitle = I18n.getPage('courses.sectionTitle');
-      const continueCard = I18n.getPage('courses.continueCard');
-      if (items) {
-        this.renderCoursesSection(sectionsContainer, items, sectionTitle, continueCard);
       }
     } else if (this.pageName === 'products') {
       const items = I18n.getPage('products.items');
@@ -130,37 +121,6 @@ class App {
     });
   }
 
-  renderCoursesSection(container, items, sectionTitle, continueCard) {
-    let html = `<h2 class="section-title"><span class="icon">🎯</span>${sectionTitle}</h2>`;
-    html += '<div class="cards-grid">';
-
-    items.forEach(item => {
-      html += `<es-card id="course-${item.id}"></es-card>`;
-    });
-
-    html += '</div>';
-
-    if (continueCard) {
-      html += `<es-card id="continue-card"></es-card>`;
-    }
-
-    container.innerHTML = html;
-
-    items.forEach(item => {
-      const card = container.querySelector(`#course-${item.id}`);
-      if (card) {
-        card.setData(item);
-      }
-    });
-
-    if (continueCard) {
-      const card = container.querySelector('#continue-card');
-      if (card) {
-        card.setData(continueCard);
-      }
-    }
-  }
-
   renderContact() {
     const contact = document.querySelector('es-contact');
     if (contact) {
@@ -180,8 +140,6 @@ class App {
 
     if (this.pageName === 'index') {
       pageTitle = I18n.getPage('index.pageTitle');
-    } else if (this.pageName === 'courses') {
-      pageTitle = I18n.getPage('courses.pageTitle');
     } else if (this.pageName === 'products') {
       pageTitle = I18n.getPage('products.pageTitle');
     }

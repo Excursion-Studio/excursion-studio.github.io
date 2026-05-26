@@ -33,13 +33,6 @@
 
   <es-hero></es-hero>
 
-  <section id="digest-update" class="index-section">
-    <div class="container">
-      <h2 class="section-title" id="digest-update-title"></h2>
-      <es-latest-digests-card id="latest-digest-card"></es-latest-digests-card>
-    </div>
-  </section>
-
   <section id="index">
     <div class="container sections-container"></div>
   </section>
@@ -50,11 +43,10 @@
 
   <script src="scripts/main.js"></script>
   <script src="components/es-card.js"></script>
-  <script src="scripts/digests.js"></script>
   <script>
     window.addEventListener('load', function() {
       if (window.App) {
-        window.App.init().then(function() {
+        window.App.init('index').then(function() {
           document.body.classList.add('page-ready');
           var loadingEl = document.getElementById('page-loading');
           if (loadingEl) {

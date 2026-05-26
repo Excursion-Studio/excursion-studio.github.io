@@ -7,42 +7,6 @@
   },
   "sections": [
     {
-      "type": "overview",
-      "title": "Studio Sections",
-      "items": [
-        {
-          "id": "research",
-          "title": "Research",
-          "text": "<z>To be completed...</z>"
-        },
-        {
-          "id": "digests",
-          "title": "Digests",
-          "text": "<z>Paper Guide</z> and <z>Paper Express</z> series columns, aiming to provide high-quality paper interpretations and the latest research dynamics, with the hope of helping both colleagues and beginners."
-        },
-        {
-          "id": "courses",
-          "title": "Courses",
-          "text": "Currently, studio's courses is in design stage. Stay tuned!"
-        },
-        {
-          "id": "equipment",
-          "title": "Equipment",
-          "text": "<z>To be completed...</z>"
-        },
-        {
-          "id": "products",
-          "title": "Products",
-          "text": "Currently, studio's products are <z>research related page templates series</z>, including personal homepage template and research project page template."
-        },
-        {
-          "id": "contact",
-          "title": "Contact",
-          "text": "All official contacts are in the <z>Get in Touch</z> section!"
-        }
-      ]
-    },
-    {
       "type": "vision",
       "title": "Our Vision",
       "motto": {
